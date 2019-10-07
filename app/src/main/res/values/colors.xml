@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#56B71D</color>
+    <color name="colorPrimaryDark">#A969E9</color>
+    <color name="colorAccent">#60B0F1</color>
+    <color name="goldenYellow">#C8AE17</color>
+    <color name="chocolateBrown">#A93312</color>
+    <color name="relaxingPurple">#A94CE3</color>
+    <color name="oceanBlue">#3AA2CC</color>
+    <color name="mysteriousPurple">#6D3FC3</color>
+    <color name="bloodyRed">#C61A2B</color>
+    <color name="floweryPink">#E29106</color>
+    <color name="aquamarineBlue">#169D9D</color>
+    <color name="militaryGreen">#0A6F11</color>
+    <color name="sunsetOrange">#EA8919</color>
+    <color name="lemonGreen">#9CC508</color>
+    <color name="darkMagenta">#B61F7E</color>
+    <color name="navyBlue">#0721B2</color>
+    <color name="seaBlue">#82D2D2</color>
 </resources>
