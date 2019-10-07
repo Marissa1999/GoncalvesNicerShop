@@ -12,8 +12,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MenuActivity extends AppCompatActivity {
+import com.example.goncalvesnicershop.model.AlbumItem1;
 
+import java.util.LinkedList;
+
+public class MenuActivity extends AppCompatActivity
+{
 
     //The tag to call the MenuActivity class name when debugging code
     private static final String MENU_LOG_TAG = MenuActivity.class.getSimpleName();
@@ -29,6 +33,14 @@ public class MenuActivity extends AppCompatActivity {
     private double totalTPSTax = 0.00;
     private double totalTVQTax = 0.00;
     private double finalTotal = 0.00;
+
+    private final LinkedList<String> albumList = new LinkedList<>();
+
+    private AlbumItem1 albumItem1 = new AlbumItem1(getResources().getString(R.string.album_title_1),
+                                                   getResources().getString(R.string.album_description_1),
+                                                   getResources().getDrawable(R.drawable.journey_escape),
+                                                   getResources().getString(R.string.album_price_1),
+                                                   getResources().getString(R.string.album_quantity_1));
 
     //These TextView instance variables hold the String added quantity value for each CardView element
     private TextView showAddedAlbumQuantity;
