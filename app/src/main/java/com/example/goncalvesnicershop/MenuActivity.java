@@ -104,7 +104,7 @@ public class MenuActivity extends AppCompatActivity {
     Modifies the first album's quantity value when the decrement button is clicked
      */
     @SuppressLint("SetTextI18n")
-    public void subtractAlbumQuantity1(View view) {
+    public void subtractAlbumQuantity(View view) {
 
         //Determine the first album price from the specified ID
         this.albumPrice = findViewById(R.id.album_price_1);

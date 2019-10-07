@@ -1,4 +1,11 @@
 package com.example.goncalvesnicershop.model;
 
-public class AlbumItem2 {
+public class AlbumItem2
+{
+
+
+
+
+
+
 }
