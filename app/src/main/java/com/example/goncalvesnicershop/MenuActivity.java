@@ -12,12 +12,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.goncalvesnicershop.model.AlbumItem1;
+import com.example.goncalvesnicershop.model.AlbumItem;
 
 import java.util.LinkedList;
 
-public class MenuActivity extends AppCompatActivity
-{
+public class MenuActivity extends AppCompatActivity {
 
     //The tag to call the MenuActivity class name when debugging code
     private static final String MENU_LOG_TAG = MenuActivity.class.getSimpleName();
@@ -34,13 +33,9 @@ public class MenuActivity extends AppCompatActivity
     private double totalTVQTax = 0.00;
     private double finalTotal = 0.00;
 
-    private final LinkedList<String> albumList = new LinkedList<>();
 
-    private AlbumItem1 albumItem1 = new AlbumItem1(getResources().getString(R.string.album_title_1),
-                                                   getResources().getString(R.string.album_description_1),
-                                                   getResources().getDrawable(R.drawable.journey_escape),
-                                                   getResources().getString(R.string.album_price_1),
-                                                   getResources().getString(R.string.album_quantity_1));
+    private final LinkedList<AlbumItem> albumList = new LinkedList<AlbumItem>();
+
 
     //These TextView instance variables hold the String added quantity value for each CardView element
     private TextView showAddedAlbumQuantity;
@@ -56,6 +51,76 @@ public class MenuActivity extends AppCompatActivity
 
     //These TextView instance variables hold the String subtotal value for each CardView element
     private TextView showAlbumSubtotal;
+
+
+    AlbumItem albumItem1 = new AlbumItem(getResources().getString(R.string.album_title_1),
+            getResources().getString(R.string.album_description_1),
+            getResources().getDrawable(R.drawable.journey_escape),
+            getResources().getString(R.string.album_price_1),
+            getResources().getString(R.string.album_quantity_1));
+
+
+    AlbumItem albumItem2 = new AlbumItem(getResources().getString(R.string.album_title_2),
+            getResources().getString(R.string.album_description_2),
+            getResources().getDrawable(R.drawable.the_who_tommy),
+            getResources().getString(R.string.album_price_2),
+            getResources().getString(R.string.album_quantity_2));
+
+
+    AlbumItem albumItem3 = new AlbumItem(getResources().getString(R.string.album_title_3),
+            getResources().getString(R.string.album_description_3),
+            getResources().getDrawable(R.drawable.pearl_jam_ten),
+            getResources().getString(R.string.album_price_3),
+            getResources().getString(R.string.album_quantity_3));
+
+
+    AlbumItem albumItem4 = new AlbumItem(getResources().getString(R.string.album_title_4),
+            getResources().getString(R.string.album_description_4),
+            getResources().getDrawable(R.drawable.nirvana_nevermind),
+            getResources().getString(R.string.album_price_4),
+            getResources().getString(R.string.album_quantity_4));
+
+
+    AlbumItem albumItem5 = new AlbumItem(getResources().getString(R.string.album_title_5),
+            getResources().getString(R.string.album_description_5),
+            getResources().getDrawable(R.drawable.van_halen_1984),
+            getResources().getString(R.string.album_price_5),
+            getResources().getString(R.string.album_quantity_5));
+
+
+    AlbumItem albumItem6 = new AlbumItem(getResources().getString(R.string.album_title_6),
+            getResources().getString(R.string.album_description_6),
+            getResources().getDrawable(R.drawable.u2_joshua_tree),
+            getResources().getString(R.string.album_price_6),
+            getResources().getString(R.string.album_quantity_6));
+
+
+    AlbumItem albumItem7 = new AlbumItem(getResources().getString(R.string.album_title_7),
+            getResources().getString(R.string.album_description_7),
+            getResources().getDrawable(R.drawable.ac_dc_high_voltage),
+            getResources().getString(R.string.album_price_7),
+            getResources().getString(R.string.album_quantity_7));
+
+
+    AlbumItem albumItem8 = new AlbumItem(getResources().getString(R.string.album_title_8),
+            getResources().getString(R.string.album_description_8),
+            getResources().getDrawable(R.drawable.yes_fragile),
+            getResources().getString(R.string.album_price_8),
+            getResources().getString(R.string.album_quantity_8));
+
+
+    AlbumItem albumItem9 = new AlbumItem(getResources().getString(R.string.album_title_9),
+            getResources().getString(R.string.album_description_9),
+            getResources().getDrawable(R.drawable.rem_murmur),
+            getResources().getString(R.string.album_price_9),
+            getResources().getString(R.string.album_quantity_9));
+
+
+    AlbumItem albumItem10 = new AlbumItem(getResources().getString(R.string.album_title_10),
+            getResources().getString(R.string.album_description_10),
+            getResources().getDrawable(R.drawable.pink_floyd_the_wall),
+            getResources().getString(R.string.album_price_10),
+            getResources().getString(R.string.album_quantity_10));
 
 
     @Override
@@ -78,6 +143,17 @@ public class MenuActivity extends AppCompatActivity
         this.showSubtractedAlbumQuantity = findViewById(R.id.album_quantity_1);
         this.showAlbumSubtotal = findViewById(R.id.album_subtotal_1);
 
+        this.albumList.addLast(albumItem1);
+        this.albumList.addLast(albumItem2);
+        this.albumList.addLast(albumItem3);
+        this.albumList.addLast(albumItem4);
+        this.albumList.addLast(albumItem5);
+        this.albumList.addLast(albumItem6);
+        this.albumList.addLast(albumItem7);
+        this.albumList.addLast(albumItem8);
+        this.albumList.addLast(albumItem9);
+        this.albumList.addLast(albumItem10);
+
     }
 
 
@@ -88,7 +164,7 @@ public class MenuActivity extends AppCompatActivity
     public void addAlbumQuantity(View view) {
 
         //Determine the first album price from the specified ID
-        this.albumPrice = findViewById(R.id.album_price_1);
+        this.albumPrice = view.findViewById(R.id.album_price_1);
 
         //Increment the first album quantity by 1
         this.albumQuantity++;
@@ -109,7 +185,6 @@ public class MenuActivity extends AppCompatActivity
         showAlbumSubtotal(this.albumQuantity, this.albumPrice, this.showAlbumSubtotal);
 
     }
-
 
 
     /*
