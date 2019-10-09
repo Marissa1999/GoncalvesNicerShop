@@ -1,5 +1,6 @@
 package com.example.goncalvesnicershop;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,10 +20,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     private final LayoutInflater albumInflater;
 
 
-    public ProductAdapter(LinkedList<AlbumItem> albumList, LayoutInflater albumInflater)
+    public ProductAdapter(Context context, LinkedList<AlbumItem> albumList)
     {
         this.albumList = albumList;
-        this.albumInflater = albumInflater;
+        this.albumInflater = LayoutInflater.from(context);
     }
 
 
@@ -30,14 +31,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        return null;
+
+        View albumItemView = albumInflater.inflate(R.layout.album_content, parent, false);
+        return new ProductViewHolder(albumItemView, this);
+
+
     }
 
 
 
     @Override
-    public void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, int i)
+    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position)
     {
+         String current = String.valueOf(this.albumList.get(position));
+         holder.albumItemView.setText(current);
+
 
     }
 
@@ -46,26 +54,35 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public int getItemCount()
     {
-        return 0;
+        return this.albumList.size();
     }
 
 
 
 
-    public class ProductViewHolder extends RecyclerView.ViewHolder
+    public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
 
         public final TextView albumItemView;
         public final ProductAdapter adapter;
 
 
-        public ProductViewHolder(@NonNull View itemView, TextView albumItemView, ProductAdapter adapter)
+        public ProductViewHolder(@NonNull View albumItemView, ProductAdapter adapter)
         {
-            super(itemView);
-            this.albumItemView = albumItemView;
+            super(albumItemView);
+            this.albumItemView = (TextView) albumItemView;
             this.adapter = adapter;
+            itemView.setOnClickListener(this);
         }
 
 
+
+        @Override
+        public void onClick(View view)
+        {
+
+
+
+        }
     }
 }
