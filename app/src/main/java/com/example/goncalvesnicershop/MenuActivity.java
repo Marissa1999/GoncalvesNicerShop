@@ -37,8 +37,6 @@ public class MenuActivity extends AppCompatActivity {
     private double finalSubtotal = 0.00;
 
 
-
-
     private final LinkedList<AlbumItem> albumList = new LinkedList<>();
     private RecyclerView RecyclerView;
     private ProductAdapter Adapter;

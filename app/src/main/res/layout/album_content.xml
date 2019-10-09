@@ -52,6 +52,7 @@
             android:layout_marginStart="140dp"
             android:layout_marginLeft="140dp"
             android:layout_marginBottom="20dp"
+            android:onClick="onClick"
             android:background="@drawable/minus_button_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,6 +84,7 @@
             android:background="@drawable/adding_button_1"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:onClick="onClick"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:ignore="OnClick" />
