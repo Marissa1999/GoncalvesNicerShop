@@ -2,6 +2,7 @@ package com.example.goncalvesnicershop;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -11,15 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.goncalvesnicershop.model.AlbumItem;
-
 import java.util.LinkedList;
+
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     private final LinkedList<AlbumItem> albumList;
     private final LayoutInflater albumInflater;
+    private static final String ADAPTER_LOG_TAG = ProductAdapter.class.getSimpleName();
+    protected static final String FINAL_SUBTOTAL = "com.example.android.goncalvesnicershop.extra.MESSAGE";
+    protected static final String TPS_TAX = "com.example.android.goncalvesnicershop.tps.TAX";
+    protected static final String TVQ_TAX = "com.example.android.goncalvesnicershop.tvq.TAX";
+    protected static final String FINAL_TOTAL = "com.example.android.goncalvesnicershop.final.TOTAL";
 
 
     ProductAdapter(Context context, LinkedList<AlbumItem> albumList) {
@@ -59,7 +64,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         private final ProductAdapter adapter;
         private final CardView album;
-        private AlbumItem albumItem;
         private final TextView albumTitle;
         private final TextView albumDescription;
         private final ImageView albumImage;
@@ -92,14 +96,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         @SuppressLint("SetTextI18n")
         @Override
-        public void onClick(View view)
-        {
+        public void onClick(View view) {
 
-            switch(view.getId())
-            {
+            switch (view.getId()) {
 
-                case R.id.adding_button:
-                {
+                case R.id.adding_button: {
 
                     this.updatedQuantity++;
 
@@ -116,12 +117,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     Log.d(MENU_LOG_TAG, "Added Quantity to Album");
 
                     //Call this method to calculate the first album's subtotal according to implemented arguments
-                    showAlbumSubtotal(this.updatedQuantity, this.albumPrice, this.albumSubtotal);
+                    showAlbumSubtotal(this.updatedQuantity, this.albumPrice, this.albumSubtotal, view);
                 }
 
 
-                case R.id.minus_button:
-                {
+                case R.id.minus_button: {
 
                     this.updatedQuantity--;
 
@@ -138,7 +138,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     Log.d(MENU_LOG_TAG, "Subtracted Quantity to Album");
 
                     //Call this method to calculate the first album's subtotal according to implemented arguments
-                    showAlbumSubtotal(this.updatedQuantity, this.albumPrice, this.albumSubtotal);
+                    showAlbumSubtotal(this.updatedQuantity, this.albumPrice, this.albumSubtotal, view);
 
                 }
 
@@ -147,12 +147,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         }
 
 
-
-         /*
-           Calculate the chosen album's subtotal from implemented arguments
-         */
+        /*
+          Calculate the chosen album's subtotal from implemented arguments
+        */
         @SuppressLint({"SetTextI18n", "DefaultLocale"})
-        void showAlbumSubtotal(int albumQuantity, TextView idAlbumPrice, TextView albumSubtotal) {
+        void showAlbumSubtotal(int albumQuantity, TextView idAlbumPrice, TextView albumSubtotal, View view) {
 
             //Get the album price by converted the TextView element to a String value
             String printedAlbumPrice = idAlbumPrice.getText().toString().substring(1);
@@ -179,8 +178,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
             //Call this method to calculate the final album total
             calculateAlbumFinalTotal();
-        }
 
+            sendMonetaryTotals(view);
+        }
 
 
         /*
@@ -194,7 +194,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             //Print a log message to ensure calculateAlbumFinalSubtotal method's functionality
             Log.d(MENU_LOG_TAG, "Calculated Album Final Subtotal");
         }
-
 
 
         /*
@@ -211,7 +210,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         }
 
 
-
         /*
           Calculate the final subtotal instance variable
         */
@@ -225,7 +223,30 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         }
 
 
+        /*
+     Launch the CheckoutActivity class, which is supposed to be the following activity
+    */
+        @SuppressLint("DefaultLocale")
+        void sendMonetaryTotals(View view)
+        {
+
+            //Create an intent to start the following activity, which is MenuActivity
+            Intent menuIntent = new Intent(this, MenuActivity.class);
+
+            //Set the MenuActivity class formatted monetary values as tag names, in order for them to be used in the CheckoutActivity
+            //These Double instance variables hold values for final purchase totals
+            menuIntent.putExtra(FINAL_SUBTOTAL, String.format("$%.2f", this.finalSubtotal));
+            menuIntent.putExtra(TPS_TAX, String.format("$%.2f", this.totalTPSTax));
+            menuIntent.putExtra(TVQ_TAX, String.format("$%.2f", this.totalTVQTax));
+            menuIntent.putExtra(FINAL_TOTAL, String.format("$%.2f", this.finalTotal));
+
+            startActivity(menuIntent);
 
 
+            //Print a log message to ensure launchCheckoutActivity method's functionality
+            Log.d(ADAPTER_LOG_TAG, "Transferred Subtotal, Tax Values and Final Total to CheckoutActivity with Clicked Button");
+        }
     }
+
+
 }

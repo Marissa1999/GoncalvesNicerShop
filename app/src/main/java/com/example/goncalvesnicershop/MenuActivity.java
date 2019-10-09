@@ -34,6 +34,9 @@ public class MenuActivity extends AppCompatActivity {
     private double totalTPSTax = 0.00;
     private double totalTVQTax = 0.00;
     private double finalTotal = 0.00;
+    private double finalSubtotal = 0.00;
+
+
 
 
     private final LinkedList<AlbumItem> albumList = new LinkedList<>();
@@ -53,13 +56,6 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(final View view)
             {
-
-               // final String[] shippingOptions = {"Express ($50)","Regular ($10)", "No Hurry (No Cost)"};
-              //  AlertDialog.Builder shippingAlert = new AlertDialog.Builder(MenuActivity.this);
-               // shippingAlert.setTitle("Shipping Alert");
-               // shippingAlert.setMessage("Choose a shipping option: ");
-
-
 
                 final String[] shippingOptions = {"Express ($50)","Regular ($10)", "No Hurry (No Cost)"};
 
@@ -205,8 +201,7 @@ public class MenuActivity extends AppCompatActivity {
 
         //Set the MenuActivity class formatted monetary values as tag names, in order for them to be used in the CheckoutActivity
         //These Double instance variables hold values for final purchase totals
-        double finalSubtotal = 0.00;
-        checkoutIntent.putExtra(FINAL_SUBTOTAL, String.format("$%.2f", finalSubtotal));
+        checkoutIntent.putExtra(FINAL_SUBTOTAL, String.format("$%.2f", this.finalSubtotal));
         checkoutIntent.putExtra(TPS_TAX, String.format("$%.2f", this.totalTPSTax));
         checkoutIntent.putExtra(TVQ_TAX, String.format("$%.2f", this.totalTVQTax));
         checkoutIntent.putExtra(FINAL_TOTAL, String.format("$%.2f", this.finalTotal));

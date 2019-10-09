@@ -25,7 +25,7 @@ public class CheckoutActivity extends AppCompatActivity {
         Intent menuIntent = getIntent();
 
         //Get the following monetary values from the activity tags in the MenuActivity class
-        String finalAlbumSubtotal = menuIntent.getStringExtra(MenuActivity.FINAL_SUBTOTAL);
+        String finalAlbumSubtotal = menuIntent.getStringExtra(ProductAdapter.FINAL_SUBTOTAL);
         String finalAlbumTPSTax = menuIntent.getStringExtra(MenuActivity.TPS_TAX);
         String finalAlbumTVQTax = menuIntent.getStringExtra(MenuActivity.TVQ_TAX);
         String finalAlbumTotal = menuIntent.getStringExtra(MenuActivity.FINAL_TOTAL);
