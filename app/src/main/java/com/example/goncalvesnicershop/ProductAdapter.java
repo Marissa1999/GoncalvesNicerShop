@@ -231,7 +231,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         {
 
             //Create an intent to start the following activity, which is MenuActivity
-            Intent menuIntent = new Intent(this, MenuActivity.class);
+            Intent menuIntent = new Intent();
 
             //Set the MenuActivity class formatted monetary values as tag names, in order for them to be used in the CheckoutActivity
             //These Double instance variables hold values for final purchase totals
@@ -239,9 +239,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             menuIntent.putExtra(TPS_TAX, String.format("$%.2f", this.totalTPSTax));
             menuIntent.putExtra(TVQ_TAX, String.format("$%.2f", this.totalTVQTax));
             menuIntent.putExtra(FINAL_TOTAL, String.format("$%.2f", this.finalTotal));
-
-            startActivity(menuIntent);
-
 
             //Print a log message to ensure launchCheckoutActivity method's functionality
             Log.d(ADAPTER_LOG_TAG, "Transferred Subtotal, Tax Values and Final Total to CheckoutActivity with Clicked Button");
