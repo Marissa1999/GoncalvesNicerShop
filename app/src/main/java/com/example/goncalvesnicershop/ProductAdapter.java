@@ -2,10 +2,12 @@ package com.example.goncalvesnicershop;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.goncalvesnicershop.model.AlbumItem;
@@ -14,7 +16,6 @@ import java.util.LinkedList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder>
 {
-
 
     private final LinkedList<AlbumItem> albumList;
     private final LayoutInflater albumInflater;
@@ -40,8 +41,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position)
     {
-         String current = String.valueOf(this.albumList.get(position));
-         holder.albumItemView.setText(current);
+         holder.albumTitle.setText(albumList.get(position).getAlbumTitle());
+         holder.albumDescription.setText(albumList.get(position).getAlbumDescription());
+         holder.albumImage.setImageDrawable(albumList.get(position).getAlbumImage());
+         holder.albumPrice.setText(albumList.get(position).getAlbumPrice());
+         holder.albumQuantity.setText(albumList.get(position).getAlbumQuantity());
     }
 
 
@@ -58,14 +62,25 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
 
-        public final TextView albumItemView;
         public final ProductAdapter adapter;
+        public final CardView album;
+        public final TextView albumTitle;
+        public final TextView albumDescription;
+        public final ImageView albumImage;
+        public final TextView albumPrice;
+        public final TextView albumQuantity;
+
 
 
         public ProductViewHolder(@NonNull View albumItemView, ProductAdapter adapter)
         {
             super(albumItemView);
-            this.albumItemView = albumItemView.findViewById(R.id.album_content);
+            this.album = albumItemView.findViewById(R.id.album_content);
+            this.albumTitle = albumItemView.findViewById(R.id.album_title);
+            this.albumDescription = albumItemView.findViewById(R.id.album_description);
+            this.albumImage = albumItemView.findViewById(R.id.album_cover);
+            this.albumPrice = albumItemView.findViewById(R.id.album_price);
+            this.albumQuantity = albumItemView.findViewById(R.id.album_quantity);
             this.adapter = adapter;
             itemView.setOnClickListener(this);
         }

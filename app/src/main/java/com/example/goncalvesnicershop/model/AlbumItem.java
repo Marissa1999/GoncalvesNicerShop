@@ -34,9 +34,7 @@ public class AlbumItem
         return albumDescription;
     }
 
-    public void setAlbumDescription(String albumDescription) {
-        this.albumDescription = albumDescription;
-    }
+    public void setAlbumDescription(String albumDescription) { this.albumDescription = albumDescription; }
 
     public Drawable getAlbumImage() {
         return albumImage;
