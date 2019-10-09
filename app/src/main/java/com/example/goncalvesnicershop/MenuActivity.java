@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,7 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.goncalvesnicershop.model.AlbumItem;
@@ -40,9 +38,7 @@ public class MenuActivity extends AppCompatActivity {
     private double finalTotal = 0.00;
 
 
-    private final LinkedList<AlbumItem> albumList = new LinkedList<AlbumItem>();
-
-
+    private final LinkedList<AlbumItem> albumList = new LinkedList<>();
     private RecyclerView RecyclerView;
     private ProductAdapter Adapter;
 
@@ -57,13 +53,85 @@ public class MenuActivity extends AppCompatActivity {
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
+            public void onClick(final View view)
             {
-                AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MenuActivity.this);
-                myAlertBuilder.setTitle("Alert");
-                myAlertBuilder.setMessage("Click OK to continue, or Cancel to stop:");
 
-                myAlertBuilder.setPositiveButton("OK", new
+                final String[] shippingOptions = {"Express ($50)","Regular ($10)", "No Hurry (No Cost)"};
+                final AlertDialog.Builder shippingAlert = new AlertDialog.Builder(MenuActivity.this);
+                shippingAlert.setTitle("Shipping Alert");
+                shippingAlert.setMessage("Choose a shipping option: ");
+
+
+                int checkedItem = 0; //this will checked the item when user open the dialog
+                shippingAlert.setSingleChoiceItems(shippingOptions, checkedItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        Toast.makeText(MenuActivity.this, "Position: " + which + " Value: " + shippingOptions[which], Toast.LENGTH_LONG).show();
+                    }
+                });
+
+
+                shippingAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which)
+                            {
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog dialog = shippingAlert.create();
+                dialog.show();
+
+
+                shippingAlert.setPositiveButton("Proceed to Checkout", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        launchCheckoutActivity(view);
+                    }
+                });
+
+                dialog.show();
+
+
+/**
+                int checkedItem = 0;
+                shippingAlert.setSingleChoiceItems(shippingOptions, checkedItem, new DialogInterface.OnClickListener()
+                {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int option)
+                    {
+
+                        shippingAlert.setMessage("Position: " + option + " Value: " + shippingOptions[option]).show();
+
+                        switch(option)
+                        {
+                            case 0:
+                                shippingAlert.setMessage("Clicked on java" + option).show();
+                                break;
+
+                            case 1:
+                                shippingAlert.setMessage("Clicked on android" + option).show();
+                                break;
+
+                            case 2:
+                                shippingAlert.setMessage("Clicked on Data Structures" + option).show();
+                                break;
+                        }
+
+                        dialog.dismiss();
+
+                    }
+
+                });
+
+                alertDialog = shippingAlert.create();
+                alertDialog.show();
+
+
+                shippingAlert.setPositiveButton("OK", new
                         DialogInterface.OnClickListener()
                         {
                             public void onClick(DialogInterface dialog, int which)
@@ -73,7 +141,9 @@ public class MenuActivity extends AppCompatActivity {
                                         Toast.LENGTH_SHORT).show();
                             }
                         });
-                myAlertBuilder.setNegativeButton("Cancel", new
+
+
+                shippingAlert.setNegativeButton("Cancel", new
                         DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which)
                             {
@@ -82,9 +152,16 @@ public class MenuActivity extends AppCompatActivity {
                                         Toast.LENGTH_SHORT).show();
                             }
                         });
-                myAlertBuilder.show();
+
+
+                shippingAlert.show();
+
+ */
             }
+
         });
+
+
 
         AlbumItem albumItem1 = new AlbumItem(getResources().getString(R.string.album_title_1),
                 getResources().getString(R.string.album_description_1),
