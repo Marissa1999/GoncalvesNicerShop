@@ -24,7 +24,7 @@ public class MenuActivity extends AppCompatActivity {
     private static final String MENU_LOG_TAG = MenuActivity.class.getSimpleName();
 
     //These tags set the variable names that will be transferred to the CheckoutActivity class
-    public static final String FINAL_SUBTOTAL = "com.example.android.goncalvesshop.extra.MESSAGE";
+    public static final String FINAL_SUBTOTAL = "com.example.android.goncalvesnicershop.extra.MESSAGE";
     public static final String TPS_TAX = "com.example.android.goncalvesshop.tps.TAX";
     public static final String TVQ_TAX = "com.example.android.goncalvesshop.tvq.TAX";
     public static final String FINAL_TOTAL = "com.example.android.goncalvesshop.final.TOTAL";

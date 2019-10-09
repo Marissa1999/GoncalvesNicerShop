@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/album_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
     tools:context=".MenuActivity">
@@ -13,14 +13,14 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="#1D98B7"
         android:orientation="vertical"
         tools:context=".MenuActivity">
 
         <TextView
             android:id="@+id/wallpaper_background"
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
@@ -61,8 +61,8 @@
             android:id="@+id/album_quantity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="180dp"
-            android:layout_marginLeft="180dp"
+            android:layout_marginStart="188dp"
+            android:layout_marginLeft="188dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:textColor="@android:color/white"
@@ -71,7 +71,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.902" />
+            app:layout_constraintVertical_bias="0.898" />
 
         <Button
             android:id="@+id/adding_button"
@@ -131,8 +131,9 @@
         <ImageView
             android:id="@+id/album_cover"
             android:layout_width="127dp"
-            android:layout_height="131dp"
+            android:layout_height="130dp"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/album_cover"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
