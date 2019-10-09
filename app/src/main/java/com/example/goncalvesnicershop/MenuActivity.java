@@ -1,10 +1,12 @@
 package com.example.goncalvesnicershop;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,11 +25,13 @@ public class MenuActivity extends AppCompatActivity {
     //The tag to call the MenuActivity class name when debugging code
     private static final String MENU_LOG_TAG = MenuActivity.class.getSimpleName();
 
+
     //These tags set the variable names that will be transferred to the CheckoutActivity class
     public static final String FINAL_SUBTOTAL = "com.example.android.goncalvesnicershop.extra.MESSAGE";
     public static final String TPS_TAX = "com.example.android.goncalvesshop.tps.TAX";
     public static final String TVQ_TAX = "com.example.android.goncalvesshop.tvq.TAX";
     public static final String FINAL_TOTAL = "com.example.android.goncalvesshop.final.TOTAL";
+
 
     //These Double instance variables hold values for final purchase totals
     private double finalSubtotal = 0.00;
@@ -37,22 +41,6 @@ public class MenuActivity extends AppCompatActivity {
 
 
     private final LinkedList<AlbumItem> albumList = new LinkedList<AlbumItem>();
-
-
-    //These TextView instance variables hold the String added quantity value for each CardView element
-    private TextView showAddedAlbumQuantity;
-
-    //These TextView instance variables hold the album price for each CardView element
-    private TextView albumPrice;
-
-    //These TextView instance variables hold the String subtracted quantity value for each CardView element
-    private TextView showSubtractedAlbumQuantity;
-
-    //These TextView instance variables hold the album quantity for each CardView element
-    private int albumQuantity = 0;
-
-    //These TextView instance variables hold the String subtotal value for each CardView element
-    private TextView showAlbumSubtotal;
 
 
     private RecyclerView RecyclerView;
@@ -69,9 +57,32 @@ public class MenuActivity extends AppCompatActivity {
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View view)
+            {
+                AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MenuActivity.this);
+                myAlertBuilder.setTitle("Alert");
+                myAlertBuilder.setMessage("Click OK to continue, or Cancel to stop:");
+
+                myAlertBuilder.setPositiveButton("OK", new
+                        DialogInterface.OnClickListener()
+                        {
+                            public void onClick(DialogInterface dialog, int which)
+                            {
+                                // User clicked OK button.
+                                Toast.makeText(getApplicationContext(), "Pressed OK",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                myAlertBuilder.setNegativeButton("Cancel", new
+                        DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which)
+                            {
+                                // User cancelled the dialog.
+                                Toast.makeText(getApplicationContext(), "Pressed Cancel",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                myAlertBuilder.show();
             }
         });
 
@@ -311,5 +322,6 @@ public class MenuActivity extends AppCompatActivity {
         //Print a log message to ensure launchCheckoutActivity method's functionality
         Log.d(MENU_LOG_TAG, "Transferred Subtotal, Tax Values and Final Total to CheckoutActivity with Clicked Button");
     }
+
 
 }

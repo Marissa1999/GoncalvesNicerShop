@@ -22,7 +22,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     private final LayoutInflater albumInflater;
 
 
-    public ProductAdapter(Context context, LinkedList<AlbumItem> albumList) {
+    ProductAdapter(Context context, LinkedList<AlbumItem> albumList) {
         this.albumList = albumList;
         this.albumInflater = LayoutInflater.from(context);
     }
@@ -77,7 +77,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         private double finalTotal = 0.00;
 
 
-        public ProductViewHolder(@NonNull View albumItemView, ProductAdapter adapter) {
+        ProductViewHolder(@NonNull View albumItemView, ProductAdapter adapter) {
             super(albumItemView);
             this.album = albumItemView.findViewById(R.id.album_content);
             this.albumTitle = albumItemView.findViewById(R.id.album_title);
@@ -114,7 +114,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                         this.albumQuantity.setText(Integer.toString(this.updatedQuantity));
 
                     //Print a log message to ensure addAlbumQuantity1 method's functionality
-                    Log.d(MENU_LOG_TAG, "Added Quantity to First Album");
+                    Log.d(MENU_LOG_TAG, "Added Quantity to Album");
 
                     //Call this method to calculate the first album's subtotal according to implemented arguments
                     showAlbumSubtotal(this.updatedQuantity, this.albumPrice, this.showAlbumSubtotal);
@@ -136,17 +136,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                         this.albumQuantity.setText(Integer.toString(this.updatedQuantity));
 
                     //Print a log message to ensure addAlbumQuantity1 method's functionality
-                    Log.d(MENU_LOG_TAG, "Added Quantity to First Album");
+                    Log.d(MENU_LOG_TAG, "Subtracted Quantity to Album");
 
                     //Call this method to calculate the first album's subtotal according to implemented arguments
                     showAlbumSubtotal(this.updatedQuantity, this.albumPrice, this.showAlbumSubtotal);
 
-
                 }
 
-
             }
-
 
         }
 
