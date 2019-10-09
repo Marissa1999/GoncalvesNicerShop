@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -54,76 +55,7 @@ public class MenuActivity extends AppCompatActivity {
     private TextView showAlbumSubtotal;
 
 
-    AlbumItem albumItem1 = new AlbumItem(getResources().getString(R.string.album_title_1),
-            getResources().getString(R.string.album_description_1),
-            getResources().getDrawable(R.drawable.journey_escape),
-            getResources().getString(R.string.album_price_1),
-            getResources().getString(R.string.album_quantity_1));
-
-
-    AlbumItem albumItem2 = new AlbumItem(getResources().getString(R.string.album_title_2),
-            getResources().getString(R.string.album_description_2),
-            getResources().getDrawable(R.drawable.the_who_tommy),
-            getResources().getString(R.string.album_price_2),
-            getResources().getString(R.string.album_quantity_2));
-
-
-    AlbumItem albumItem3 = new AlbumItem(getResources().getString(R.string.album_title_3),
-            getResources().getString(R.string.album_description_3),
-            getResources().getDrawable(R.drawable.pearl_jam_ten),
-            getResources().getString(R.string.album_price_3),
-            getResources().getString(R.string.album_quantity_3));
-
-
-    AlbumItem albumItem4 = new AlbumItem(getResources().getString(R.string.album_title_4),
-            getResources().getString(R.string.album_description_4),
-            getResources().getDrawable(R.drawable.nirvana_nevermind),
-            getResources().getString(R.string.album_price_4),
-            getResources().getString(R.string.album_quantity_4));
-
-
-    AlbumItem albumItem5 = new AlbumItem(getResources().getString(R.string.album_title_5),
-            getResources().getString(R.string.album_description_5),
-            getResources().getDrawable(R.drawable.van_halen_1984),
-            getResources().getString(R.string.album_price_5),
-            getResources().getString(R.string.album_quantity_5));
-
-
-    AlbumItem albumItem6 = new AlbumItem(getResources().getString(R.string.album_title_6),
-            getResources().getString(R.string.album_description_6),
-            getResources().getDrawable(R.drawable.u2_joshua_tree),
-            getResources().getString(R.string.album_price_6),
-            getResources().getString(R.string.album_quantity_6));
-
-
-    AlbumItem albumItem7 = new AlbumItem(getResources().getString(R.string.album_title_7),
-            getResources().getString(R.string.album_description_7),
-            getResources().getDrawable(R.drawable.ac_dc_high_voltage),
-            getResources().getString(R.string.album_price_7),
-            getResources().getString(R.string.album_quantity_7));
-
-
-    AlbumItem albumItem8 = new AlbumItem(getResources().getString(R.string.album_title_8),
-            getResources().getString(R.string.album_description_8),
-            getResources().getDrawable(R.drawable.yes_fragile),
-            getResources().getString(R.string.album_price_8),
-            getResources().getString(R.string.album_quantity_8));
-
-
-    AlbumItem albumItem9 = new AlbumItem(getResources().getString(R.string.album_title_9),
-            getResources().getString(R.string.album_description_9),
-            getResources().getDrawable(R.drawable.rem_murmur),
-            getResources().getString(R.string.album_price_9),
-            getResources().getString(R.string.album_quantity_9));
-
-
-    AlbumItem albumItem10 = new AlbumItem(getResources().getString(R.string.album_title_10),
-            getResources().getString(R.string.album_description_10),
-            getResources().getDrawable(R.drawable.pink_floyd_the_wall),
-            getResources().getString(R.string.album_price_10),
-            getResources().getString(R.string.album_quantity_10));
-
-    private android.support.v7.widget.RecyclerView RecyclerView;
+    private RecyclerView RecyclerView;
     private ProductAdapter Adapter;
 
 
@@ -143,9 +75,75 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        this.showAddedAlbumQuantity = findViewById(R.id.album_quantity_1);
-        this.showSubtractedAlbumQuantity = findViewById(R.id.album_quantity_1);
-        this.showAlbumSubtotal = findViewById(R.id.album_subtotal_1);
+        AlbumItem albumItem1 = new AlbumItem(getResources().getString(R.string.album_title_1),
+                getResources().getString(R.string.album_description_1),
+                getResources().getDrawable(R.drawable.journey_escape),
+                getResources().getString(R.string.album_price_1),
+                getResources().getString(R.string.album_quantity_1));
+
+
+        AlbumItem albumItem2 = new AlbumItem(getResources().getString(R.string.album_title_2),
+                getResources().getString(R.string.album_description_2),
+                getResources().getDrawable(R.drawable.the_who_tommy),
+                getResources().getString(R.string.album_price_2),
+                getResources().getString(R.string.album_quantity_2));
+
+
+        AlbumItem albumItem3 = new AlbumItem(getResources().getString(R.string.album_title_3),
+                getResources().getString(R.string.album_description_3),
+                getResources().getDrawable(R.drawable.pearl_jam_ten),
+                getResources().getString(R.string.album_price_3),
+                getResources().getString(R.string.album_quantity_3));
+
+
+        AlbumItem albumItem4 = new AlbumItem(getResources().getString(R.string.album_title_4),
+                getResources().getString(R.string.album_description_4),
+                getResources().getDrawable(R.drawable.nirvana_nevermind),
+                getResources().getString(R.string.album_price_4),
+                getResources().getString(R.string.album_quantity_4));
+
+
+        AlbumItem albumItem5 = new AlbumItem(getResources().getString(R.string.album_title_5),
+                getResources().getString(R.string.album_description_5),
+                getResources().getDrawable(R.drawable.van_halen_1984),
+                getResources().getString(R.string.album_price_5),
+                getResources().getString(R.string.album_quantity_5));
+
+
+        AlbumItem albumItem6 = new AlbumItem(getResources().getString(R.string.album_title_6),
+                getResources().getString(R.string.album_description_6),
+                getResources().getDrawable(R.drawable.u2_joshua_tree),
+                getResources().getString(R.string.album_price_6),
+                getResources().getString(R.string.album_quantity_6));
+
+
+        AlbumItem albumItem7 = new AlbumItem(getResources().getString(R.string.album_title_7),
+                getResources().getString(R.string.album_description_7),
+                getResources().getDrawable(R.drawable.ac_dc_high_voltage),
+                getResources().getString(R.string.album_price_7),
+                getResources().getString(R.string.album_quantity_7));
+
+
+        AlbumItem albumItem8 = new AlbumItem(getResources().getString(R.string.album_title_8),
+                getResources().getString(R.string.album_description_8),
+                getResources().getDrawable(R.drawable.yes_fragile),
+                getResources().getString(R.string.album_price_8),
+                getResources().getString(R.string.album_quantity_8));
+
+
+        AlbumItem albumItem9 = new AlbumItem(getResources().getString(R.string.album_title_9),
+                getResources().getString(R.string.album_description_9),
+                getResources().getDrawable(R.drawable.rem_murmur),
+                getResources().getString(R.string.album_price_9),
+                getResources().getString(R.string.album_quantity_9));
+
+
+        AlbumItem albumItem10 = new AlbumItem(getResources().getString(R.string.album_title_10),
+                getResources().getString(R.string.album_description_10),
+                getResources().getDrawable(R.drawable.pink_floyd_the_wall),
+                getResources().getString(R.string.album_price_10),
+                getResources().getString(R.string.album_quantity_10));
+
 
         this.albumList.addLast(albumItem1);
         this.albumList.addLast(albumItem2);
@@ -158,7 +156,8 @@ public class MenuActivity extends AppCompatActivity {
         this.albumList.addLast(albumItem9);
         this.albumList.addLast(albumItem10);
 
-        this.RecyclerView = findViewById(R.id.recyclerview);
+
+        this.RecyclerView = findViewById(R.id.recyclerView);
         this.Adapter = new ProductAdapter(this, this.albumList);
         this.RecyclerView.setAdapter(this.Adapter);
         this.RecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -173,7 +172,7 @@ public class MenuActivity extends AppCompatActivity {
     public void addAlbumQuantity(View view) {
 
         //Determine the first album price from the specified ID
-        this.albumPrice = view.findViewById(R.id.album_price_1);
+        this.albumPrice = view.findViewById(R.id.album_price);
 
         //Increment the first album quantity by 1
         this.albumQuantity++;
@@ -203,7 +202,7 @@ public class MenuActivity extends AppCompatActivity {
     public void subtractAlbumQuantity(View view) {
 
         //Determine the first album price from the specified ID
-        this.albumPrice = findViewById(R.id.album_price_1);
+        this.albumPrice = findViewById(R.id.album_price);
 
         //Decrement the first album quantity by 1
         this.albumQuantity--;

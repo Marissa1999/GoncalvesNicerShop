@@ -2,8 +2,7 @@ package com.example.goncalvesnicershop.model;
 
 import android.graphics.drawable.Drawable;
 
-public class AlbumItem
-{
+public class AlbumItem {
 
     private String albumTitle;
     private String albumDescription;
@@ -12,8 +11,7 @@ public class AlbumItem
     private String albumQuantity;
 
 
-    public AlbumItem(String albumTitle, String albumDescription, Drawable albumImage, String albumPrice, String albumQuantity)
-    {
+    public AlbumItem(String albumTitle, String albumDescription, Drawable albumImage, String albumPrice, String albumQuantity) {
         this.albumTitle = albumTitle;
         this.albumDescription = albumDescription;
         this.albumImage = albumImage;
@@ -30,9 +28,7 @@ public class AlbumItem
         this.albumTitle = albumTitle;
     }
 
-    public String getAlbumDescription() {
-        return albumDescription;
-    }
+    public String getAlbumDescription() { return albumDescription; }
 
     public void setAlbumDescription(String albumDescription) { this.albumDescription = albumDescription; }
 

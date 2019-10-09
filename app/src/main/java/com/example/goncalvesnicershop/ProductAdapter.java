@@ -14,15 +14,13 @@ import com.example.goncalvesnicershop.model.AlbumItem;
 
 import java.util.LinkedList;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder>
-{
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     private final LinkedList<AlbumItem> albumList;
     private final LayoutInflater albumInflater;
 
 
-    public ProductAdapter(Context context, LinkedList<AlbumItem> albumList)
-    {
+    public ProductAdapter(Context context, LinkedList<AlbumItem> albumList) {
         this.albumList = albumList;
         this.albumInflater = LayoutInflater.from(context);
     }
@@ -30,37 +28,29 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     @NonNull
     @Override
-    public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-    {
+    public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View albumItemView = albumInflater.inflate(R.layout.album_content, parent, false);
         return new ProductViewHolder(albumItemView, this);
     }
 
 
-
     @Override
-    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position)
-    {
-         holder.albumTitle.setText(albumList.get(position).getAlbumTitle());
-         holder.albumDescription.setText(albumList.get(position).getAlbumDescription());
-         holder.albumImage.setImageDrawable(albumList.get(position).getAlbumImage());
-         holder.albumPrice.setText(albumList.get(position).getAlbumPrice());
-         holder.albumQuantity.setText(albumList.get(position).getAlbumQuantity());
+    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+        holder.albumTitle.setText(albumList.get(position).getAlbumTitle());
+        holder.albumDescription.setText(albumList.get(position).getAlbumDescription());
+        holder.albumImage.setImageDrawable(albumList.get(position).getAlbumImage());
+        holder.albumPrice.setText(albumList.get(position).getAlbumPrice());
+        holder.albumQuantity.setText(albumList.get(position).getAlbumQuantity());
     }
 
 
-
     @Override
-    public int getItemCount()
-    {
+    public int getItemCount() {
         return this.albumList.size();
     }
 
 
-
-
-    public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
-    {
+    public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public final ProductAdapter adapter;
         public final CardView album;
@@ -71,9 +61,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         public final TextView albumQuantity;
 
 
-
-        public ProductViewHolder(@NonNull View albumItemView, ProductAdapter adapter)
-        {
+        public ProductViewHolder(@NonNull View albumItemView, ProductAdapter adapter) {
             super(albumItemView);
             this.album = albumItemView.findViewById(R.id.album_content);
             this.albumTitle = albumItemView.findViewById(R.id.album_title);
@@ -86,13 +74,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         }
 
 
-
         @Override
-        public void onClick(View view)
-        {
+        public void onClick(View view) {
+            /*
+            if(view == view.(R.drawable.adding_button_1))
+            {
 
+            }
 
+            else if (view = view.findViewById((R.drawable.minus_button_1))
+            {
 
+            }
+           */
         }
+
+
     }
 }
