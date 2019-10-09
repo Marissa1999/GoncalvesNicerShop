@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -122,6 +123,9 @@ public class MenuActivity extends AppCompatActivity {
             getResources().getString(R.string.album_price_10),
             getResources().getString(R.string.album_quantity_10));
 
+    private android.support.v7.widget.RecyclerView RecyclerView;
+    private ProductAdapter Adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,6 +157,11 @@ public class MenuActivity extends AppCompatActivity {
         this.albumList.addLast(albumItem8);
         this.albumList.addLast(albumItem9);
         this.albumList.addLast(albumItem10);
+
+        this.RecyclerView = findViewById(R.id.recyclerview);
+        this.Adapter = new ProductAdapter(this, this.albumList);
+        this.RecyclerView.setAdapter(this.Adapter);
+        this.RecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 

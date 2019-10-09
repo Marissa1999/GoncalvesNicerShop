@@ -31,11 +31,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-
         View albumItemView = albumInflater.inflate(R.layout.album_content, parent, false);
         return new ProductViewHolder(albumItemView, this);
-
-
     }
 
 
@@ -45,8 +42,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     {
          String current = String.valueOf(this.albumList.get(position));
          holder.albumItemView.setText(current);
-
-
     }
 
 
@@ -70,7 +65,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         public ProductViewHolder(@NonNull View albumItemView, ProductAdapter adapter)
         {
             super(albumItemView);
-            this.albumItemView = (TextView) albumItemView;
+            this.albumItemView = albumItemView.findViewById(R.id.album_content);
             this.adapter = adapter;
             itemView.setOnClickListener(this);
         }
