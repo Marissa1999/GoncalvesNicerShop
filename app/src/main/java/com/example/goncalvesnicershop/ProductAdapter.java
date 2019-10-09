@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -38,12 +37,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
 
     @Override
-    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position)
+    {
         holder.albumTitle.setText(albumList.get(position).getAlbumTitle());
         holder.albumDescription.setText(albumList.get(position).getAlbumDescription());
         holder.albumImage.setImageDrawable(albumList.get(position).getAlbumImage());
         holder.albumPrice.setText(albumList.get(position).getAlbumPrice());
         holder.albumQuantity.setText(albumList.get(position).getAlbumQuantity());
+        holder.albumSubtotal.setText(albumList.get(position).getAlbumSubtotal());
     }
 
 
@@ -57,14 +58,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         private final ProductAdapter adapter;
         private final CardView album;
+        private AlbumItem albumItem;
         private final TextView albumTitle;
         private final TextView albumDescription;
         private final ImageView albumImage;
         private final TextView albumPrice;
         private final TextView albumQuantity;
+        private final TextView albumSubtotal;
         private TextView showAlbumSubtotal;
-        protected Button addtion_button;
-        protected Button subtraction_button;
         private int updatedQuantity;
 
         private final String MENU_LOG_TAG = MenuActivity.class.getSimpleName();
@@ -84,49 +85,68 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             this.albumImage = albumItemView.findViewById(R.id.album_cover);
             this.albumPrice = albumItemView.findViewById(R.id.album_price);
             this.albumQuantity = albumItemView.findViewById(R.id.album_quantity);
+            this.albumSubtotal = albumItemView.findViewById(R.id.album_subtotal);
             this.adapter = adapter;
             albumItemView.setOnClickListener(this);
         }
 
 
+        @SuppressLint("SetTextI18n")
         @Override
         public void onClick(View view)
         {
 
-            if(view.getId() == view.findViewById(R.id.adding_button).getId())
+            switch(view.getId())
             {
 
-                //Increment the first album quantity by 1
-                this.updatedQuantity++;
-
-                //If the first album quantity is less than 0, the quantity should remain at 0
-                if (this.updatedQuantity < 0)
+                case R.id.adding_button:
                 {
-                    this.updatedQuantity = 0;
+
+                    this.updatedQuantity++;
+
+                    //If the first album quantity is less than 0, the quantity should remain at 0
+                    if (this.updatedQuantity < 0) {
+                        this.updatedQuantity = 0;
+                    }
+
+                    //Convert the first album quantity Integer value to a String value and set it to the TextView first album quantity element
+                    if (this.albumQuantity != null)
+                        this.albumQuantity.setText(Integer.toString(this.updatedQuantity));
+
+                    //Print a log message to ensure addAlbumQuantity1 method's functionality
+                    Log.d(MENU_LOG_TAG, "Added Quantity to First Album");
+
+                    //Call this method to calculate the first album's subtotal according to implemented arguments
+                    showAlbumSubtotal(this.updatedQuantity, this.albumPrice, this.showAlbumSubtotal);
                 }
 
-                //Convert the first album quantity Integer value to a String value and set it to the TextView first album quantity element
-                if (this.albumQuantity != null)
-                    this.albumQuantity.setText(Integer.toString(this.updatedQuantity));
 
-                //Print a log message to ensure addAlbumQuantity1 method's functionality
-                Log.d(MENU_LOG_TAG, "Added Quantity to First Album");
+                case R.id.minus_button:
+                {
 
-                //Call this method to calculate the first album's subtotal according to implemented arguments
-                showAlbumSubtotal(this.updatedQuantity, this.albumPrice, this.showAlbumSubtotal);
+                    this.updatedQuantity--;
+
+                    //If the first album quantity is less than 0, the quantity should remain at 0
+                    if (this.updatedQuantity < 0) {
+                        this.updatedQuantity = 0;
+                    }
+
+                    //Convert the first album quantity Integer value to a String value and set it to the TextView first album quantity element
+                    if (this.albumQuantity != null)
+                        this.albumQuantity.setText(Integer.toString(this.updatedQuantity));
+
+                    //Print a log message to ensure addAlbumQuantity1 method's functionality
+                    Log.d(MENU_LOG_TAG, "Added Quantity to First Album");
+
+                    //Call this method to calculate the first album's subtotal according to implemented arguments
+                    showAlbumSubtotal(this.updatedQuantity, this.albumPrice, this.showAlbumSubtotal);
 
 
+                }
 
 
             }
 
-            else if (view.getParent() == view.findViewById(R.id.minus_button).getParent())
-            {
-
-
-
-
-            }
 
         }
 
@@ -166,6 +186,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         }
 
 
+
         /*
           Calculate the final subtotal instance variable
         */
@@ -179,8 +200,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         }
 
 
+
         /*
-           Calculate the instance variable values for both Canadian taxes
+          Calculate the instance variable values for both Canadian taxes
         */
         public void calculateAlbumFinalTotalTaxes() {
 
@@ -191,6 +213,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             //Print a log message to ensure calculateAlbumFinalTotalTaxes method's functionality
             Log.d(MENU_LOG_TAG, "Calculated Album Final Subtotal Taxes");
         }
+
 
 
         /*

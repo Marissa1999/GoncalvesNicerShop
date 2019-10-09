@@ -8,14 +8,14 @@
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context=".MenuActivity">
+    tools:context=".ProductAdapter">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#1D98B7"
         android:orientation="vertical"
-        tools:context=".MenuActivity">
+        tools:context=".ProductAdapter">
 
         <TextView
             android:id="@+id/wallpaper_background"
@@ -45,7 +45,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/minus_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -53,9 +53,10 @@
             android:layout_marginLeft="140dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/minus_button_1"
-            android:onClick="subtractAlbumQuantity"
+            android:onClick="onClick"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="OnClick" />
 
         <TextView
             android:id="@+id/album_quantity"
@@ -73,7 +74,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.898" />
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/adding_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -81,11 +82,12 @@
             android:layout_marginRight="148dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/adding_button_1"
-            android:onClick="addAlbumQuantity"
+            android:onClick="onClick"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="OnClick" />
 
         <TextView
             android:id="@+id/album_price"

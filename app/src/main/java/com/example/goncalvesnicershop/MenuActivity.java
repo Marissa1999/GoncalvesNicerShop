@@ -79,70 +79,70 @@ public class MenuActivity extends AppCompatActivity {
                 getResources().getString(R.string.album_description_1),
                 getResources().getDrawable(R.drawable.journey_escape),
                 getResources().getString(R.string.album_price_1),
-                getResources().getString(R.string.album_quantity_1));
+                getResources().getString(R.string.album_quantity_1), getResources().getString(R.string.album_subtotal_1));
 
 
         AlbumItem albumItem2 = new AlbumItem(getResources().getString(R.string.album_title_2),
                 getResources().getString(R.string.album_description_2),
                 getResources().getDrawable(R.drawable.the_who_tommy),
                 getResources().getString(R.string.album_price_2),
-                getResources().getString(R.string.album_quantity_2));
+                getResources().getString(R.string.album_quantity_2), getResources().getString(R.string.album_subtotal_2));
 
 
         AlbumItem albumItem3 = new AlbumItem(getResources().getString(R.string.album_title_3),
                 getResources().getString(R.string.album_description_3),
                 getResources().getDrawable(R.drawable.pearl_jam_ten),
                 getResources().getString(R.string.album_price_3),
-                getResources().getString(R.string.album_quantity_3));
+                getResources().getString(R.string.album_quantity_3), getResources().getString(R.string.album_subtotal_3));
 
 
         AlbumItem albumItem4 = new AlbumItem(getResources().getString(R.string.album_title_4),
                 getResources().getString(R.string.album_description_4),
                 getResources().getDrawable(R.drawable.nirvana_nevermind),
                 getResources().getString(R.string.album_price_4),
-                getResources().getString(R.string.album_quantity_4));
+                getResources().getString(R.string.album_quantity_4), getResources().getString(R.string.album_subtotal_4));
 
 
         AlbumItem albumItem5 = new AlbumItem(getResources().getString(R.string.album_title_5),
                 getResources().getString(R.string.album_description_5),
                 getResources().getDrawable(R.drawable.van_halen_1984),
                 getResources().getString(R.string.album_price_5),
-                getResources().getString(R.string.album_quantity_5));
+                getResources().getString(R.string.album_quantity_5), getResources().getString(R.string.album_subtotal_5));
 
 
         AlbumItem albumItem6 = new AlbumItem(getResources().getString(R.string.album_title_6),
                 getResources().getString(R.string.album_description_6),
                 getResources().getDrawable(R.drawable.u2_joshua_tree),
                 getResources().getString(R.string.album_price_6),
-                getResources().getString(R.string.album_quantity_6));
+                getResources().getString(R.string.album_quantity_6), getResources().getString(R.string.album_subtotal_6));
 
 
         AlbumItem albumItem7 = new AlbumItem(getResources().getString(R.string.album_title_7),
                 getResources().getString(R.string.album_description_7),
                 getResources().getDrawable(R.drawable.ac_dc_high_voltage),
                 getResources().getString(R.string.album_price_7),
-                getResources().getString(R.string.album_quantity_7));
+                getResources().getString(R.string.album_quantity_7), getResources().getString(R.string.album_subtotal_7));
 
 
         AlbumItem albumItem8 = new AlbumItem(getResources().getString(R.string.album_title_8),
                 getResources().getString(R.string.album_description_8),
                 getResources().getDrawable(R.drawable.yes_fragile),
                 getResources().getString(R.string.album_price_8),
-                getResources().getString(R.string.album_quantity_8));
+                getResources().getString(R.string.album_quantity_8), getResources().getString(R.string.album_subtotal_8));
 
 
         AlbumItem albumItem9 = new AlbumItem(getResources().getString(R.string.album_title_9),
                 getResources().getString(R.string.album_description_9),
                 getResources().getDrawable(R.drawable.rem_murmur),
                 getResources().getString(R.string.album_price_9),
-                getResources().getString(R.string.album_quantity_9));
+                getResources().getString(R.string.album_quantity_9), getResources().getString(R.string.album_subtotal_9));
 
 
         AlbumItem albumItem10 = new AlbumItem(getResources().getString(R.string.album_title_10),
                 getResources().getString(R.string.album_description_10),
                 getResources().getDrawable(R.drawable.pink_floyd_the_wall),
                 getResources().getString(R.string.album_price_10),
-                getResources().getString(R.string.album_quantity_10));
+                getResources().getString(R.string.album_quantity_10), getResources().getString(R.string.album_subtotal_10));
 
 
         this.albumList.addLast(albumItem1);
@@ -164,10 +164,8 @@ public class MenuActivity extends AppCompatActivity {
 
     }
 
+/**
 
-    /*
-    Modifies the first album's quantity value when the increment button is clicked
-     */
     @SuppressLint("SetTextI18n")
     public void addAlbumQuantity(View view) {
 
@@ -195,9 +193,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
 
-    /*
-    Modifies the first album's quantity value when the decrement button is clicked
-     */
+
     @SuppressLint("SetTextI18n")
     public void subtractAlbumQuantity(View view) {
 
@@ -224,9 +220,7 @@ public class MenuActivity extends AppCompatActivity {
 
     }
 
-    /*
-   Calculate the chosen album's subtotal from implemented arguments
-    */
+
     @SuppressLint({"SetTextI18n", "DefaultLocale"})
     public void showAlbumSubtotal(int albumQuantity, TextView idAlbumPrice, TextView albumSubtotal) {
 
@@ -258,9 +252,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
 
-    /*
-    Calculate the final subtotal instance variable
-     */
+
     public void calculateAlbumFinalSubtotal(double albumSubtotal) {
 
         //Determine the final subtotal value by adding the CardView album subtotal to the variable
@@ -271,9 +263,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
 
-    /*
-    Calculate the instance variable values for both Canadian taxes
-     */
+
     public void calculateAlbumFinalTotalTaxes() {
 
         //Determine the final subtotal value by adding the CardView album subtotal to the variable
@@ -285,9 +275,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
 
-    /*
-    Calculate the final subtotal instance variable
-     */
+
     public void calculateAlbumFinalTotal() {
 
         //Determine the final total value by adding the album subtotal and tax totals together
@@ -296,7 +284,7 @@ public class MenuActivity extends AppCompatActivity {
         //Print a log message to ensure calculateAlbumFinalTotal method's functionality
         Log.d(MENU_LOG_TAG, "Calculated Album Final Total");
     }
-
+*/
 
     /*
       Launch the CheckoutActivity class, which is supposed to be the following activity
@@ -323,6 +311,5 @@ public class MenuActivity extends AppCompatActivity {
         //Print a log message to ensure launchCheckoutActivity method's functionality
         Log.d(MENU_LOG_TAG, "Transferred Subtotal, Tax Values and Final Total to CheckoutActivity with Clicked Button");
     }
-
 
 }
