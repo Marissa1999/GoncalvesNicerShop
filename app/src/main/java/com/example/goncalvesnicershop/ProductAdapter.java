@@ -28,9 +28,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
 
+
     @NonNull
     @Override
-    public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View albumItemView = albumInflater.inflate(R.layout.album_content, parent, false);
         return new ProductViewHolder(albumItemView, this);
     }
@@ -65,12 +66,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         private final TextView albumPrice;
         private final TextView albumQuantity;
         private final TextView albumSubtotal;
-        private TextView showAlbumSubtotal;
         private int updatedQuantity;
 
         private final String MENU_LOG_TAG = MenuActivity.class.getSimpleName();
 
-        //These Double instance variables hold values for final purchase totals
         private double finalSubtotal = 0.00;
         private double totalTPSTax = 0.00;
         private double totalTVQTax = 0.00;
@@ -117,7 +116,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     Log.d(MENU_LOG_TAG, "Added Quantity to Album");
 
                     //Call this method to calculate the first album's subtotal according to implemented arguments
-                    showAlbumSubtotal(this.updatedQuantity, this.albumPrice, this.showAlbumSubtotal);
+                    showAlbumSubtotal(this.updatedQuantity, this.albumPrice, this.albumSubtotal);
                 }
 
 
@@ -139,7 +138,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     Log.d(MENU_LOG_TAG, "Subtracted Quantity to Album");
 
                     //Call this method to calculate the first album's subtotal according to implemented arguments
-                    showAlbumSubtotal(this.updatedQuantity, this.albumPrice, this.showAlbumSubtotal);
+                    showAlbumSubtotal(this.updatedQuantity, this.albumPrice, this.albumSubtotal);
 
                 }
 
@@ -153,7 +152,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
            Calculate the chosen album's subtotal from implemented arguments
          */
         @SuppressLint({"SetTextI18n", "DefaultLocale"})
-        public void showAlbumSubtotal(int albumQuantity, TextView idAlbumPrice, TextView albumSubtotal) {
+        void showAlbumSubtotal(int albumQuantity, TextView idAlbumPrice, TextView albumSubtotal) {
 
             //Get the album price by converted the TextView element to a String value
             String printedAlbumPrice = idAlbumPrice.getText().toString().substring(1);
@@ -187,7 +186,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         /*
           Calculate the final subtotal instance variable
         */
-        public void calculateAlbumFinalSubtotal(double albumSubtotal) {
+        void calculateAlbumFinalSubtotal(double albumSubtotal) {
 
             //Determine the final subtotal value by adding the CardView album subtotal to the variable
             this.finalSubtotal += albumSubtotal;
@@ -201,7 +200,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         /*
           Calculate the instance variable values for both Canadian taxes
         */
-        public void calculateAlbumFinalTotalTaxes() {
+        void calculateAlbumFinalTotalTaxes() {
 
             //Determine the final subtotal value by adding the CardView album subtotal to the variable
             this.totalTPSTax = this.finalSubtotal * 0.05;
@@ -216,7 +215,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         /*
           Calculate the final subtotal instance variable
         */
-        public void calculateAlbumFinalTotal() {
+        void calculateAlbumFinalTotal() {
 
             //Determine the final total value by adding the album subtotal and tax totals together
             this.finalTotal = this.finalSubtotal + this.totalTPSTax + this.totalTVQTax;

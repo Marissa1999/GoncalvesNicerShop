@@ -45,7 +45,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <android.support.v7.widget.AppCompatButton
+        <Button
             android:id="@+id/minus_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -53,7 +53,6 @@
             android:layout_marginLeft="140dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/minus_button_1"
-            android:onClick="onClick"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="OnClick" />
@@ -74,7 +73,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.898" />
 
-        <android.support.v7.widget.AppCompatButton
+        <Button
             android:id="@+id/adding_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -82,7 +81,6 @@
             android:layout_marginRight="148dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/adding_button_1"
-            android:onClick="onClick"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
