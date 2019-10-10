@@ -99,9 +99,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 {
                      int position = (Integer) view.getTag();
                      AlbumItem product = albumList.get(position);
-                     int updatedAddedQuantity = product.getAlbumQuantity() + 1;
-                     product.setAlbumQuantity(updatedAddedQuantity);
+                     int updatedAddedQuantity = Integer.parseInt(product.getAlbumQuantity()) + 1;
+                     product.setAlbumQuantity(String.valueOf(updatedAddedQuantity));
                      notifyDataSetChanged();
+
+                     if(this.albumQuantity != null)
                      this.albumQuantity.setText(updatedAddedQuantity);
 
                     Log.d(ADAPTER_LOG_TAG, "Added " + product.getAlbumQuantity() + product.getAlbumTitle() + " Albums");
@@ -113,9 +115,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 {
                     int position = (Integer) view.getTag();
                     AlbumItem product = albumList.get(position);
-                    int updatedSubtractedQuantity = product.getAlbumQuantity() - 1;
-                    product.setAlbumQuantity(updatedSubtractedQuantity);
+                    int updatedSubtractedQuantity = Integer.parseInt(product.getAlbumQuantity()) - 1;
+                    product.setAlbumQuantity(String.valueOf(updatedSubtractedQuantity));
                     notifyDataSetChanged();
+
+                    if(this.albumQuantity != null)
                     this.albumQuantity.setText(updatedSubtractedQuantity);
 
                     Log.d(ADAPTER_LOG_TAG, "Subtracted " + product.getAlbumQuantity() + " " + product.getAlbumTitle() + " Albums");
