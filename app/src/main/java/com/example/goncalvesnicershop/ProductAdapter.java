@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,46 +99,26 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 {
                      int position = (Integer) view.getTag();
                      AlbumItem product = albumList.get(position);
-                     this.albumQuantity = (TextView) product.getAlbumQuantity() + 1;
+                     int updatedAddedQuantity = product.getAlbumQuantity() + 1;
+                     product.setAlbumQuantity(updatedAddedQuantity);
+                     notifyDataSetChanged();
+                     this.albumQuantity.setText(updatedAddedQuantity);
 
-
-                   /*
-                    //If the first album quantity is less than 0, the quantity should remain at 0
-                    if (this.updatedQuantity < 0) {
-                        this.updatedQuantity = 0;
-                    }
-
-                    //Convert the first album quantity Integer value to a String value and set it to the TextView first album quantity element
-                    if (this.albumQuantity != null)
-                        this.albumQuantity.setText(Integer.toString(this.updatedQuantity));
-
-                    //Print a log message to ensure addAlbumQuantity1 method's functionality
-                    Log.d(ADAPTER_LOG_TAG, "Added Quantity to Album with the Price");
-                   */
-
+                    Log.d(ADAPTER_LOG_TAG, "Added " + product.getAlbumQuantity() + product.getAlbumTitle() + " Albums");
                 }
                 break;
 
 
                 case R.id.minus_button:
                 {
+                    int position = (Integer) view.getTag();
+                    AlbumItem product = albumList.get(position);
+                    int updatedSubtractedQuantity = product.getAlbumQuantity() - 1;
+                    product.setAlbumQuantity(updatedSubtractedQuantity);
+                    notifyDataSetChanged();
+                    this.albumQuantity.setText(updatedSubtractedQuantity);
 
-                    /*
-                    this.updatedQuantity--;
-
-                    //If the first album quantity is less than 0, the quantity should remain at 0
-                    if (this.updatedQuantity < 0) {
-                        this.updatedQuantity = 0;
-                    }
-
-                    //Convert the first album quantity Integer value to a String value and set it to the TextView first album quantity element
-                    if (this.albumQuantity != null)
-                        this.albumQuantity.setText(Integer.toString(this.updatedQuantity));
-
-                    //Print a log message to ensure addAlbumQuantity1 method's functionality
-                    Log.d(ADAPTER_LOG_TAG, "Subtracted Quantity to Album");
-                    */
-
+                    Log.d(ADAPTER_LOG_TAG, "Subtracted " + product.getAlbumQuantity() + " " + product.getAlbumTitle() + " Albums");
                 }
                 break;
 

@@ -12,9 +12,14 @@ public class CheckoutActivity extends AppCompatActivity {
     //The tag to call the CheckoutActivity class name when debugging code
     private static final String CHECKOUT_LOG_TAG = CheckoutActivity.class.getSimpleName();
 
-    double totalTPSTax = 0.00;
-    double totalTVQTax = 0.00;
-    double finalTotal = 0.00;
+    private final String TPS_TAX = "com.example.android.goncalvesnicershop.tps.TAX";
+    public final String TVQ_TAX = "com.example.android.goncalvesnicershop.tvq.TAX";
+    public final String FINAL_TOTAL = "com.example.android.goncalvesnicershop.final.TOTAL";
+
+    private double totalTPSTax = 0.00;
+    private double totalTVQTax = 0.00;
+    private double finalTotal = 0.00;
+
     /*
     Start the CheckoutActivity class with this auto-implemented method and extract monetary values from the MenuActivity class
     */
@@ -29,15 +34,16 @@ public class CheckoutActivity extends AppCompatActivity {
         Intent menuIntent = getIntent();
 
         //Get the following monetary values from the activity tags in the MenuActivity class
-        String finalAlbumSubtotal = menuIntent.getStringExtra(ProductAdapter.FINAL_SUBTOTAL);
+        String finalAlbumSubtotal = menuIntent.getStringExtra(MenuActivity.FINAL_SUBTOTAL);
 
 
             //Determine the final subtotal value by adding the CardView album subtotal to the variable
+
             this.totalTPSTax = finalAlbumSubtotal * 0.05;
             this.totalTVQTax = finalAlbumSubtotal * 0.0975;
 
             //Print a log message to ensure calculateAlbumFinalTotalTaxes method's functionality
-            Log.d(ADAPTER_LOG_TAG, "Calculated Album Final Subtotal Taxes");
+            Log.d(CHECKOUT_LOG_TAG, "Calculated Album Final Subtotal Taxes");
 
 
         //Retrieve the TextView subtotal ID to insert the extracted subtotal value inside the element

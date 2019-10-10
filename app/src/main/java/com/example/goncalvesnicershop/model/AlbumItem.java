@@ -9,11 +9,11 @@ public class AlbumItem
     private String albumDescription;
     private Drawable albumImage;
     private String albumPrice;
-    private String albumQuantity;
+    private int albumQuantity;
     private String albumSubtotal;
 
 
-    public AlbumItem(String albumTitle, String albumDescription, Drawable albumImage, String albumPrice, String albumQuantity, String albumSubtotal)
+    public AlbumItem(String albumTitle, String albumDescription, Drawable albumImage, String albumPrice, int albumQuantity, String albumSubtotal)
     {
         this.albumTitle = albumTitle;
         this.albumDescription = albumDescription;
@@ -64,12 +64,12 @@ public class AlbumItem
         this.albumPrice = albumPrice;
     }
 
-    public String getAlbumQuantity()
+    public int getAlbumQuantity()
     {
         return albumQuantity;
     }
 
-    public void setAlbumQuantity(String albumQuantity)
+    public void setAlbumQuantity(int albumQuantity)
     {
         this.albumQuantity = albumQuantity;
     }
