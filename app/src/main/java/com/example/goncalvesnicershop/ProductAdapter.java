@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.goncalvesnicershop.model.AlbumItem;
@@ -69,6 +70,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         private final TextView albumPrice;
         private final TextView albumQuantity;
         private final TextView albumSubtotal;
+        private final Button additionButton;
+        private final Button subtractionButton;
         private int updatedQuantity;
 
         private final String MENU_LOG_TAG = MenuActivity.class.getSimpleName();
@@ -88,8 +91,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             this.albumPrice = albumItemView.findViewById(R.id.album_price);
             this.albumQuantity = albumItemView.findViewById(R.id.album_quantity);
             this.albumSubtotal = albumItemView.findViewById(R.id.album_subtotal);
+            this.additionButton = albumItemView.findViewById(R.id.adding_button);
+            this.subtractionButton = albumItemView.findViewById(R.id.minus_button);
             this.adapter = adapter;
-            albumItemView.setOnClickListener(this);
+            this.additionButton.setOnClickListener(this);
+            this.subtractionButton.setOnClickListener(this);
         }
 
 
@@ -118,6 +124,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     //Call this method to calculate the first album's subtotal according to implemented arguments
                     showAlbumSubtotal(this.updatedQuantity, this.albumPrice, this.albumSubtotal, view);
                 }
+                break;
 
 
                 case R.id.minus_button: {
@@ -140,6 +147,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     showAlbumSubtotal(this.updatedQuantity, this.albumPrice, this.albumSubtotal, view);
 
                 }
+                break;
 
             }
 
@@ -178,7 +186,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             //Call this method to calculate the final album total
             calculateAlbumFinalTotal();
 
-            sendMonetaryTotals(view);
+            sendMonetaryTotals();
         }
 
 
@@ -226,7 +234,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
      Launch the CheckoutActivity class, which is supposed to be the following activity
     */
         @SuppressLint("DefaultLocale")
-        void sendMonetaryTotals(View view)
+        void sendMonetaryTotals()
         {
 
             //Create an intent to start the following activity, which is MenuActivity

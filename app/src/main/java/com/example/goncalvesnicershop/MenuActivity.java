@@ -13,9 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
 import com.example.goncalvesnicershop.model.AlbumItem;
-
 import java.util.LinkedList;
 
 public class MenuActivity extends AppCompatActivity {
