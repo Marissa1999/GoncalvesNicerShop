@@ -25,8 +25,8 @@ public class MenuActivity extends AppCompatActivity {
     //These tags set the variable names that will be transferred to the CheckoutActivity class
     public static final String FINAL_SUBTOTAL = "com.example.android.goncalvesnicershop.final.SUBTOTAL";
 
+    private static double finalSubtotal = 0.00;
 
-    private double finalSubtotal = 0.00;
     private TextView albumQuantity = findViewById(R.id.album_quantity);
     private TextView albumPrice = findViewById(R.id.album_price);
     private TextView albumSubtotal = findViewById(R.id.album_subtotal);
@@ -62,9 +62,9 @@ public class MenuActivity extends AppCompatActivity {
 
                         switch(position)
                         {
-                            case 0: break;
-                            case 1: break;
-                            case 2: break;
+                            case 0: finalSubtotal += 50.00; break;
+                            case 1: finalSubtotal += 10.00; break;
+                            case 2: finalSubtotal += 0.00; break;
                         }
 
                     }
@@ -214,25 +214,23 @@ public class MenuActivity extends AppCompatActivity {
     @SuppressLint("DefaultLocale")
     public void launchCheckoutActivity(View view) {
 
-        //Create an intent to start the following activity, which is MenuActivity
         Intent checkoutIntent = new Intent(this, CheckoutActivity.class);
 
-        //Get the album price by converted the TextView element to a String value
-        String printedAlbumPrice = idAlbumPrice.getText().toString().substring(1);
-
-        //Convert the String album price value to a Double value
+        String printedAlbumPrice = this.albumPrice.getText().toString().substring(1);
         double albumPrice = Double.parseDouble(printedAlbumPrice);
 
-        //Calculate the subtotal by multiplying the album price and quantity
+        String printedAlbumQuantity = this.albumPrice.getText().toString().substring(1);
+        int albumQuantity = Integer.parseInt(printedAlbumQuantity);
         double convertedAlbumSubtotal = albumPrice * albumQuantity;
 
-        //Set the formatted album subtotal to the TextView album subtotal
-       if (albumSubtotal != null)
-           albumSubtotal.setText(String.format("$%.2f", convertedAlbumSubtotal));
+
+       if (this.albumSubtotal != null)
+           this.albumSubtotal.setText(String.format("$%.2f", convertedAlbumSubtotal));
 
 
         //Print a log message to ensure showAlbumSubtotal method's functionality
         Log.d(MENU_LOG_TAG, "Displayed Album Subtotal");
+
 
 
         //Set the MenuActivity class formatted monetary values as tag names, in order for them to be used in the CheckoutActivity
