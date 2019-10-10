@@ -1,5 +1,6 @@
 package com.example.goncalvesnicershop;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,9 @@ public class CheckoutActivity extends AppCompatActivity {
     //The tag to call the CheckoutActivity class name when debugging code
     private static final String CHECKOUT_LOG_TAG = CheckoutActivity.class.getSimpleName();
 
+    double totalTPSTax = 0.00;
+    double totalTVQTax = 0.00;
+    double finalTotal = 0.00;
     /*
     Start the CheckoutActivity class with this auto-implemented method and extract monetary values from the MenuActivity class
     */
@@ -26,9 +30,15 @@ public class CheckoutActivity extends AppCompatActivity {
 
         //Get the following monetary values from the activity tags in the MenuActivity class
         String finalAlbumSubtotal = menuIntent.getStringExtra(ProductAdapter.FINAL_SUBTOTAL);
-        String finalAlbumTPSTax = menuIntent.getStringExtra(MenuActivity.TPS_TAX);
-        String finalAlbumTVQTax = menuIntent.getStringExtra(MenuActivity.TVQ_TAX);
-        String finalAlbumTotal = menuIntent.getStringExtra(MenuActivity.FINAL_TOTAL);
+
+
+            //Determine the final subtotal value by adding the CardView album subtotal to the variable
+            this.totalTPSTax = finalAlbumSubtotal * 0.05;
+            this.totalTVQTax = finalAlbumSubtotal * 0.0975;
+
+            //Print a log message to ensure calculateAlbumFinalTotalTaxes method's functionality
+            Log.d(ADAPTER_LOG_TAG, "Calculated Album Final Subtotal Taxes");
+
 
         //Retrieve the TextView subtotal ID to insert the extracted subtotal value inside the element
         TextView finalSubtotal = findViewById(R.id.subtotal_number);
@@ -45,6 +55,21 @@ public class CheckoutActivity extends AppCompatActivity {
         //Retrieve the TextView total ID to insert the extracted total value inside the element
         TextView finalTotal = findViewById(R.id.final_total_number);
         finalTotal.setText(finalAlbumTotal);
+
+
+            //Create an intent to start the following activity, which is MenuActivity
+            Intent menuIntent = new Intent(this, MenuActivity.class);
+
+            //Set the MenuActivity class formatted monetary values as tag names, in order for them to be used in the CheckoutActivity
+            //These Double instance variables hold values for final purchase totals
+            menuIntent.putExtra(FINAL_SUBTOTAL, String.format("$%.2f", this.finalSubtotal));
+            menuIntent.putExtra(TPS_TAX, String.format("$%.2f", this.totalTPSTax));
+            menuIntent.putExtra(TVQ_TAX, String.format("$%.2f", this.totalTVQTax));
+            menuIntent.putExtra(FINAL_TOTAL, String.format("$%.2f", this.finalTotal));
+
+            //Print a log message to ensure launchCheckoutActivity method's functionality
+            Log.d(ADAPTER_LOG_TAG, "Transferred Subtotal, Tax Values and Final Total to CheckoutActivity with Clicked Button");
+
 
         //Print a log message to ensure onCreate method's functionality
         Log.d(CHECKOUT_LOG_TAG, "Started CheckoutActivity and Transferred Values from MenuActivity");

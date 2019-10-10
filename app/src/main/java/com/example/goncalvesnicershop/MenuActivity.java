@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.goncalvesnicershop.model.AlbumItem;
 import java.util.LinkedList;
@@ -21,9 +22,8 @@ public class MenuActivity extends AppCompatActivity {
     //The tag to call the MenuActivity class name when debugging code
     private static final String MENU_LOG_TAG = MenuActivity.class.getSimpleName();
 
-
     //These tags set the variable names that will be transferred to the CheckoutActivity class
-    public static final String FINAL_SUBTOTAL = "com.example.android.goncalvesnicershop.extra.MESSAGE";
+    public static final String FINAL_SUBTOTAL = "com.example.android.goncalvesnicershop.final.SUBTOTAL";
     public static final String TPS_TAX = "com.example.android.goncalvesnicershop.tps.TAX";
     public static final String TVQ_TAX = "com.example.android.goncalvesnicershop.tvq.TAX";
     public static final String FINAL_TOTAL = "com.example.android.goncalvesnicershop.final.TOTAL";
@@ -183,6 +183,48 @@ public class MenuActivity extends AppCompatActivity {
         this.RecyclerView.setAdapter(this.Adapter);
         this.RecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        if (savedInstanceState != null)
+        {
+
+
+        }
+
+    }
+
+
+    /*
+        Calculate the chosen album's subtotal from implemented arguments
+      */
+    @SuppressLint({"SetTextI18n", "DefaultLocale"})
+    void showAlbumSubtotal(int albumQuantity, TextView idAlbumPrice, TextView albumSubtotal, View view) {
+
+        //Get the album price by converted the TextView element to a String value
+        String printedAlbumPrice = idAlbumPrice.getText().toString().substring(1);
+
+        //Convert the String album price value to a Double value
+        double albumPrice = Double.parseDouble(printedAlbumPrice);
+
+        //Calculate the subtotal by multiplying the album price and quantity
+        double convertedAlbumSubtotal = albumPrice * albumQuantity;
+
+        //Set the formatted album subtotal to the TextView album subtotal
+        if (albumSubtotal != null)
+            albumSubtotal.setText(String.format("$%.2f", convertedAlbumSubtotal));
+
+
+        //Print a log message to ensure showAlbumSubtotal method's functionality
+        Log.d(MENU_LOG_TAG, "Displayed Album Subtotal");
+
+        //Call this method to calculate the final album subtotal
+        calculateAlbumFinalSubtotal(convertedAlbumSubtotal);
+
+        //Call this method to calculate the final album taxes
+        calculateAlbumFinalTotalTaxes();
+
+        //Call this method to calculate the final album total
+        calculateAlbumFinalTotal();
+
+        sendMonetaryTotals();
     }
 
 
