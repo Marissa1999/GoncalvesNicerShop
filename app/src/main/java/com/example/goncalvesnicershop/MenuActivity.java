@@ -12,7 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.example.goncalvesnicershop.model.AlbumItem;
 import java.util.LinkedList;
@@ -24,14 +23,8 @@ public class MenuActivity extends AppCompatActivity {
 
     //These tags set the variable names that will be transferred to the CheckoutActivity class
     public static final String FINAL_SUBTOTAL = "com.example.android.goncalvesnicershop.final.SUBTOTAL";
-    public static final String TPS_TAX = "com.example.android.goncalvesnicershop.tps.TAX";
-    public static final String TVQ_TAX = "com.example.android.goncalvesnicershop.tvq.TAX";
-    public static final String FINAL_TOTAL = "com.example.android.goncalvesnicershop.final.TOTAL";
 
 
-    private double totalTPSTax = 0.00;
-    private double totalTVQTax = 0.00;
-    private double finalTotal = 0.00;
     private double finalSubtotal = 0.00;
 
 
@@ -100,7 +93,7 @@ public class MenuActivity extends AppCompatActivity {
                 getResources().getString(R.string.album_description_1),
                 getResources().getDrawable(R.drawable.journey_escape),
                 getResources().getString(R.string.album_price_1),
-                getResources().getInteger(R.string.album_quantity_1), getResources().getString(R.string.album_subtotal_1));
+                getResources().getQuantityString(R.string.album_quantity_1), getResources().getString(R.string.album_subtotal_1));
 
 
         @SuppressLint("ResourceType") AlbumItem albumItem2 = new AlbumItem(getResources().getString(R.string.album_title_2),
@@ -203,17 +196,17 @@ public class MenuActivity extends AppCompatActivity {
         Intent checkoutIntent = new Intent(this, CheckoutActivity.class);
 
         //Get the album price by converted the TextView element to a String value
-        String printedAlbumPrice = idAlbumPrice.getText().toString().substring(1);
+       // String printedAlbumPrice = idAlbumPrice.getText().toString().substring(1);
 
         //Convert the String album price value to a Double value
-        double albumPrice = Double.parseDouble(printedAlbumPrice);
+       // double albumPrice = Double.parseDouble(printedAlbumPrice);
 
         //Calculate the subtotal by multiplying the album price and quantity
-        double convertedAlbumSubtotal = albumPrice * albumQuantity;
+       // double convertedAlbumSubtotal = albumPrice * albumQuantity;
 
         //Set the formatted album subtotal to the TextView album subtotal
-        if (albumSubtotal != null)
-            albumSubtotal.setText(String.format("$%.2f", convertedAlbumSubtotal));
+       // if (albumSubtotal != null)
+           // albumSubtotal.setText(String.format("$%.2f", convertedAlbumSubtotal));
 
 
         //Print a log message to ensure showAlbumSubtotal method's functionality
