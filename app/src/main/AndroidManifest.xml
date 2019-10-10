@@ -10,8 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity
-            android:name=".MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -27,14 +26,14 @@
                 android:value="com.example.goncalvesnicershop.MainActivity" />
         </activity>
 
-        <activity
-            android:name=".CheckoutActivity"
+        <activity android:name=".CheckoutActivity"
             android:parentActivityName=".MenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="com.example.goncalvesnicershop.MenuActivity" />
         </activity>
+
 
     </application>
 

@@ -27,9 +27,9 @@ public class MenuActivity extends AppCompatActivity {
 
     private static double finalSubtotal = 0.00;
 
-    private TextView albumQuantity = findViewById(R.id.album_quantity);
-    private TextView albumPrice = findViewById(R.id.album_price);
-    private TextView albumSubtotal = findViewById(R.id.album_subtotal);
+    //TextView albumQuantity = findViewById(R.id.album_quantity);
+    //TextView albumPrice = findViewById(R.id.album_price);
+    //TextView albumSubtotal = findViewById(R.id.album_subtotal);
 
 
     private final LinkedList<AlbumItem> albumList = new LinkedList<>();
@@ -180,7 +180,7 @@ public class MenuActivity extends AppCompatActivity {
         this.RecyclerView.setAdapter(this.Adapter);
         this.RecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
+/*
         if (savedInstanceState != null)
         {
             String quantity = savedInstanceState.getString(String.valueOf(R.id.album_quantity));
@@ -193,10 +193,10 @@ public class MenuActivity extends AppCompatActivity {
             }
 
         }
-
+*/
     }
 
-
+/*
     @Override
     public void onSaveInstanceState(Bundle outState)
     {
@@ -205,7 +205,7 @@ public class MenuActivity extends AppCompatActivity {
         outState.putString(String.valueOf(R.id.album_subtotal), String.valueOf(this.albumSubtotal.getText()));
 
     }
-
+*/
 
 
     /*
@@ -216,16 +216,16 @@ public class MenuActivity extends AppCompatActivity {
 
         Intent checkoutIntent = new Intent(this, CheckoutActivity.class);
 
-        String printedAlbumPrice = this.albumPrice.getText().toString().substring(1);
-        double albumPrice = Double.parseDouble(printedAlbumPrice);
+        //String printedAlbumPrice = this.albumPrice.getText().toString().substring(1);
+        //double albumPrice = Double.parseDouble(printedAlbumPrice);
 
-        String printedAlbumQuantity = this.albumPrice.getText().toString().substring(1);
-        int albumQuantity = Integer.parseInt(printedAlbumQuantity);
-        double convertedAlbumSubtotal = albumPrice * albumQuantity;
+        //String printedAlbumQuantity = this.albumPrice.getText().toString().substring(1);
+        //int albumQuantity = Integer.parseInt(printedAlbumQuantity);
+        //double convertedAlbumSubtotal = albumPrice * albumQuantity;
 
 
-       if (this.albumSubtotal != null)
-           this.albumSubtotal.setText(String.format("$%.2f", convertedAlbumSubtotal));
+       //if (this.albumSubtotal != null)
+           //this.albumSubtotal.setText(String.format("$%.2f", convertedAlbumSubtotal));
 
 
         //Print a log message to ensure showAlbumSubtotal method's functionality
