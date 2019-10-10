@@ -27,9 +27,9 @@ public class MenuActivity extends AppCompatActivity {
 
     private static double finalSubtotal = 0.00;
 
-    //TextView albumQuantity = findViewById(R.id.album_quantity);
-    //TextView albumPrice = findViewById(R.id.album_price);
-    //TextView albumSubtotal = findViewById(R.id.album_subtotal);
+    //protected TextView albumQuantity = findViewById(R.id.album_quantity);
+    //protected TextView albumPrice = findViewById(R.id.album_price);
+    //protected TextView albumSubtotal = findViewById(R.id.album_subtotal);
 
 
     private final LinkedList<AlbumItem> albumList = new LinkedList<>();
