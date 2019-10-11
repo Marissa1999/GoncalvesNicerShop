@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.goncalvesnicershop.model.AlbumItem;
 import java.util.LinkedList;
@@ -25,6 +26,8 @@ public class MenuActivity extends AppCompatActivity {
     public static final String FINAL_SUBTOTAL = "com.example.android.goncalvesnicershop.final.SUBTOTAL";
     public static final String SHIPPING_TOTAL = "com.example.android.goncalvesnicershop.shipping.TOTAL";
 
+    private TextView albumQuantity;
+    private TextView albumSubtotal;
     private double finalSubtotal = 0.00;
     private double shippingTotal = 0.00;
 
@@ -51,7 +54,7 @@ public class MenuActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MenuActivity.this);
                 builder.setTitle("Choose a Shipping Option");
 
-                int checkedItem = 0;
+                int checkedItem = -1;
                 builder.setSingleChoiceItems(shippingOptions, checkedItem, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int position) {
@@ -68,7 +71,7 @@ public class MenuActivity extends AppCompatActivity {
 
                 builder.setPositiveButton("Proceed to Checkout", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface dialog, int position) {
                         launchCheckoutActivity(view);
                         dialog.dismiss();
                     }
@@ -76,7 +79,8 @@ public class MenuActivity extends AppCompatActivity {
 
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface dialog, int position) {
+                        shippingTotal -= shippingTotal;
                         dialog.dismiss();
                     }
                 });
@@ -175,33 +179,54 @@ public class MenuActivity extends AppCompatActivity {
         this.Adapter = new ProductAdapter(this, this.albumList);
         this.RecyclerView.setAdapter(this.Adapter);
         this.RecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        this.albumQuantity = findViewById(R.id.album_quantity);
+        this.albumSubtotal = findViewById(R.id.album_subtotal);
 
-/*
+
         if (savedInstanceState != null)
         {
-            String quantity = savedInstanceState.getString(String.valueOf(R.id.album_quantity));
-            String subtotal = savedInstanceState.getString(String.valueOf(R.id.album_subtotal));
+            String quantity = savedInstanceState.getString(String.valueOf(this.albumQuantity));
+            String subtotal = savedInstanceState.getString(String.valueOf(this.albumSubtotal));
 
             if(this.albumQuantity != null)
             {
                 this.albumQuantity.setText(quantity);
+            }
+
+            if(this.albumSubtotal != null)
+            {
                 this.albumSubtotal.setText(subtotal);
             }
 
         }
-*/
+
     }
 
-/*
+
     @Override
-    public void onSaveInstanceState(Bundle outState)
+    public void onRestoreInstanceState(Bundle mySavedState)
     {
-        super.onSaveInstanceState(outState);
-        outState.putString(String.valueOf(R.id.album_quantity), String.valueOf(this.albumQuantity.getText()));
-        outState.putString(String.valueOf(R.id.album_subtotal), String.valueOf(this.albumSubtotal.getText()));
+        super.onRestoreInstanceState(mySavedState);
+
+        if(mySavedState != null)
+        {
+            String quantity = mySavedState.getString(String.valueOf(this.albumQuantity));
+            String subtotal = mySavedState.getString(String.valueOf(this.albumSubtotal));
+
+            if(quantity != null)
+            {
+                this.albumQuantity.setText(quantity);
+            }
+
+            if(subtotal != null)
+            {
+                this.albumSubtotal.setText(subtotal);
+            }
+
+        }
 
     }
-*/
+
 
 
     @Override
@@ -254,11 +279,9 @@ public class MenuActivity extends AppCompatActivity {
 
         startActivity(checkoutIntent);
 
-
         String launchingCheckoutMessage = "Button clicked!";
         Toast toastButtonMessage = Toast.makeText(this, launchingCheckoutMessage, Toast.LENGTH_SHORT);
         toastButtonMessage.show();
-
 
         Log.d(MENU_LOG_TAG, "Transferred Subtotal to CheckoutActivity with Clicked Button");
     }
