@@ -13,12 +13,11 @@ public class CheckoutActivity extends AppCompatActivity {
     private static final String CHECKOUT_LOG_TAG = CheckoutActivity.class.getSimpleName();
 
     private double finalAlbumSubtotal = 0.00;
-    private double shippingTotal = 0.00;
+    private double finalShippingTotal = 0.00;
     private double finalSubtotal = 0.00;
     private double totalTPSTax = 0.00;
     private double totalTVQTax = 0.00;
     private double finalTotal = 0.00;
-
 
     /*
     Start the CheckoutActivity class with this auto-implemented method and extract monetary values from the MenuActivity class
@@ -38,9 +37,9 @@ public class CheckoutActivity extends AppCompatActivity {
         this.finalAlbumSubtotal = Double.parseDouble(finalAlbumSubtotalText.substring(1));
 
         String finalAlbumShippingTotalText = menuIntent.getStringExtra(MenuActivity.SHIPPING_TOTAL);
-        this.shippingTotal = Double.parseDouble(finalAlbumShippingTotalText.substring(1));
+        this.finalShippingTotal = Double.parseDouble(finalAlbumShippingTotalText.substring(1));
 
-        this.finalSubtotal = this.finalAlbumSubtotal + this.shippingTotal;
+        this.finalSubtotal = this.finalAlbumSubtotal + this.finalShippingTotal;
         this.totalTPSTax = this.finalSubtotal * 0.05;
         this.totalTVQTax = this.finalSubtotal * 0.0975;
         this.finalTotal = this.totalTPSTax + this.totalTVQTax + this.finalSubtotal;
@@ -54,8 +53,8 @@ public class CheckoutActivity extends AppCompatActivity {
         finalAlbumSubtotal.setText(String.format("$%.2f", this.finalAlbumSubtotal));
 
         //Retrieve the TextView subtotal ID to insert the extracted subtotal value inside the element
-        TextView shippingTotal = findViewById(R.id.shipping_total_number);
-        shippingTotal.setText(String.format("$%.2f", this.shippingTotal));
+        TextView finalShippingTotal = findViewById(R.id.shipping_total_number);
+        finalShippingTotal.setText(String.format("$%.2f", this.finalShippingTotal));
 
         //Retrieve the TextView subtotal ID to insert the extracted subtotal value inside the element
         TextView finalSubtotal = findViewById(R.id.final_subtotal_number);
