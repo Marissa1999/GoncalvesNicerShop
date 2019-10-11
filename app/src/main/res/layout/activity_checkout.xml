@@ -105,7 +105,6 @@
         android:gravity="center"
         android:text="@string/final_subtotal_title"
         android:textColor="@android:color/white"
-        android:textStyle="bold"
         android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/tps_total_title"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,6 +119,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="30dp"
         android:textColor="@android:color/white"
+        android:textStyle="bold"
         android:textSize="30sp"
         app:layout_constraintStart_toEndOf="@+id/final_subtotal_title"
         app:layout_constraintTop_toBottomOf="@+id/shipping_total_number" />
