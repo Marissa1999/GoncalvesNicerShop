@@ -107,6 +107,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                      double addedPrice = Double.parseDouble(printedPrice);
 
                      double addedSubtotal = addedPrice * updatedAddedQuantity;
+                     product.setAlbumSubtotal(String.format("$%.2f", addedSubtotal));
 
                      if(this.albumQuantity != null)
                         this.albumQuantity.setText(String.valueOf(updatedAddedQuantity));
@@ -136,6 +137,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     double subtractedPrice = Double.parseDouble(printedPrice);
 
                     double subtractedSubtotal = subtractedPrice * updatedSubtractedQuantity;
+                    product.setAlbumSubtotal(String.format("$%.2f", subtractedSubtotal));
 
                     if(this.albumQuantity != null)
                         this.albumQuantity.setText(String.valueOf(updatedSubtractedQuantity));

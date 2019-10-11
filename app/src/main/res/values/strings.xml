@@ -76,9 +76,9 @@
     <string name="album_cover">album_cover</string>
     <string name="action_new_option_message">You selected to order all new albums.</string>
     <string name="action_like_new_message">You selected to order all albums that are like new.</string>
-    <string name="action_very_good_message">You selected to order all albums in a very good condition.</string>
+    <string name="action_very_good_message">You selected to order all albums in very good condition.</string>
     <string name="action_good_message">You selected to order all albums in good condition.</string>
-    <string name="action_acceptable_message">You selected to order all albums in an acceptable condition.</string>
+    <string name="action_acceptable_message">You selected to order all albums in acceptable condition.</string>
     <string name="new_option">New</string>
     <string name="like_new_option">Like New</string>
     <string name="very_good_option">Very Good</string>
