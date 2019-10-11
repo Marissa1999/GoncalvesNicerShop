@@ -73,7 +73,7 @@ public class MenuActivity extends AppCompatActivity {
                 builder.setPositiveButton("Proceed to Checkout", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int position) {
-                        launchCheckoutActivity(view);
+                        launchCheckoutActivity();
                         dialog.dismiss();
                     }
                 });
@@ -266,7 +266,7 @@ public class MenuActivity extends AppCompatActivity {
       Launch the CheckoutActivity class, which is supposed to be the following activity
      */
     @SuppressLint("DefaultLocale")
-    public void launchCheckoutActivity(View view) {
+    public void launchCheckoutActivity() {
 
         Intent checkoutIntent = new Intent(this, CheckoutActivity.class);
 
