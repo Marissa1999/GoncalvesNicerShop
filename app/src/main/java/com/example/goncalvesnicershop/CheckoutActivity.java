@@ -30,7 +30,6 @@ public class CheckoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
 
-
         Intent menuIntent = getIntent();
 
         String finalAlbumSubtotalText = menuIntent.getStringExtra(MenuActivity.FINAL_SUBTOTAL);
