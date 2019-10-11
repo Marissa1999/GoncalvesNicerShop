@@ -60,10 +60,6 @@
     <string name="tvq_total_title">TVQ Total:</string>
     <string name="final_total_title">Final Total:</string>
     <string name="thanking_text">Thank You for Shopping!</string>
-    <string name="subtotal_number" />
-    <string name="tps_total_number" />
-    <string name="tvq_total_number" />
-    <string name="final_total_number" />
     <string name="album_cover_1">journey_escape</string>
     <string name="album_cover_2">the_who_tommy</string>
     <string name="album_cover_3">pearl_jam_ten</string>

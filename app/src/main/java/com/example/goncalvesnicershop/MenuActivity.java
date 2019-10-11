@@ -23,8 +23,11 @@ public class MenuActivity extends AppCompatActivity {
 
     private static final String MENU_LOG_TAG = MenuActivity.class.getSimpleName();
     public static final String FINAL_SUBTOTAL = "com.example.android.goncalvesnicershop.final.SUBTOTAL";
+    public static final String SHIPPING_TOTAL = "com.example.android.goncalvesnicershop.shipping.TOTAL";
 
     private double finalSubtotal = 0.00;
+    private double shippingTotal = 0.00;
+
     private final LinkedList<AlbumItem> albumList = new LinkedList<>();
     private RecyclerView RecyclerView;
     private ProductAdapter Adapter;
@@ -55,9 +58,9 @@ public class MenuActivity extends AppCompatActivity {
 
                         switch(position)
                         {
-                            case 0: finalSubtotal += 50.00; break;
-                            case 1: finalSubtotal += 10.00; break;
-                            case 2: finalSubtotal += 0.00; break;
+                            case 0: shippingTotal += 50.00; break;
+                            case 1: shippingTotal += 10.00; break;
+                            case 2: shippingTotal += 0.00; break;
                         }
 
                     }
@@ -243,6 +246,8 @@ public class MenuActivity extends AppCompatActivity {
         }
 
         checkoutIntent.putExtra(FINAL_SUBTOTAL, String.format("$%.2f", finalSubtotal));
+        checkoutIntent.putExtra(SHIPPING_TOTAL, String.format("$%.2f", shippingTotal));
+
         startActivity(checkoutIntent);
 
 
