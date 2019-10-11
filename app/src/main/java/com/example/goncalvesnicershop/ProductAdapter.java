@@ -18,8 +18,8 @@ import java.util.LinkedList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
-    private final LinkedList<AlbumItem> albumList;
-    private final LayoutInflater albumInflater;
+    private LinkedList<AlbumItem> albumList;
+    private LayoutInflater albumInflater;
 
     private static final String ADAPTER_LOG_TAG = ProductAdapter.class.getSimpleName();
 
@@ -86,6 +86,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             this.adapter = adapter;
             this.additionButton.setOnClickListener(this);
             this.subtractionButton.setOnClickListener(this);
+            albumItemView.setOnClickListener(this);
         }
 
 
@@ -97,32 +98,38 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
                 case R.id.adding_button:
                 {
-                     int position = (Integer) view.getTag();
+                     int position = getLayoutPosition();
                      AlbumItem product = albumList.get(position);
                      int updatedAddedQuantity = Integer.parseInt(product.getAlbumQuantity()) + 1;
+
+
+                     //String price = Double.parseDouble(product.getAlbumPrice().substring(1));
+
+
                      product.setAlbumQuantity(String.valueOf(updatedAddedQuantity));
-                     notifyDataSetChanged();
 
                      if(this.albumQuantity != null)
-                     this.albumQuantity.setText(updatedAddedQuantity);
+                     this.albumQuantity.setText(String.valueOf(updatedAddedQuantity));
 
-                    Log.d(ADAPTER_LOG_TAG, "Added " + product.getAlbumQuantity() + product.getAlbumTitle() + " Albums");
+                     if(this.albumSubtotal != null)
+                     //this.albumSubtotal.setText
+
+                    Log.d(ADAPTER_LOG_TAG, "Added " + product.getAlbumQuantity() + " " + product.getAlbumTitle() + " Album(s)");
                 }
                 break;
 
 
                 case R.id.minus_button:
                 {
-                    int position = (Integer) view.getTag();
+                    int position = getLayoutPosition();
                     AlbumItem product = albumList.get(position);
                     int updatedSubtractedQuantity = Integer.parseInt(product.getAlbumQuantity()) - 1;
                     product.setAlbumQuantity(String.valueOf(updatedSubtractedQuantity));
-                    notifyDataSetChanged();
 
                     if(this.albumQuantity != null)
                     this.albumQuantity.setText(updatedSubtractedQuantity);
 
-                    Log.d(ADAPTER_LOG_TAG, "Subtracted " + product.getAlbumQuantity() + " " + product.getAlbumTitle() + " Albums");
+                    Log.d(ADAPTER_LOG_TAG, "Subtracted " + product.getAlbumQuantity() + " " + product.getAlbumTitle() + " Album(s)");
                 }
                 break;
 

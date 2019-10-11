@@ -21,17 +21,15 @@ import java.util.LinkedList;
 
 public class MenuActivity extends AppCompatActivity {
 
-    //The tag to call the MenuActivity class name when debugging code
-    private static final String MENU_LOG_TAG = MenuActivity.class.getSimpleName();
 
-    //These tags set the variable names that will be transferred to the CheckoutActivity class
+    private static final String MENU_LOG_TAG = MenuActivity.class.getSimpleName();
     public static final String FINAL_SUBTOTAL = "com.example.android.goncalvesnicershop.final.SUBTOTAL";
 
-    private static double finalSubtotal = 0.00;
 
-    //protected TextView albumQuantity = findViewById(R.id.album_quantity);
-    //protected TextView albumPrice = findViewById(R.id.album_price);
-    //protected TextView albumSubtotal = findViewById(R.id.album_subtotal);
+    private static double finalSubtotal = 0.00;
+    private TextView albumPrice = findViewById(R.id.album_price);
+    private TextView albumQuantity = findViewById(R.id.album_quantity);
+    private TextView albumSubtotal = findViewById(R.id.album_price);
 
 
     private final LinkedList<AlbumItem> albumList = new LinkedList<>();
@@ -232,8 +230,6 @@ public class MenuActivity extends AppCompatActivity {
             case R.id.option_order:
                 Toast.makeText(getApplicationContext(), R.string.action_order_message , Toast.LENGTH_SHORT).show();
                 return true;
-            default:
-                // Do nothing
         }
         return super.onOptionsItemSelected(item);
     }
@@ -247,35 +243,33 @@ public class MenuActivity extends AppCompatActivity {
 
         Intent checkoutIntent = new Intent(this, CheckoutActivity.class);
 
-        //String printedAlbumPrice = this.albumPrice.getText().toString().substring(1);
-        //double albumPrice = Double.parseDouble(printedAlbumPrice);
+        String printedAlbumPrice = this.albumPrice.getText().toString().substring(1);
+        double albumPrice = Double.parseDouble(printedAlbumPrice);
 
-        //String printedAlbumQuantity = this.albumPrice.getText().toString().substring(1);
-        //int albumQuantity = Integer.parseInt(printedAlbumQuantity);
-        //double convertedAlbumSubtotal = albumPrice * albumQuantity;
+        String printedAlbumQuantity = this.albumQuantity.getText().toString().substring(1);
+        int albumQuantity = Integer.parseInt(printedAlbumQuantity);
+
+        double convertedAlbumSubtotal = albumPrice * albumQuantity;
+        finalSubtotal += convertedAlbumSubtotal;
+
+       if (this.albumSubtotal != null)
+           this.albumSubtotal.setText(String.format("$%.2f", convertedAlbumSubtotal));
 
 
-       //if (this.albumSubtotal != null)
-           //this.albumSubtotal.setText(String.format("$%.2f", convertedAlbumSubtotal));
-
-
-        //Print a log message to ensure showAlbumSubtotal method's functionality
         Log.d(MENU_LOG_TAG, "Displayed Album Subtotal");
 
 
+        checkoutIntent.putExtra(FINAL_SUBTOTAL, String.format("$%.2f", finalSubtotal));
 
-        //Set the MenuActivity class formatted monetary values as tag names, in order for them to be used in the CheckoutActivity
-        //These Double instance variables hold values for final purchase totals
-        checkoutIntent.putExtra(FINAL_SUBTOTAL, String.format("$%.2f", this.finalSubtotal));
 
-        //Start the CheckoutActivity class and send a text request at the same time
         startActivity(checkoutIntent);
 
-        String launchingMenuMessage = "Button clicked!";
-        Toast toastMenuMessage = Toast.makeText(this, launchingMenuMessage, Toast.LENGTH_SHORT);
+
+        String launchingCheckoutMessage = "Button clicked!";
+        Toast toastMenuMessage = Toast.makeText(this, launchingCheckoutMessage, Toast.LENGTH_SHORT);
         toastMenuMessage.show();
 
-        //Print a log message to ensure launchCheckoutActivity method's functionality
+
         Log.d(MENU_LOG_TAG, "Transferred Subtotal, Tax Values and Final Total to CheckoutActivity with Clicked Button");
     }
 

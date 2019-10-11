@@ -69,9 +69,6 @@ public class CheckoutActivity extends AppCompatActivity {
             menuIntent.putExtra(TVQ_TAX, String.format("$%.2f", this.totalTVQTax));
             menuIntent.putExtra(FINAL_TOTAL, String.format("$%.2f", this.finalTotal));
 
-            //Print a log message to ensure launchCheckoutActivity method's functionality
-           // Log.d(ADAPTER_LOG_TAG, "Transferred Subtotal, Tax Values and Final Total to CheckoutActivity with Clicked Button");
-
 
         //Print a log message to ensure onCreate method's functionality
         Log.d(CHECKOUT_LOG_TAG, "Started CheckoutActivity and Transferred Values from MenuActivity");
