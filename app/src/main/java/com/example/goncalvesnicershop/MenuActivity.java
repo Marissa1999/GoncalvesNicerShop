@@ -28,6 +28,7 @@ public class MenuActivity extends AppCompatActivity {
 
     private TextView albumQuantity;
     private TextView albumSubtotal;
+
     private double finalSubtotal = 0.00;
     private double shippingTotal = 0.00;
 
@@ -179,14 +180,16 @@ public class MenuActivity extends AppCompatActivity {
         this.Adapter = new ProductAdapter(this, this.albumList);
         this.RecyclerView.setAdapter(this.Adapter);
         this.RecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         this.albumQuantity = findViewById(R.id.album_quantity);
         this.albumSubtotal = findViewById(R.id.album_subtotal);
 
 
         if (savedInstanceState != null)
         {
-            String quantity = savedInstanceState.getString(String.valueOf(this.albumQuantity));
-            String subtotal = savedInstanceState.getString(String.valueOf(this.albumSubtotal));
+            String quantity = savedInstanceState.getString(String.valueOf(R.id.album_quantity));
+            String subtotal = savedInstanceState.getString(String.valueOf(R.id.album_subtotal));
+
 
             if(this.albumQuantity != null)
             {
@@ -204,14 +207,14 @@ public class MenuActivity extends AppCompatActivity {
 
 
     @Override
-    public void onRestoreInstanceState(Bundle mySavedState)
+    public void onRestoreInstanceState(Bundle savedInstanceState)
     {
-        super.onRestoreInstanceState(mySavedState);
+        super.onRestoreInstanceState(savedInstanceState);
 
-        if(mySavedState != null)
+        if(savedInstanceState != null)
         {
-            String quantity = mySavedState.getString(String.valueOf(this.albumQuantity));
-            String subtotal = mySavedState.getString(String.valueOf(this.albumSubtotal));
+            String quantity = savedInstanceState.getString(String.valueOf(this.albumQuantity));
+            String subtotal = savedInstanceState.getString(String.valueOf(this.albumSubtotal));
 
             if(quantity != null)
             {
