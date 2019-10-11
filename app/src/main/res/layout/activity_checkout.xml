@@ -26,7 +26,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:foregroundGravity="center"
@@ -35,17 +35,17 @@
         android:textColor="@android:color/white"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/subtotal_number"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="36dp"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         app:layout_constraintStart_toEndOf="@+id/subtotal_title"
@@ -62,30 +62,30 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:foregroundGravity="center"
         android:gravity="center"
-        android:text="@string/subtotal_title"
+        android:text="@string/shipping_total_title"
         android:textColor="@android:color/white"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/subtotal_title" />
 
     <TextView
         android:id="@+id/shipping_total_number"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="36dp"
         android:textColor="@android:color/white"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/subtotal_title"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/shipping_total_title"
+        app:layout_constraintTop_toBottomOf="@+id/subtotal_number" />
 
     <TextView
         android:id="@+id/final_subtotal_title"
@@ -98,18 +98,18 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="24dp"
         android:foregroundGravity="center"
         android:gravity="center"
-        android:text="@string/subtotal_title"
+        android:text="@string/final_subtotal_title"
         android:textColor="@android:color/white"
-        android:textSize="40sp"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/tps_total_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.162"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/final_subtotal_number"
@@ -117,11 +117,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="30dp"
         android:textColor="@android:color/white"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/subtotal_title"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/final_subtotal_title"
+        app:layout_constraintTop_toBottomOf="@+id/shipping_total_number" />
 
     <TextView
         android:id="@+id/tps_total_title"
@@ -134,7 +134,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="168dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:foregroundGravity="center"
@@ -143,7 +143,7 @@
         android:textColor="@android:color/white"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.191"
+        app:layout_constraintHorizontal_bias="0.118"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subtotal_title" />
 
@@ -153,11 +153,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="32dp"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         app:layout_constraintStart_toEndOf="@+id/tps_total_title"
-        app:layout_constraintTop_toBottomOf="@+id/subtotal_number" />
+        app:layout_constraintTop_toBottomOf="@+id/final_subtotal_number" />
 
     <TextView
         android:id="@+id/tvq_total_title"
@@ -170,7 +170,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:foregroundGravity="center"
@@ -185,11 +185,11 @@
 
     <TextView
         android:id="@+id/tvq_total_number"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="32dp"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         app:layout_constraintStart_toEndOf="@+id/tvq_total_title"
@@ -206,7 +206,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:foregroundGravity="center"
@@ -215,7 +215,7 @@
         android:textColor="@android:color/white"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvq_total_title" />
 
@@ -225,7 +225,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="30dp"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -245,7 +245,6 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="16dp"
         android:foregroundGravity="center"
         android:gravity="center"
         android:text="@string/thanking_text"
@@ -253,7 +252,6 @@
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
