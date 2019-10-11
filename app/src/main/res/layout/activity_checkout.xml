@@ -105,6 +105,7 @@
         android:gravity="center"
         android:text="@string/final_subtotal_title"
         android:textColor="@android:color/white"
+        android:textStyle="bold"
         android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/tps_total_title"
         app:layout_constraintEnd_toEndOf="parent"
