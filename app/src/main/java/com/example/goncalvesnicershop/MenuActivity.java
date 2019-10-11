@@ -27,10 +27,6 @@ public class MenuActivity extends AppCompatActivity {
 
 
     private static double finalSubtotal = 0.00;
-    private TextView albumPrice = findViewById(R.id.album_price);
-    private TextView albumQuantity = findViewById(R.id.album_quantity);
-    private TextView albumSubtotal = findViewById(R.id.album_price);
-
 
     private final LinkedList<AlbumItem> albumList = new LinkedList<>();
     private RecyclerView RecyclerView;
@@ -243,17 +239,17 @@ public class MenuActivity extends AppCompatActivity {
 
         Intent checkoutIntent = new Intent(this, CheckoutActivity.class);
 
-        String printedAlbumPrice = this.albumPrice.getText().toString().substring(1);
-        double albumPrice = Double.parseDouble(printedAlbumPrice);
+        //String printedAlbumPrice = this.albumPrice.getText().toString().substring(1);
+        //double albumPrice = Double.parseDouble(printedAlbumPrice);
 
-        String printedAlbumQuantity = this.albumQuantity.getText().toString().substring(1);
-        int albumQuantity = Integer.parseInt(printedAlbumQuantity);
+        //String printedAlbumQuantity = this.albumQuantity.getText().toString().substring(1);
+        //int albumQuantity = Integer.parseInt(printedAlbumQuantity);
 
-        double convertedAlbumSubtotal = albumPrice * albumQuantity;
-        finalSubtotal += convertedAlbumSubtotal;
+       // double convertedAlbumSubtotal = albumPrice * albumQuantity;
+        //finalSubtotal += convertedAlbumSubtotal;
 
-       if (this.albumSubtotal != null)
-           this.albumSubtotal.setText(String.format("$%.2f", convertedAlbumSubtotal));
+       //if (this.albumSubtotal != null)
+          // this.albumSubtotal.setText(String.format("$%.2f", convertedAlbumSubtotal));
 
 
         Log.d(MENU_LOG_TAG, "Displayed Album Subtotal");

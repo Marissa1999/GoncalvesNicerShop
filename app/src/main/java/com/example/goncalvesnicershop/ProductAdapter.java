@@ -101,18 +101,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                      int position = getLayoutPosition();
                      AlbumItem product = albumList.get(position);
                      int updatedAddedQuantity = Integer.parseInt(product.getAlbumQuantity()) + 1;
-
-
-                     //String price = Double.parseDouble(product.getAlbumPrice().substring(1));
-
-
                      product.setAlbumQuantity(String.valueOf(updatedAddedQuantity));
 
+                     String printedPrice = product.getAlbumPrice().substring(1);
+                     double addedPrice = Double.parseDouble(printedPrice);
+
+                     double addedSubtotal = addedPrice * updatedAddedQuantity;
+
                      if(this.albumQuantity != null)
-                     this.albumQuantity.setText(String.valueOf(updatedAddedQuantity));
+                        this.albumQuantity.setText(String.valueOf(updatedAddedQuantity));
 
                      if(this.albumSubtotal != null)
-                     //this.albumSubtotal.setText
+                         this.albumSubtotal.setText(String.format("$%.2f", addedSubtotal));
 
                     Log.d(ADAPTER_LOG_TAG, "Added " + product.getAlbumQuantity() + " " + product.getAlbumTitle() + " Album(s)");
                 }
@@ -121,13 +121,22 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
                 case R.id.minus_button:
                 {
+
                     int position = getLayoutPosition();
                     AlbumItem product = albumList.get(position);
                     int updatedSubtractedQuantity = Integer.parseInt(product.getAlbumQuantity()) - 1;
                     product.setAlbumQuantity(String.valueOf(updatedSubtractedQuantity));
 
+                    String printedPrice = product.getAlbumPrice().substring(1);
+                    double addedPrice = Double.parseDouble(printedPrice);
+
+                    double subtractedSubtotal = addedPrice * updatedSubtractedQuantity;
+
                     if(this.albumQuantity != null)
-                    this.albumQuantity.setText(updatedSubtractedQuantity);
+                        this.albumQuantity.setText(String.valueOf(updatedSubtractedQuantity));
+
+                    if(this.albumSubtotal != null)
+                        this.albumSubtotal.setText(String.format("$%.2f", subtractedSubtotal));
 
                     Log.d(ADAPTER_LOG_TAG, "Subtracted " + product.getAlbumQuantity() + " " + product.getAlbumTitle() + " Album(s)");
                 }
