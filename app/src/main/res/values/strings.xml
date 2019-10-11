@@ -74,8 +74,14 @@
     <string name="album_cover_10">pink_floyd_the_wall</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="album_cover">album_cover</string>
-    <string name="action_order_message">You selected Order.</string>
-    <string name="action_settings_message">You selected Settings.</string>
-    <string name="action_favorites_message">You selected Favorites.</string>
-    <string name="action_contact_message">You selected Contact.</string>
+    <string name="action_new_option_message">You selected to order all new albums.</string>
+    <string name="action_like_new_message">You selected to order all albums that are like new.</string>
+    <string name="action_very_good_message">You selected to order all albums in a very good condition.</string>
+    <string name="action_good_message">You selected to order all albums in good condition.</string>
+    <string name="action_acceptable_message">You selected to order all albums in an acceptable condition.</string>
+    <string name="new_option">New</string>
+    <string name="like_new_option">Like New</string>
+    <string name="very_good_option">Very Good</string>
+    <string name="good_option">Good</string>
+    <string name="acceptable_option">Acceptable</string>
 </resources>

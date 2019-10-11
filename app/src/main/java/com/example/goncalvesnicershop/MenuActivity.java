@@ -214,18 +214,22 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.option_contact:
-                Toast.makeText(getApplicationContext(), R.string.action_contact_message , Toast.LENGTH_SHORT).show();
+            case R.id.new_condition_option:
+                Toast.makeText(getApplicationContext(), R.string.action_new_option_message , Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.option_favorites:
-                Toast.makeText(getApplicationContext(), R.string.action_favorites_message , Toast.LENGTH_SHORT).show();
+            case R.id.like_new_condition_option:
+                Toast.makeText(getApplicationContext(), R.string.action_like_new_message, Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.option_settings:
-                Toast.makeText(getApplicationContext(), R.string.action_settings_message , Toast.LENGTH_SHORT).show();
+            case R.id.very_good_condition_option:
+                Toast.makeText(getApplicationContext(), R.string.action_very_good_message , Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.option_order:
-                Toast.makeText(getApplicationContext(), R.string.action_order_message , Toast.LENGTH_SHORT).show();
+            case R.id.good_condition_option:
+                Toast.makeText(getApplicationContext(), R.string.action_good_message , Toast.LENGTH_SHORT).show();
                 return true;
+            case R.id.acceptable_condition_option:
+                Toast.makeText(getApplicationContext(), R.string.action_acceptable_message, Toast.LENGTH_SHORT).show();
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
