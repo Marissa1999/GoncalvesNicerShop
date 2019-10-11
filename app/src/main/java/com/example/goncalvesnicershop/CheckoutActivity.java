@@ -15,6 +15,7 @@ public class CheckoutActivity extends AppCompatActivity {
     private double totalTPSTax = 0.00;
     private double totalTVQTax = 0.00;
     private double finalTotal = 0.00;
+    private double finalSubtotal = 0.00;
 
     /*
     Start the CheckoutActivity class with this auto-implemented method and extract monetary values from the MenuActivity class
@@ -31,11 +32,11 @@ public class CheckoutActivity extends AppCompatActivity {
         Intent menuIntent = getIntent();
 
         String finalAlbumSubtotalText = menuIntent.getStringExtra(MenuActivity.FINAL_SUBTOTAL);
-        double finalAlbumSubtotalValue = Double.parseDouble(finalAlbumSubtotalText.substring(1));
+        this.finalSubtotal = Double.parseDouble(finalAlbumSubtotalText.substring(1));
 
-        this.totalTPSTax = finalAlbumSubtotalValue * 0.05;
-        this.totalTVQTax = finalAlbumSubtotalValue * 0.0975;
-        this.finalTotal = this.totalTPSTax + this.totalTVQTax;
+        this.totalTPSTax = this.finalSubtotal * 0.05;
+        this.totalTVQTax = this.finalSubtotal * 0.0975;
+        this.finalTotal = this.totalTPSTax + this.totalTVQTax + this.finalSubtotal;
 
 
         Log.d(CHECKOUT_LOG_TAG, "Calculated Album Final Subtotal, Taxes and Final Total");
@@ -43,7 +44,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
         //Retrieve the TextView subtotal ID to insert the extracted subtotal value inside the element
         TextView finalSubtotal = findViewById(R.id.subtotal_number);
-        finalSubtotal.setText(String.format("$%.2f", finalAlbumSubtotalValue));
+        finalSubtotal.setText(String.format("$%.2f", this.finalSubtotal));
 
         //Retrieve the TextView TPS tax ID to insert the extracted TPS tax value inside the element
         TextView finalTPSTax = findViewById(R.id.tps_total_number);
