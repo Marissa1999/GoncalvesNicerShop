@@ -50,12 +50,12 @@ public class CheckoutActivity extends AppCompatActivity {
 
 
         //Retrieve the TextView subtotal ID to insert the extracted subtotal value inside the element
-        TextView finalAlbumSubtotal = findViewById(R.id.album_subtotal_number);
+        TextView finalAlbumSubtotal = findViewById(R.id.subtotal_number);
         finalAlbumSubtotal.setText(String.format("$%.2f", this.finalAlbumSubtotal));
 
         //Retrieve the TextView subtotal ID to insert the extracted subtotal value inside the element
-        TextView finalShippingTotal = findViewById(R.id.shipping_total_number);
-        finalShippingTotal.setText(String.format("$%.2f", this.shippingTotal));
+        TextView shippingTotal = findViewById(R.id.shipping_total_number);
+        shippingTotal.setText(String.format("$%.2f", this.shippingTotal));
 
         //Retrieve the TextView subtotal ID to insert the extracted subtotal value inside the element
         TextView finalSubtotal = findViewById(R.id.final_subtotal_number);

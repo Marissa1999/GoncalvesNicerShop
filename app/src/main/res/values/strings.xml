@@ -56,6 +56,8 @@
     <string name="album_title_9">R.E.M. - Murmur</string>
     <string name="album_title_10">Pink Floyd - The Wall</string>
     <string name="subtotal_title">Subtotal:</string>
+    <string name="shipping_total_title">Shipping:</string>
+    <string name="final_subtotal_title">Final Subtotal:</string>
     <string name="tps_total_title">TPS Total:</string>
     <string name="tvq_total_title">TVQ Total:</string>
     <string name="final_total_title">Final Total:</string>
