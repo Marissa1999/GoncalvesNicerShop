@@ -175,7 +175,6 @@ public class MenuActivity extends AppCompatActivity {
         this.albumList.addLast(albumItem9);
         this.albumList.addLast(albumItem10);
 
-
         this.RecyclerView = findViewById(R.id.recyclerView);
         this.Adapter = new ProductAdapter(this, this.albumList);
         this.RecyclerView.setAdapter(this.Adapter);
