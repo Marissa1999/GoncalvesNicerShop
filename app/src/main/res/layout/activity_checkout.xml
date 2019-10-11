@@ -47,7 +47,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="36dp"
         android:textColor="@android:color/white"
-        android:textSize="30sp"
+        android:textSize="35sp"
         app:layout_constraintStart_toEndOf="@+id/subtotal_title"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,9 +81,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="25dp"
         android:textColor="@android:color/white"
-        android:textSize="30sp"
+        android:textSize="35sp"
         app:layout_constraintStart_toEndOf="@+id/shipping_total_title"
         app:layout_constraintTop_toBottomOf="@+id/subtotal_number" />
 
@@ -153,9 +153,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="30dp"
         android:textColor="@android:color/white"
-        android:textSize="30sp"
+        android:textSize="35sp"
         app:layout_constraintStart_toEndOf="@+id/tps_total_title"
         app:layout_constraintTop_toBottomOf="@+id/final_subtotal_number" />
 
@@ -189,9 +189,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="26dp"
         android:textColor="@android:color/white"
-        android:textSize="30sp"
+        android:textSize="35sp"
         app:layout_constraintStart_toEndOf="@+id/tvq_total_title"
         app:layout_constraintTop_toBottomOf="@+id/tps_total_number" />
 
@@ -225,9 +225,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:textColor="@android:color/white"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/final_total_title"
         app:layout_constraintTop_toBottomOf="@+id/tvq_total_number" />
