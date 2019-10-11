@@ -11,6 +11,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -206,6 +208,35 @@ public class MenuActivity extends AppCompatActivity {
 
     }
 */
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.option_contact:
+                Toast.makeText(getApplicationContext(), R.string.action_contact_message , Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.option_favorites:
+                Toast.makeText(getApplicationContext(), R.string.action_favorites_message , Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.option_settings:
+                Toast.makeText(getApplicationContext(), R.string.action_settings_message , Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.option_order:
+                Toast.makeText(getApplicationContext(), R.string.action_order_message , Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                // Do nothing
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 
     /*

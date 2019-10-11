@@ -76,4 +76,8 @@
     <string name="album_cover_10">pink_floyd_the_wall</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="album_cover">album_cover</string>
+    <string name="action_order_message">You selected Order.</string>
+    <string name="action_settings_message">You selected Settings.</string>
+    <string name="action_favorites_message">You selected Favorites.</string>
+    <string name="action_contact_message">You selected Contact.</string>
 </resources>
