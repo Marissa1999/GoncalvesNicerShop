@@ -121,16 +121,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
                 case R.id.minus_button:
                 {
-
                     int position = getLayoutPosition();
                     AlbumItem product = albumList.get(position);
                     int updatedSubtractedQuantity = Integer.parseInt(product.getAlbumQuantity()) - 1;
                     product.setAlbumQuantity(String.valueOf(updatedSubtractedQuantity));
 
-                    String printedPrice = product.getAlbumPrice().substring(1);
-                    double addedPrice = Double.parseDouble(printedPrice);
+                    if(updatedSubtractedQuantity < 0)
+                    {
+                        updatedSubtractedQuantity = 0;
+                        product.setAlbumQuantity(String.valueOf(updatedSubtractedQuantity));
+                    }
 
-                    double subtractedSubtotal = addedPrice * updatedSubtractedQuantity;
+                    String printedPrice = product.getAlbumPrice().substring(1);
+                    double subtractedPrice = Double.parseDouble(printedPrice);
+
+                    double subtractedSubtotal = subtractedPrice * updatedSubtractedQuantity;
 
                     if(this.albumQuantity != null)
                         this.albumQuantity.setText(String.valueOf(updatedSubtractedQuantity));

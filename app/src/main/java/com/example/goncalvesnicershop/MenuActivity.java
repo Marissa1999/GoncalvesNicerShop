@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.example.goncalvesnicershop.model.AlbumItem;
 import java.util.LinkedList;
@@ -25,9 +24,7 @@ public class MenuActivity extends AppCompatActivity {
     private static final String MENU_LOG_TAG = MenuActivity.class.getSimpleName();
     public static final String FINAL_SUBTOTAL = "com.example.android.goncalvesnicershop.final.SUBTOTAL";
 
-
-    private static double finalSubtotal = 0.00;
-
+    private double finalSubtotal = 0.00;
     private final LinkedList<AlbumItem> albumList = new LinkedList<>();
     private RecyclerView RecyclerView;
     private ProductAdapter Adapter;
@@ -239,25 +236,13 @@ public class MenuActivity extends AppCompatActivity {
 
         Intent checkoutIntent = new Intent(this, CheckoutActivity.class);
 
-        //String printedAlbumPrice = this.albumPrice.getText().toString().substring(1);
-        //double albumPrice = Double.parseDouble(printedAlbumPrice);
+        for (int element = 0; element < this.albumList.size(); element++)
+        {
+            double albumSubtotal = Double.parseDouble(this.albumList.get(element).getAlbumSubtotal().substring(1));
+            this.finalSubtotal += albumSubtotal;
+        }
 
-        //String printedAlbumQuantity = this.albumQuantity.getText().toString().substring(1);
-        //int albumQuantity = Integer.parseInt(printedAlbumQuantity);
-
-       // double convertedAlbumSubtotal = albumPrice * albumQuantity;
-        //finalSubtotal += convertedAlbumSubtotal;
-
-       //if (this.albumSubtotal != null)
-          // this.albumSubtotal.setText(String.format("$%.2f", convertedAlbumSubtotal));
-
-
-        Log.d(MENU_LOG_TAG, "Displayed Album Subtotal");
-
-
-        checkoutIntent.putExtra(FINAL_SUBTOTAL, String.format("$%.2f", finalSubtotal));
-
-
+        checkoutIntent.putExtra(FINAL_SUBTOTAL, String.format("$%.2f", this.finalSubtotal));
         startActivity(checkoutIntent);
 
 
@@ -266,7 +251,7 @@ public class MenuActivity extends AppCompatActivity {
         toastMenuMessage.show();
 
 
-        Log.d(MENU_LOG_TAG, "Transferred Subtotal, Tax Values and Final Total to CheckoutActivity with Clicked Button");
+        Log.d(MENU_LOG_TAG, "Transferred Subtotal to CheckoutActivity with Clicked Button");
     }
 
 
