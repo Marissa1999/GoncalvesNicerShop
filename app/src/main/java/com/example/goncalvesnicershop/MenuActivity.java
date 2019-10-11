@@ -239,16 +239,16 @@ public class MenuActivity extends AppCompatActivity {
         for (int element = 0; element < this.albumList.size(); element++)
         {
             double albumSubtotal = Double.parseDouble(this.albumList.get(element).getAlbumSubtotal().substring(1));
-            this.finalSubtotal += albumSubtotal;
+            finalSubtotal += albumSubtotal;
         }
 
-        checkoutIntent.putExtra(FINAL_SUBTOTAL, String.format("$%.2f", this.finalSubtotal));
+        checkoutIntent.putExtra(FINAL_SUBTOTAL, String.format("$%.2f", finalSubtotal));
         startActivity(checkoutIntent);
 
 
         String launchingCheckoutMessage = "Button clicked!";
-        Toast toastMenuMessage = Toast.makeText(this, launchingCheckoutMessage, Toast.LENGTH_SHORT);
-        toastMenuMessage.show();
+        Toast toastButtonMessage = Toast.makeText(this, launchingCheckoutMessage, Toast.LENGTH_SHORT);
+        toastButtonMessage.show();
 
 
         Log.d(MENU_LOG_TAG, "Transferred Subtotal to CheckoutActivity with Clicked Button");

@@ -12,10 +12,6 @@ public class CheckoutActivity extends AppCompatActivity {
     //The tag to call the CheckoutActivity class name when debugging code
     private static final String CHECKOUT_LOG_TAG = CheckoutActivity.class.getSimpleName();
 
-    private final String TPS_TAX = "com.example.android.goncalvesnicershop.tps.TAX";
-    public final String TVQ_TAX = "com.example.android.goncalvesnicershop.tvq.TAX";
-    public final String FINAL_TOTAL = "com.example.android.goncalvesnicershop.final.TOTAL";
-
     private double totalTPSTax = 0.00;
     private double totalTVQTax = 0.00;
     private double finalTotal = 0.00;
@@ -23,51 +19,43 @@ public class CheckoutActivity extends AppCompatActivity {
     /*
     Start the CheckoutActivity class with this auto-implemented method and extract monetary values from the MenuActivity class
     */
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        //Launch the CheckoutActivity class and display the design on the screen
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
 
-        //Get the MenuActivity class intent before returning the needed values
+
         Intent menuIntent = getIntent();
 
-        //Get the following monetary values from the activity tags in the MenuActivity class
-        String finalAlbumSubtotal = menuIntent.getStringExtra(MenuActivity.FINAL_SUBTOTAL);
+        String finalAlbumSubtotalText = menuIntent.getStringExtra(MenuActivity.FINAL_SUBTOTAL);
+        double finalAlbumSubtotalValue = Double.parseDouble(finalAlbumSubtotalText.substring(1));
+
+        this.totalTPSTax = finalAlbumSubtotalValue * 0.05;
+        this.totalTVQTax = finalAlbumSubtotalValue * 0.0975;
+        this.finalTotal = this.totalTPSTax + this.totalTVQTax;
 
 
-            //Determine the final subtotal value by adding the CardView album subtotal to the variable
-
-            //this.totalTPSTax = finalAlbumSubtotal * 0.05;
-           // this.totalTVQTax = finalAlbumSubtotal * 0.0975;
-
-            //Print a log message to ensure calculateAlbumFinalTotalTaxes method's functionality
-            Log.d(CHECKOUT_LOG_TAG, "Calculated Album Final Subtotal Taxes");
+        Log.d(CHECKOUT_LOG_TAG, "Calculated Album Final Subtotal, Taxes and Final Total");
 
 
         //Retrieve the TextView subtotal ID to insert the extracted subtotal value inside the element
         TextView finalSubtotal = findViewById(R.id.subtotal_number);
-        finalSubtotal.setText(finalAlbumSubtotal);
+        finalSubtotal.setText(String.format("$%.2f", finalAlbumSubtotalValue));
 
         //Retrieve the TextView TPS tax ID to insert the extracted TPS tax value inside the element
         TextView finalTPSTax = findViewById(R.id.tps_total_number);
-        //finalTPSTax.setText(finalAlbumTPSTax);
+        finalTPSTax.setText(String.format("$%.2f", this.totalTPSTax));
 
         //Retrieve the TextView TVQ tax ID to insert the extracted TVQ tax value inside the element
         TextView finalTVQTax = findViewById(R.id.tvq_total_number);
-       // finalTVQTax.setText(finalAlbumTVQTax);
+        finalTVQTax.setText(String.format("$%.2f", this.totalTVQTax));
 
         //Retrieve the TextView total ID to insert the extracted total value inside the element
         TextView finalTotal = findViewById(R.id.final_total_number);
-        //finalTotal.setText(finalAlbumTotal);
-
-
-            //Set the MenuActivity class formatted monetary values as tag names, in order for them to be used in the CheckoutActivity
-            //These Double instance variables hold values for final purchase totals
-            menuIntent.putExtra(TPS_TAX, String.format("$%.2f", this.totalTPSTax));
-            menuIntent.putExtra(TVQ_TAX, String.format("$%.2f", this.totalTVQTax));
-            menuIntent.putExtra(FINAL_TOTAL, String.format("$%.2f", this.finalTotal));
+        finalTotal.setText(String.format("$%.2f", this.finalTotal));
 
 
         //Print a log message to ensure onCreate method's functionality
