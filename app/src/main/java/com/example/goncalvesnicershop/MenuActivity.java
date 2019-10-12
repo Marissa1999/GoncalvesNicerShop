@@ -28,14 +28,14 @@ public class MenuActivity extends AppCompatActivity {
     public static final String ALBUM_SUBTOTAL = "com.example.android.goncalvesnicershop.album.SUBTOTAL";
     public static final String SHIPPING_TOTAL = "com.example.android.goncalvesnicershop.shipping.TOTAL";
 
+    //These variables calculate the monetary totals of the application.
+    private double mFinalAlbumSubtotal = 0.00;
+    private double mShippingTotal = 0.00;
 
-    private double finalAlbumSubtotal = 0.00;
-    private double shippingTotal = 0.00;
 
-
-    private final LinkedList<AlbumItem> albumList = new LinkedList<>();
-    protected RecyclerView RecyclerView;
-    protected ProductAdapter Adapter;
+    private final LinkedList<AlbumItem> mAlbumList = new LinkedList<>();
+    protected RecyclerView mRecyclerView;
+    protected ProductAdapter mAdapter;
 
 
     @Override
@@ -63,9 +63,9 @@ public class MenuActivity extends AppCompatActivity {
 
                         switch(position)
                         {
-                            case 0: shippingTotal += 50.00; break;
-                            case 1: shippingTotal += 10.00; break;
-                            case 2: shippingTotal += 0.00; break;
+                            case 0: mShippingTotal += 50.00; break;
+                            case 1: mShippingTotal += 10.00; break;
+                            case 2: mShippingTotal += 0.00; break;
                         }
 
                     }
@@ -82,7 +82,7 @@ public class MenuActivity extends AppCompatActivity {
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int position) {
-                        shippingTotal -= shippingTotal;
+                        mShippingTotal -= mShippingTotal;
                         dialog.dismiss();
                     }
                 });
@@ -165,21 +165,21 @@ public class MenuActivity extends AppCompatActivity {
                 getResources().getString(R.string.album_quantity_10), getResources().getString(R.string.album_subtotal_10));
 
 
-        this.albumList.addLast(albumItem1);
-        this.albumList.addLast(albumItem2);
-        this.albumList.addLast(albumItem3);
-        this.albumList.addLast(albumItem4);
-        this.albumList.addLast(albumItem5);
-        this.albumList.addLast(albumItem6);
-        this.albumList.addLast(albumItem7);
-        this.albumList.addLast(albumItem8);
-        this.albumList.addLast(albumItem9);
-        this.albumList.addLast(albumItem10);
+        this.mAlbumList.addLast(albumItem1);
+        this.mAlbumList.addLast(albumItem2);
+        this.mAlbumList.addLast(albumItem3);
+        this.mAlbumList.addLast(albumItem4);
+        this.mAlbumList.addLast(albumItem5);
+        this.mAlbumList.addLast(albumItem6);
+        this.mAlbumList.addLast(albumItem7);
+        this.mAlbumList.addLast(albumItem8);
+        this.mAlbumList.addLast(albumItem9);
+        this.mAlbumList.addLast(albumItem10);
 
-        this.RecyclerView = findViewById(R.id.recyclerView);
-        this.Adapter = new ProductAdapter(this, this.albumList);
-        this.RecyclerView.setAdapter(this.Adapter);
-        this.RecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        this.mRecyclerView = findViewById(R.id.recyclerView);
+        this.mAdapter = new ProductAdapter(this, this.mAlbumList);
+        this.mRecyclerView.setAdapter(this.mAdapter);
+        this.mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
@@ -190,10 +190,10 @@ public class MenuActivity extends AppCompatActivity {
 
         ArrayList<String> savedAlbumList = new ArrayList<>();
 
-        for(int retrievedElement = 0; retrievedElement < albumList.size(); retrievedElement++)
+        for(int retrievedElement = 0; retrievedElement < mAlbumList.size(); retrievedElement++)
         {
-            savedAlbumList.add(albumList.get(retrievedElement).getAlbumQuantity());
-            savedAlbumList.add(albumList.get(retrievedElement).getAlbumSubtotal());
+            savedAlbumList.add(mAlbumList.get(retrievedElement).getAlbumQuantity());
+            savedAlbumList.add(mAlbumList.get(retrievedElement).getAlbumSubtotal());
             Log.d("Saving the quantity and subtotal from the " + retrievedElement + "element", savedAlbumList.get(retrievedElement));
         }
 
@@ -208,15 +208,15 @@ public class MenuActivity extends AppCompatActivity {
 
         ArrayList<String> restoredAlbumList = savedInstanceState.getStringArrayList("Album ArrayList");
 
-        for(int retrievedElement = 0, setterElement = 0; retrievedElement < albumList.size(); retrievedElement++, setterElement += 2)
+        for(int retrievedElement = 0, setterElement = 0; retrievedElement < mAlbumList.size(); retrievedElement++, setterElement += 2)
         {
             assert restoredAlbumList != null;
-            albumList.get(retrievedElement).setAlbumQuantity(restoredAlbumList.get(setterElement));
+            mAlbumList.get(retrievedElement).setAlbumQuantity(restoredAlbumList.get(setterElement));
         }
 
-        for(int retrievedElement = 0, setterElement = 1; retrievedElement < albumList.size(); retrievedElement++, setterElement += 2)
+        for(int retrievedElement = 0, setterElement = 1; retrievedElement < mAlbumList.size(); retrievedElement++, setterElement += 2)
         {
-            albumList.get(retrievedElement).setAlbumSubtotal(restoredAlbumList.get(setterElement));
+            mAlbumList.get(retrievedElement).setAlbumSubtotal(restoredAlbumList.get(setterElement));
         }
 
 
@@ -271,14 +271,14 @@ public class MenuActivity extends AppCompatActivity {
 
         Intent checkoutIntent = new Intent(this, CheckoutActivity.class);
 
-        for (int element = 0; element < this.albumList.size(); element++)
+        for (int element = 0; element < this.mAlbumList.size(); element++)
         {
-            double albumSubtotal = Double.parseDouble(this.albumList.get(element).getAlbumSubtotal().substring(1));
-            finalAlbumSubtotal += albumSubtotal;
+            double albumSubtotal = Double.parseDouble(this.mAlbumList.get(element).getAlbumSubtotal().substring(1));
+            mFinalAlbumSubtotal += albumSubtotal;
         }
 
-        checkoutIntent.putExtra(ALBUM_SUBTOTAL, String.format("$%.2f", finalAlbumSubtotal));
-        checkoutIntent.putExtra(SHIPPING_TOTAL, String.format("$%.2f", shippingTotal));
+        checkoutIntent.putExtra(ALBUM_SUBTOTAL, String.format("$%.2f", mFinalAlbumSubtotal));
+        checkoutIntent.putExtra(SHIPPING_TOTAL, String.format("$%.2f", mShippingTotal));
 
         startActivity(checkoutIntent);
 

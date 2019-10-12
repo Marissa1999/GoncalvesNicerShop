@@ -18,22 +18,25 @@ import java.util.LinkedList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
-    private LinkedList<AlbumItem> albumList;
-    private LayoutInflater albumInflater;
-
+    //The tag to call the ProductAdapter class name when debugging code.
     private static final String ADAPTER_LOG_TAG = ProductAdapter.class.getSimpleName();
 
 
+    private LinkedList<AlbumItem> mAlbumList;
+    private LayoutInflater mAlbumInflater;
+
+
+
     ProductAdapter(Context context, LinkedList<AlbumItem> albumList) {
-        this.albumList = albumList;
-        this.albumInflater = LayoutInflater.from(context);
+        this.mAlbumList = albumList;
+        this.mAlbumInflater = LayoutInflater.from(context);
     }
 
 
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View albumItemView = albumInflater.inflate(R.layout.album_content, parent, false);
+        View albumItemView = mAlbumInflater.inflate(R.layout.album_content, parent, false);
         return new ProductViewHolder(albumItemView, this);
     }
 
@@ -41,51 +44,51 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position)
     {
-        holder.albumTitle.setText(albumList.get(position).getAlbumTitle());
-        holder.albumDescription.setText(albumList.get(position).getAlbumDescription());
-        holder.albumImage.setImageDrawable(albumList.get(position).getAlbumImage());
-        holder.albumPrice.setText(albumList.get(position).getAlbumPrice());
-        holder.albumQuantity.setText(albumList.get(position).getAlbumQuantity());
-        holder.albumSubtotal.setText(albumList.get(position).getAlbumSubtotal());
+        holder.mAlbumTitle.setText(mAlbumList.get(position).getAlbumTitle());
+        holder.mAlbumDescription.setText(mAlbumList.get(position).getAlbumDescription());
+        holder.mAlbumImage.setImageDrawable(mAlbumList.get(position).getAlbumImage());
+        holder.mAlbumPrice.setText(mAlbumList.get(position).getAlbumPrice());
+        holder.mAlbumQuantity.setText(mAlbumList.get(position).getAlbumQuantity());
+        holder.mAlbumSubtotal.setText(mAlbumList.get(position).getAlbumSubtotal());
     }
 
 
     @Override
     public int getItemCount() {
-        return this.albumList.size();
+        return this.mAlbumList.size();
     }
 
 
     public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
 
-        ProductAdapter adapter;
-        CardView album;
-        private TextView albumTitle;
-        private TextView albumDescription;
-        private ImageView albumImage;
-        private TextView albumPrice;
-        private TextView albumQuantity;
-        private TextView albumSubtotal;
-        private Button additionButton;
-        private Button subtractionButton;
+        ProductAdapter mAdapter;
+        CardView mAlbum;
+        private TextView mAlbumTitle;
+        private TextView mAlbumDescription;
+        private ImageView mAlbumImage;
+        private TextView mAlbumPrice;
+        private TextView mAlbumQuantity;
+        private TextView mAlbumSubtotal;
+        private Button mAdditionButton;
+        private Button mSubtractionButton;
 
 
 
         ProductViewHolder(@NonNull View albumItemView, ProductAdapter adapter) {
             super(albumItemView);
-            this.album = albumItemView.findViewById(R.id.album_content);
-            this.albumTitle = albumItemView.findViewById(R.id.album_title);
-            this.albumDescription = albumItemView.findViewById(R.id.album_description);
-            this.albumImage = albumItemView.findViewById(R.id.album_cover);
-            this.albumPrice = albumItemView.findViewById(R.id.album_price);
-            this.albumQuantity = albumItemView.findViewById(R.id.album_quantity);
-            this.albumSubtotal = albumItemView.findViewById(R.id.album_subtotal);
-            this.additionButton = albumItemView.findViewById(R.id.adding_button);
-            this.subtractionButton = albumItemView.findViewById(R.id.minus_button);
-            this.adapter = adapter;
-            this.additionButton.setOnClickListener(this);
-            this.subtractionButton.setOnClickListener(this);
+            this.mAlbum = albumItemView.findViewById(R.id.album_content);
+            this.mAlbumTitle = albumItemView.findViewById(R.id.album_title);
+            this.mAlbumDescription = albumItemView.findViewById(R.id.album_description);
+            this.mAlbumImage = albumItemView.findViewById(R.id.album_cover);
+            this.mAlbumPrice = albumItemView.findViewById(R.id.album_price);
+            this.mAlbumQuantity = albumItemView.findViewById(R.id.album_quantity);
+            this.mAlbumSubtotal = albumItemView.findViewById(R.id.album_subtotal);
+            this.mAdditionButton = albumItemView.findViewById(R.id.adding_button);
+            this.mSubtractionButton = albumItemView.findViewById(R.id.minus_button);
+            this.mAdapter = adapter;
+            this.mAdditionButton.setOnClickListener(this);
+            this.mSubtractionButton.setOnClickListener(this);
             albumItemView.setOnClickListener(this);
         }
 
@@ -99,7 +102,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 case R.id.adding_button:
                 {
                      int position = getLayoutPosition();
-                     AlbumItem product = albumList.get(position);
+                     AlbumItem product = mAlbumList.get(position);
                      int updatedAddedQuantity = Integer.parseInt(product.getAlbumQuantity()) + 1;
                      product.setAlbumQuantity(String.valueOf(updatedAddedQuantity));
 
@@ -109,11 +112,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                      double addedSubtotal = addedPrice * updatedAddedQuantity;
                      product.setAlbumSubtotal(String.format("$%.2f", addedSubtotal));
 
-                     if(this.albumQuantity != null)
-                        this.albumQuantity.setText(String.valueOf(updatedAddedQuantity));
+                     if(this.mAlbumQuantity != null)
+                        this.mAlbumQuantity.setText(String.valueOf(updatedAddedQuantity));
 
-                     if(this.albumSubtotal != null)
-                         this.albumSubtotal.setText(String.format("$%.2f", addedSubtotal));
+                     if(this.mAlbumSubtotal != null)
+                         this.mAlbumSubtotal.setText(String.format("$%.2f", addedSubtotal));
 
                     Log.d(ADAPTER_LOG_TAG, "Added " + product.getAlbumQuantity() + " " + product.getAlbumTitle() + " Album(s)");
                 }
@@ -123,7 +126,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 case R.id.minus_button:
                 {
                     int position = getLayoutPosition();
-                    AlbumItem product = albumList.get(position);
+                    AlbumItem product = mAlbumList.get(position);
                     int updatedSubtractedQuantity = Integer.parseInt(product.getAlbumQuantity()) - 1;
                     product.setAlbumQuantity(String.valueOf(updatedSubtractedQuantity));
 
@@ -139,11 +142,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     double subtractedSubtotal = subtractedPrice * updatedSubtractedQuantity;
                     product.setAlbumSubtotal(String.format("$%.2f", subtractedSubtotal));
 
-                    if(this.albumQuantity != null)
-                        this.albumQuantity.setText(String.valueOf(updatedSubtractedQuantity));
+                    if(this.mAlbumQuantity != null)
+                        this.mAlbumQuantity.setText(String.valueOf(updatedSubtractedQuantity));
 
-                    if(this.albumSubtotal != null)
-                        this.albumSubtotal.setText(String.format("$%.2f", subtractedSubtotal));
+                    if(this.mAlbumSubtotal != null)
+                        this.mAlbumSubtotal.setText(String.format("$%.2f", subtractedSubtotal));
 
                     Log.d(ADAPTER_LOG_TAG, "Subtracted " + product.getAlbumQuantity() + " " + product.getAlbumTitle() + " Album(s)");
                 }

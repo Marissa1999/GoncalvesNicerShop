@@ -9,12 +9,12 @@ public class AlbumItem {
     private static final String ALBUM_ITEM_TAG = AlbumItem.class.getSimpleName();
 
     //The main attributes for all album items in the RecyclerView.
-    private String albumTitle;
-    private String albumDescription;
-    private Drawable albumImage;
-    private String albumPrice;
-    private String albumQuantity;
-    private String albumSubtotal;
+    private String mAlbumTitle;
+    private String mAlbumDescription;
+    private Drawable mAlbumImage;
+    private String mAlbumPrice;
+    private String mAlbumQuantity;
+    private String mAlbumSubtotal;
 
 
     /**
@@ -28,12 +28,12 @@ public class AlbumItem {
      * @param albumSubtotal    The subtotal of the album.
      */
     public AlbumItem(String albumTitle, String albumDescription, Drawable albumImage, String albumPrice, String albumQuantity, String albumSubtotal) {
-        this.albumTitle = albumTitle;
-        this.albumDescription = albumDescription;
-        this.albumImage = albumImage;
-        this.albumPrice = albumPrice;
-        this.albumQuantity = albumQuantity;
-        this.albumSubtotal = albumSubtotal;
+        this.mAlbumTitle = albumTitle;
+        this.mAlbumDescription = albumDescription;
+        this.mAlbumImage = albumImage;
+        this.mAlbumPrice = albumPrice;
+        this.mAlbumQuantity = albumQuantity;
+        this.mAlbumSubtotal = albumSubtotal;
 
         Log.d(ALBUM_ITEM_TAG, "Initialized All Attributes for Each Album Item.");
     }
@@ -46,7 +46,7 @@ public class AlbumItem {
      */
     public String getAlbumTitle() {
         Log.d(ALBUM_ITEM_TAG, "Retrieved the Title of the Album.");
-        return albumTitle;
+        return this.mAlbumTitle;
     }
 
     /**
@@ -56,7 +56,7 @@ public class AlbumItem {
      */
     public String getAlbumDescription() {
         Log.d(ALBUM_ITEM_TAG, "Retrieved the Description of the Album.");
-        return albumDescription;
+        return this.mAlbumDescription;
     }
 
     /**
@@ -66,7 +66,7 @@ public class AlbumItem {
      */
     public Drawable getAlbumImage() {
         Log.d(ALBUM_ITEM_TAG, "Retrieved the Album Cover Image.");
-        return albumImage;
+        return this.mAlbumImage;
     }
 
     /**
@@ -76,7 +76,7 @@ public class AlbumItem {
      */
     public String getAlbumPrice() {
         Log.d(ALBUM_ITEM_TAG, "Retrieved the Price of the Album.");
-        return albumPrice;
+        return this.mAlbumPrice;
     }
 
     /**
@@ -86,7 +86,7 @@ public class AlbumItem {
      */
     public String getAlbumQuantity() {
         Log.d(ALBUM_ITEM_TAG, "Retrieved the Quantity of the Album.");
-        return albumQuantity;
+        return this.mAlbumQuantity;
     }
 
     /**
@@ -96,7 +96,7 @@ public class AlbumItem {
      */
     public void setAlbumQuantity(String albumQuantity) {
         Log.d(ALBUM_ITEM_TAG, "Initialized the Quantity of the Album.");
-        this.albumQuantity = albumQuantity;
+        this.mAlbumQuantity = albumQuantity;
     }
 
     /**
@@ -106,7 +106,7 @@ public class AlbumItem {
      */
     public String getAlbumSubtotal() {
         Log.d(ALBUM_ITEM_TAG, "Retrieved the Subtotal of the Album.");
-        return albumSubtotal;
+        return this.mAlbumSubtotal;
     }
 
     /**
@@ -116,6 +116,6 @@ public class AlbumItem {
      */
     public void setAlbumSubtotal(String albumSubtotal) {
         Log.d(ALBUM_ITEM_TAG, "Initialized the Subtotal of the Album.");
-        this.albumSubtotal = albumSubtotal;
+        this.mAlbumSubtotal = albumSubtotal;
     }
 }

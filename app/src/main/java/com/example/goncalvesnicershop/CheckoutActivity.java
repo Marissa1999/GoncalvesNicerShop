@@ -7,13 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
-public class CheckoutActivity extends AppCompatActivity
-{
+public class CheckoutActivity extends AppCompatActivity {
 
-    //The tag to call the CheckoutActivity class name when debugging code
+    //The tag to call the CheckoutActivity class name when debugging code.
     private static final String CHECKOUT_LOG_TAG = CheckoutActivity.class.getSimpleName();
 
-    //These variables calculate the monetary totals of the application.
+    //These variables calculate the final monetary totals of the application.
     protected double finalAlbumSubtotal = 0.00;
     protected double finalShippingTotal = 0.00;
     protected double finalSubtotal = 0.00;
