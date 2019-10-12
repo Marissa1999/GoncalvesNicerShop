@@ -278,43 +278,69 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     /**
-     * @param savedInstanceState
+     * Stores the data before the activity is being paused.
+     *
+     * @param savedInstanceState The Bundle values for displaying all data on the device.
      */
     public void onSaveInstanceState(Bundle savedInstanceState) {
+
+        //Launch the method when the activity's data needs to be stored before the state changes..
         super.onSaveInstanceState(savedInstanceState);
 
+        //Create an array list to save the data.
         ArrayList<String> savedAlbumList = new ArrayList<>();
 
+        //For every index of each element in the list of albums, complete the following procedure:
         for (int retrievedElement = 0; retrievedElement < mAlbumList.size(); retrievedElement++) {
+
+            //Add the retrieved quantity and subtotal values to the saved album list.
             savedAlbumList.add(mAlbumList.get(retrievedElement).getAlbumQuantity());
             savedAlbumList.add(mAlbumList.get(retrievedElement).getAlbumSubtotal());
 
-
-            Log.d("Saving the Quantity and Subtotal from the " + retrievedElement + " Element.", savedAlbumList.get(retrievedElement));
+            //Print a log message to ensure onSaveInstanceState method's functionality.
+            Log.d("Saved the Quantity and Subtotal from the " + retrievedElement + "th Element.", savedAlbumList.get(retrievedElement));
         }
 
+        //Save the album list when the activity state changes.
         savedInstanceState.putStringArrayList("Album ArrayList", savedAlbumList);
     }
 
 
     /**
-     * @param savedInstanceState
+     * Retrieves the data back when the activity is resumed again.
+     *
+     * @param savedInstanceState The Bundle values for displaying all data on the device.
      */
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
+
+        //Launch the method when the activity's data needs to be restored after the state changes.
         super.onRestoreInstanceState(savedInstanceState);
 
+        //Create an array list to restore the data.
         ArrayList<String> restoredAlbumList = savedInstanceState.getStringArrayList("Album ArrayList");
 
+        //For every index of each retrieved element and every second setter element in the list of albums, complete the following procedure:
         for (int retrievedElement = 0, setterElement = 0; retrievedElement < mAlbumList.size(); retrievedElement++, setterElement += 2) {
+
+            //When the restored album list is not empty.
             assert restoredAlbumList != null;
+
+            //Get the quantity data from the album list and set the quantity based on the restored album list.
             mAlbumList.get(retrievedElement).setAlbumQuantity(restoredAlbumList.get(setterElement));
-            Log.d("Restoring the Quantity and Subtotal from the " + retrievedElement + "th Element.", restoredAlbumList.get(retrievedElement));
+
+            //Print a log message to ensure onRestoreInstanceState method's functionality.
+            Log.d("Restored the Quantity from the " + retrievedElement + "th Element.", restoredAlbumList.get(retrievedElement));
         }
 
+        //For every index of each retrieved element and every second setter element in the list of albums, complete the following procedure:
         for (int retrievedElement = 0, setterElement = 1; retrievedElement < mAlbumList.size(); retrievedElement++, setterElement += 2) {
+
+            //Get the subtotal data from the album list and set the subtotal based on the restored album list.
             mAlbumList.get(retrievedElement).setAlbumSubtotal(restoredAlbumList.get(setterElement));
-            Log.d("Restoring the Quantity and Subtotal from the " + retrievedElement + "th Element.", restoredAlbumList.get(retrievedElement));
+
+            //Print a log message to ensure onRestoreInstanceState method's functionality.
+            Log.d("Restored the Subtotal from the " + retrievedElement + "th Element.", restoredAlbumList.get(retrievedElement));
         }
 
 
@@ -322,8 +348,10 @@ public class MenuActivity extends AppCompatActivity {
 
 
     /**
-     * @param menu
-     * @return
+     * Initializes the album condition contents of the options menu.
+     *
+     * @param menu The options menu where album condition items are placed.
+     * @return The boolean value indicating whether the menu has been created.
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -332,36 +360,44 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     /**
-     * @param item
-     * @return
+     * Determines whether a menu item has been selected.
+     *
+     * @param item The menu condition item that was selected.
+     * @return The boolean value indicating whether the menu has been processed or not.
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        //According to the menu item's ID,
         switch (item.getItemId()) {
-            case R.id.new_condition_option:
+
+            //If the new condition option has been selected, proceed with the following step.
+            case R.id.new_condition_option: {
+
+                //Display
                 Toast.makeText(getApplicationContext(), R.string.action_new_option_message, Toast.LENGTH_SHORT).show();
                 return true;
-
-            case R.id.like_new_condition_option:
+            }
+            case R.id.like_new_condition_option: {
                 Toast.makeText(getApplicationContext(), R.string.action_like_new_message, Toast.LENGTH_SHORT).show();
                 return true;
-
-            case R.id.very_good_condition_option:
+            }
+            case R.id.very_good_condition_option: {
                 Toast.makeText(getApplicationContext(), R.string.action_very_good_message, Toast.LENGTH_SHORT).show();
                 return true;
-
-            case R.id.good_condition_option:
+            }
+            case R.id.good_condition_option: {
                 Toast.makeText(getApplicationContext(), R.string.action_good_message, Toast.LENGTH_SHORT).show();
                 return true;
-
-            case R.id.acceptable_condition_option:
+            }
+            case R.id.acceptable_condition_option: {
                 Toast.makeText(getApplicationContext(), R.string.action_acceptable_message, Toast.LENGTH_SHORT).show();
                 return true;
-
+            }
         }
-
-        return super.onOptionsItemSelected(item);
+            return super.onOptionsItemSelected(item);
     }
+
 
 
     /**
@@ -375,6 +411,7 @@ public class MenuActivity extends AppCompatActivity {
 
         //For every element in the album list, proceed with the following procedure,
         for (int element = 0; element < this.mAlbumList.size(); element++) {
+
             //Calculate the album subtotal of the element by converting the item's String subtotal to a Double value.
             double albumSubtotal = Double.parseDouble(this.mAlbumList.get(element).getAlbumSubtotal().substring(1));
 

@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         //Start the MenuActivity class.
         startActivity(menuIntent);
 
-        //Create a Toast message which responds to the MainActivity's button.
+        //Display a Toast message which responds to the MainActivity's button.
         String launchingMainMessage = "Welcome to My Music Collection!";
         Toast toastMainMessage = Toast.makeText(this, launchingMainMessage, Toast.LENGTH_SHORT);
         toastMainMessage.show();
