@@ -28,7 +28,7 @@ public class MenuActivity extends AppCompatActivity {
     public static final String ALBUM_SUBTOTAL = "com.example.android.goncalvesnicershop.album.SUBTOTAL";
     public static final String SHIPPING_TOTAL = "com.example.android.goncalvesnicershop.shipping.TOTAL";
 
-    //These variables calculate the monetary totals of the application.
+    //These member variables calculate the monetary totals of the application.
     private double mFinalAlbumSubtotal = 0.00;
     private double mShippingTotal = 0.00;
 

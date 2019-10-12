@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String MAIN_LOG_TAG = MainActivity.class.getSimpleName();
 
     /**
-     * Start the MainActivity class with this auto-implemented method.
+     * Starts the MainActivity class with this auto-implemented method.
      *
      * @param savedInstanceState The Bundle value for displaying all data on the device.
      */
@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     * Launch the MenuActivity class, which is supposed to be the following activity.
+     * Launches the MenuActivity class, which is supposed to be the following activity.
      *
-     * @param view The view element that has been triggered.
+     * @param view The View element that has been triggered.
      */
     public void launchMenuActivity(View view) {
 

@@ -8,7 +8,7 @@ public class AlbumItem {
     //The tag to call the AlbumItem class name when debugging code.
     private static final String ALBUM_ITEM_TAG = AlbumItem.class.getSimpleName();
 
-    //The main attributes for all album items in the RecyclerView.
+    //The member attributes for all album items in the RecyclerView.
     private String mAlbumTitle;
     private String mAlbumDescription;
     private Drawable mAlbumImage;
@@ -18,7 +18,7 @@ public class AlbumItem {
 
 
     /**
-     * The main constructor that initializes the main attributes for all album items.
+     * Initializes the main attributes for all album items.
      *
      * @param albumTitle       The title of the album.
      * @param albumDescription The description of the album.
