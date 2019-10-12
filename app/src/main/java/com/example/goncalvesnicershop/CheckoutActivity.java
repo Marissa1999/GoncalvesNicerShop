@@ -24,7 +24,7 @@ public class CheckoutActivity extends AppCompatActivity {
     /**
      * Start the CheckoutActivity class with this auto-implemented method and calculate the final monetary totals of the application.
      *
-     * @param savedInstanceState The Bundle value for displaying all data on the device.
+     * @param savedInstanceState The Bundle values for displaying all data on the device.
      */
     @SuppressLint("DefaultLocale")
     @Override
@@ -38,7 +38,7 @@ public class CheckoutActivity extends AppCompatActivity {
         Intent menuIntent = getIntent();
 
         //Get the album subtotal value from the activity tag in the MenuActivity class.
-        String finalAlbumSubtotalText = menuIntent.getStringExtra(MenuActivity.ALBUM_SUBTOTAL);
+        String finalAlbumSubtotalText = menuIntent.getStringExtra(MenuActivity.TOTAL_ALBUM_SUBTOTAL);
         this.finalAlbumSubtotal = Double.parseDouble(finalAlbumSubtotalText.substring(1));
 
         //Get the shipping total value from the activity tag in the MenuActivity class.
@@ -81,7 +81,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
 
         //Print a log message to ensure onCreate method's functionality.
-        Log.d(CHECKOUT_LOG_TAG, "Started CheckoutActivity and Transferred Values from MenuActivity");
+        Log.d(CHECKOUT_LOG_TAG, "Started CheckoutActivity and Transferred Needed Values from MenuActivity");
 
     }
 

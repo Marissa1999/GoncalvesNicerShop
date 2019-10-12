@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Starts the MainActivity class with this auto-implemented method.
      *
-     * @param savedInstanceState The Bundle value for displaying all data on the device.
+     * @param savedInstanceState The Bundle values for displaying all data on the device.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

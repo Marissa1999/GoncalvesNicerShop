@@ -35,6 +35,7 @@ public class AlbumItem {
         this.mAlbumQuantity = albumQuantity;
         this.mAlbumSubtotal = albumSubtotal;
 
+        //
         Log.d(ALBUM_ITEM_TAG, "Initialized All Attributes for Each Album Item.");
     }
 

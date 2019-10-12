@@ -29,7 +29,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     /**
      * Receives a context and a list of albums.
-     * @param context The context of the album content layout file.
+     *
+     * @param context   The context of the album content layout file.
      * @param albumList The album list to set the member attributes for each card.
      */
     ProductAdapter(Context context, LinkedList<AlbumItem> albumList) {
@@ -39,7 +40,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     /**
      * Inflates the item layout and returns a ProductViewHolder object.
-     * @param parent The ViewGroup which the new View element will be added after finding its position.
+     *
+     * @param parent   The ViewGroup which the new View element will be added after finding its position.
      * @param viewType The view type of the new View element.
      * @return The ProductViewHolder that holds the View based on the view type.
      */
@@ -52,7 +54,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     /**
      * Sets the ProductViewHolder attributes based on the position of the item.
-     * @param holder The ProductViewHolder being updated to determine the contents at a position.
+     *
+     * @param holder   The ProductViewHolder being updated to determine the contents at a position.
      * @param position The position of the album item in the ProductAdapter's data set.
      */
     @Override
@@ -67,6 +70,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     /**
      * Returns the size of the data.
+     *
      * @return The size of the album list.
      */
     @Override
@@ -91,8 +95,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         /**
          * Initializes the ProductViewHolder based on the view of the item as a parameter.
+         *
          * @param albumItemView The View of the specific album item.
-         * @param adapter The ProductAdapter that holds all the contents of the album in place.
+         * @param adapter       The ProductAdapter that holds all the contents of the album in place.
          */
         ProductViewHolder(@NonNull View albumItemView, ProductAdapter adapter) {
             super(albumItemView);
@@ -113,6 +118,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         /**
          * Identifies actions based on the button that was clicked.
+         *
          * @param view The View of the clicked button.
          */
         @SuppressLint({"SetTextI18n", "DefaultLocale"})
