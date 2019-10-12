@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 public class AlbumItem
 {
 
+    //
     private String albumTitle;
     private String albumDescription;
     private Drawable albumImage;

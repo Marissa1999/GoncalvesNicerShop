@@ -17,6 +17,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.goncalvesnicershop.model.AlbumItem;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class MenuActivity extends AppCompatActivity {
@@ -25,9 +27,6 @@ public class MenuActivity extends AppCompatActivity {
     private static final String MENU_LOG_TAG = MenuActivity.class.getSimpleName();
     public static final String FINAL_SUBTOTAL = "com.example.android.goncalvesnicershop.final.SUBTOTAL";
     public static final String SHIPPING_TOTAL = "com.example.android.goncalvesnicershop.shipping.TOTAL";
-
-    private TextView albumQuantity;
-    private TextView albumSubtotal;
 
     private double finalSubtotal = 0.00;
     private double shippingTotal = 0.00;
@@ -180,28 +179,23 @@ public class MenuActivity extends AppCompatActivity {
         this.RecyclerView.setAdapter(this.Adapter);
         this.RecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        this.albumQuantity = findViewById(R.id.album_quantity);
-        this.albumSubtotal = findViewById(R.id.album_subtotal);
+    }
 
 
-        if (savedInstanceState != null)
+    public void onSaveInstanceState (Bundle savedInstanceState)
+    {
+        super.onSaveInstanceState(savedInstanceState);
+
+        ArrayList<String> savedAlbumList = new ArrayList<>();
+
+        for(int retrievedElement = 0; retrievedElement < albumList.size(); retrievedElement++)
         {
-            String quantity = savedInstanceState.getString(String.valueOf(R.id.album_quantity));
-            String subtotal = savedInstanceState.getString(String.valueOf(R.id.album_subtotal));
-
-
-            if(this.albumQuantity != null)
-            {
-                this.albumQuantity.setText(quantity);
-            }
-
-            if(this.albumSubtotal != null)
-            {
-                this.albumSubtotal.setText(subtotal);
-            }
-
+            savedAlbumList.add(albumList.get(retrievedElement).getAlbumQuantity());
+            savedAlbumList.add(albumList.get(retrievedElement).getAlbumSubtotal());
+            Log.d("Saving the quantity and subtotal from the " + retrievedElement + "element", savedAlbumList.get(retrievedElement));
         }
 
+        savedInstanceState.putStringArrayList("Album ArrayList", savedAlbumList);
     }
 
 
@@ -210,54 +204,58 @@ public class MenuActivity extends AppCompatActivity {
     {
         super.onRestoreInstanceState(savedInstanceState);
 
-        if(savedInstanceState != null)
+        ArrayList<String> restoredAlbumList = savedInstanceState.getStringArrayList("Album ArrayList");
+
+        for(int retrievedElement = 0, setterElement = 0; retrievedElement < albumList.size(); retrievedElement++, setterElement += 2)
         {
-            String quantity = savedInstanceState.getString(String.valueOf(this.albumQuantity));
-            String subtotal = savedInstanceState.getString(String.valueOf(this.albumSubtotal));
-
-            if(quantity != null)
-            {
-                this.albumQuantity.setText(quantity);
-            }
-
-            if(subtotal != null)
-            {
-                this.albumSubtotal.setText(subtotal);
-            }
-
+            albumList.get(retrievedElement).setAlbumQuantity(restoredAlbumList.get(setterElement));
         }
+
+        for(int retrievedElement = 0, setterElement = 1; retrievedElement < albumList.size(); retrievedElement++, setterElement += 2)
+        {
+            albumList.get(retrievedElement).setAlbumSubtotal(restoredAlbumList.get(setterElement));
+        }
+
 
     }
 
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
             case R.id.new_condition_option:
                 Toast.makeText(getApplicationContext(), R.string.action_new_option_message , Toast.LENGTH_SHORT).show();
                 return true;
+
             case R.id.like_new_condition_option:
                 Toast.makeText(getApplicationContext(), R.string.action_like_new_message, Toast.LENGTH_SHORT).show();
                 return true;
+
             case R.id.very_good_condition_option:
                 Toast.makeText(getApplicationContext(), R.string.action_very_good_message , Toast.LENGTH_SHORT).show();
                 return true;
+
             case R.id.good_condition_option:
                 Toast.makeText(getApplicationContext(), R.string.action_good_message , Toast.LENGTH_SHORT).show();
                 return true;
+
             case R.id.acceptable_condition_option:
                 Toast.makeText(getApplicationContext(), R.string.action_acceptable_message, Toast.LENGTH_SHORT).show();
                 return true;
 
         }
+
         return super.onOptionsItemSelected(item);
     }
 

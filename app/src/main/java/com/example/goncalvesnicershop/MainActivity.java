@@ -9,39 +9,43 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    //The tag to call the MainActivity class name when debugging code
+    //The tag to call the MainActivity class name when debugging code.
     private static final String MAIN_LOG_TAG = MainActivity.class.getSimpleName();
 
-    /*
-    Start the MainActivity class with this auto-implemented method
-    */
+    /**
+     * Start the MainActivity class with this auto-implemented method.
+     * @param savedInstanceState The return value for displaying all data on the device.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        //Launch the MainActivity class and display the design on the screen
+        //Launch the MainActivity class and display the design on the screen.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Print a log message to ensure onCreate method's functionality
+        //Print a log message to ensure onCreate method's functionality.
         Log.d(MAIN_LOG_TAG, "Started MainActivity");
     }
 
-    /*
-    Launch the MenuActivity class, which is supposed to be the following activity
-    */
+
+    /**
+     * Launch the MenuActivity class, which is supposed to be the following activity.
+     * @param view The view element that has been triggered.
+     */
     public void launchMenuActivity(View view) {
 
-        //Create an intent to start the following activity, which is MenuActivity class
+        //Create an intent to start the following activity, which is MenuActivity class.
         Intent menuIntent = new Intent(this, MenuActivity.class);
 
-        //Start the MenuActivity class
+        //Start the MenuActivity class.
         startActivity(menuIntent);
 
-        String launchingMainMessage = "Button clicked!";
+        //Create a Toast message which responds to the MainActivity's button.
+        String launchingMainMessage = "Welcome to My Music Collection!";
         Toast toastMainMessage = Toast.makeText(this, launchingMainMessage, Toast.LENGTH_SHORT);
         toastMainMessage.show();
 
-        //Print a log message to ensure launchMenuActivity method's functionality
+        //Print a log message to ensure launchMenuActivity method's functionality.
         Log.d(MAIN_LOG_TAG, "Launched the MenuActivity with Clicked Button");
     }
 
