@@ -24,12 +24,12 @@ public class MenuActivity extends AppCompatActivity {
     //The tag to call the MenuActivity class name when debugging code.
     private static final String MENU_LOG_TAG = MenuActivity.class.getSimpleName();
 
-
+    //These tags allow the monetary totals to be transferred to the CheckoutActivity class.
     public static final String FINAL_SUBTOTAL = "com.example.android.goncalvesnicershop.final.SUBTOTAL";
     public static final String SHIPPING_TOTAL = "com.example.android.goncalvesnicershop.shipping.TOTAL";
 
 
-    private double finalSubtotal = 0.00;
+    private double finalAlbumSubtotal = 0.00;
     private double shippingTotal = 0.00;
 
 
@@ -274,10 +274,10 @@ public class MenuActivity extends AppCompatActivity {
         for (int element = 0; element < this.albumList.size(); element++)
         {
             double albumSubtotal = Double.parseDouble(this.albumList.get(element).getAlbumSubtotal().substring(1));
-            finalSubtotal += albumSubtotal;
+            finalAlbumSubtotal += albumSubtotal;
         }
 
-        checkoutIntent.putExtra(FINAL_SUBTOTAL, String.format("$%.2f", finalSubtotal));
+        checkoutIntent.putExtra(FINAL_SUBTOTAL, String.format("$%.2f", finalAlbumSubtotal));
         checkoutIntent.putExtra(SHIPPING_TOTAL, String.format("$%.2f", shippingTotal));
 
         startActivity(checkoutIntent);

@@ -12,7 +12,7 @@ public class CheckoutActivity extends AppCompatActivity {
     //The tag to call the CheckoutActivity class name when debugging code
     private static final String CHECKOUT_LOG_TAG = CheckoutActivity.class.getSimpleName();
 
-
+    //These tags set the variable names that will be transferred to the CheckoutActivity class
     protected double finalAlbumSubtotal = 0.00;
     protected double finalShippingTotal = 0.00;
     protected double finalSubtotal = 0.00;
@@ -21,7 +21,7 @@ public class CheckoutActivity extends AppCompatActivity {
     protected double finalTotal = 0.00;
 
     /*
-    Start the CheckoutActivity class with this auto-implemented method and extract monetary values from the MenuActivity class
+     Start the CheckoutActivity class with this auto-implemented method and extract monetary values from the MenuActivity class
     */
     @SuppressLint("DefaultLocale")
     @Override
