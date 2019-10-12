@@ -117,7 +117,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         }
 
         /**
-         * Identifies actions based on the button that was clicked.
+         * Identifies actions based on the adding/subtracting button that was clicked.
          *
          * @param view The View of the clicked button.
          */

@@ -15,7 +15,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
 import com.example.goncalvesnicershop.model.AlbumItem;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -39,7 +41,8 @@ public class MenuActivity extends AppCompatActivity {
 
 
     /**
-     * Starts the MainActivity class with this auto-implemented method.
+     * Starts the MainActivity class with this auto-implemented method, creates the RecyclerView and triggers buttons.
+     *
      * @param savedInstanceState The Bundle values for displaying all data on the device.
      */
     @Override
@@ -58,46 +61,56 @@ public class MenuActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
 
             /**
-             * Identifies actions based on the radio button that was clicked.
+             * Identifies actions based on the clicked floating action button.
              *
              * @param view The View of the clicked radio button.
              */
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
 
-                final String[] shippingOptions = {"Express ($50)","Regular ($10)", "No Hurry (No Cost)"};
+                //Create a String array of options for shipping.
+                final String[] shippingOptions = {"Express ($50)", "Regular ($10)", "No Hurry (No Cost)"};
 
+                //Create an alert dialog, when the floating action button is triggered.
                 AlertDialog.Builder builder = new AlertDialog.Builder(MenuActivity.this);
+
+                //Set the title of the alert dialog.
                 builder.setTitle("Choose a Shipping Option");
 
+                //Allow none of the items to be checked when triggering the dialog.
                 int checkedItem = -1;
+
+                //Create radio buttons for the application user to choose a shipping option.
                 builder.setSingleChoiceItems(shippingOptions, checkedItem, new DialogInterface.OnClickListener() {
+
                     /**
-                     *
-                     * @param dialog
-                     * @param position
+                     * Presents a selection of delivery methods.
+                     * @param dialog The DialogInterface that received the radio button click.
+                     * @param position The radio button that was clicked.
                      */
                     @Override
                     public void onClick(DialogInterface dialog, int position) {
 
-                        switch(position)
-                        {
-                            case 0:
-                            {
-                                mShippingTotal += 50.00;
+                        //Based on the radio button's position,
+                        switch (position) {
+                            //If the first radio button was clicked, proceed with the following step.
+                            case 0: {
+                                //Set the shipping total to $50.00.
+                                mShippingTotal = 50.00;
                             }
                             break;
 
-                            case 1:
-                            {
-                                mShippingTotal += 10.00;
+                            //If the second radio button was clicked, proceed with the following step.
+                            case 1: {
+                                //Set the shipping total to $10.00.
+                                mShippingTotal = 10.00;
                             }
                             break;
 
-                            case 2:
-                            {
-                                mShippingTotal += 0.00;
+                            //If the third radio button was clicked, proceed with the following step.
+                            case 2: {
+                                //Set the shipping total to $0.00.
+                                mShippingTotal = 0.00;
                             }
                             break;
                         }
@@ -105,33 +118,48 @@ public class MenuActivity extends AppCompatActivity {
                     }
                 });
 
+                //Create a button that agrees and proceeds to checkout with the radio button selection.
                 builder.setPositiveButton("Proceed to Checkout", new DialogInterface.OnClickListener() {
+
                     /**
-                     *
-                     * @param dialog
-                     * @param position
+                     * Proceeds to checkout by calling the launchCheckoutActivity method.
+                     * @param dialog The DialogInterface that received the button click.
+                     * @param position The button that was clicked.
                      */
                     @Override
                     public void onClick(DialogInterface dialog, int position) {
+
+                        //Call the method to calculate the monetary totals and launch the CheckoutActivity class.
                         launchCheckoutActivity();
+
+                        //Remove the dialog when the button is triggered.
                         dialog.dismiss();
                     }
                 });
 
+                //Create a button cancels the checkout and sets the shipping total back to $0.00.
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
                     /**
-                     *
-                     * @param dialog
-                     * @param position
+                     * Cancels the checkout and initializes the shipping total back to $0.00.
+                     * @param dialog The DialogInterface that received the button click.
+                     * @param position The button that was clicked.
                      */
                     @Override
                     public void onClick(DialogInterface dialog, int position) {
-                        mShippingTotal -= mShippingTotal;
+
+                        //Set the shipping total to $0.00.
+                        mShippingTotal = 0.00;
+
+                        //Remove the dialog when the button is triggered.
                         dialog.dismiss();
                     }
                 });
 
+                //Create the dialog based on the items listed in the builder variable.
                 AlertDialog dialog = builder.create();
+
+                //Show the dialog in the application.
                 dialog.show();
             }
 
@@ -142,7 +170,7 @@ public class MenuActivity extends AppCompatActivity {
           Create 10 unique album item objects to store in the data set.
          */
 
-        //Creating the first album called "Escape" by Journey.
+        //Create the first album called "Escape" by Journey.
         AlbumItem albumItem1 = new AlbumItem(getResources().getString(R.string.album_title_1),
                 getResources().getString(R.string.album_description_1),
                 getResources().getDrawable(R.drawable.journey_escape),
@@ -150,7 +178,7 @@ public class MenuActivity extends AppCompatActivity {
                 getResources().getString(R.string.album_quantity_1),
                 getResources().getString(R.string.album_subtotal_1));
 
-        //Creating the second album called "Tommy" by The Who.
+        //Create the second album called "Tommy" by The Who.
         AlbumItem albumItem2 = new AlbumItem(getResources().getString(R.string.album_title_2),
                 getResources().getString(R.string.album_description_2),
                 getResources().getDrawable(R.drawable.the_who_tommy),
@@ -158,7 +186,7 @@ public class MenuActivity extends AppCompatActivity {
                 getResources().getString(R.string.album_quantity_2),
                 getResources().getString(R.string.album_subtotal_2));
 
-
+        //Create the third album called "Ten" by Pearl Jam.
         AlbumItem albumItem3 = new AlbumItem(getResources().getString(R.string.album_title_3),
                 getResources().getString(R.string.album_description_3),
                 getResources().getDrawable(R.drawable.pearl_jam_ten),
@@ -166,7 +194,7 @@ public class MenuActivity extends AppCompatActivity {
                 getResources().getString(R.string.album_quantity_3),
                 getResources().getString(R.string.album_subtotal_3));
 
-
+        //Create the fourth album called "Nevermind" by Nirvana.
         AlbumItem albumItem4 = new AlbumItem(getResources().getString(R.string.album_title_4),
                 getResources().getString(R.string.album_description_4),
                 getResources().getDrawable(R.drawable.nirvana_nevermind),
@@ -174,7 +202,7 @@ public class MenuActivity extends AppCompatActivity {
                 getResources().getString(R.string.album_quantity_4),
                 getResources().getString(R.string.album_subtotal_4));
 
-
+        //Create the fifth album called "1984" by Van Halen.
         AlbumItem albumItem5 = new AlbumItem(getResources().getString(R.string.album_title_5),
                 getResources().getString(R.string.album_description_5),
                 getResources().getDrawable(R.drawable.van_halen_1984),
@@ -182,7 +210,7 @@ public class MenuActivity extends AppCompatActivity {
                 getResources().getString(R.string.album_quantity_5),
                 getResources().getString(R.string.album_subtotal_5));
 
-
+        //Create the sixth album called "The Joshua Tree" by U2.
         AlbumItem albumItem6 = new AlbumItem(getResources().getString(R.string.album_title_6),
                 getResources().getString(R.string.album_description_6),
                 getResources().getDrawable(R.drawable.u2_joshua_tree),
@@ -190,7 +218,7 @@ public class MenuActivity extends AppCompatActivity {
                 getResources().getString(R.string.album_quantity_6),
                 getResources().getString(R.string.album_subtotal_6));
 
-
+        //Create the seventh album called "High Voltage" by AC/DC.
         AlbumItem albumItem7 = new AlbumItem(getResources().getString(R.string.album_title_7),
                 getResources().getString(R.string.album_description_7),
                 getResources().getDrawable(R.drawable.ac_dc_high_voltage),
@@ -198,7 +226,7 @@ public class MenuActivity extends AppCompatActivity {
                 getResources().getString(R.string.album_quantity_7),
                 getResources().getString(R.string.album_subtotal_7));
 
-
+        //Create the eighth album called "Fragile" by Yes.
         AlbumItem albumItem8 = new AlbumItem(getResources().getString(R.string.album_title_8),
                 getResources().getString(R.string.album_description_8),
                 getResources().getDrawable(R.drawable.yes_fragile),
@@ -206,7 +234,7 @@ public class MenuActivity extends AppCompatActivity {
                 getResources().getString(R.string.album_quantity_8),
                 getResources().getString(R.string.album_subtotal_8));
 
-
+        //Create the ninth album called "Murmur" by R.E.M.
         AlbumItem albumItem9 = new AlbumItem(getResources().getString(R.string.album_title_9),
                 getResources().getString(R.string.album_description_9),
                 getResources().getDrawable(R.drawable.rem_murmur),
@@ -214,7 +242,7 @@ public class MenuActivity extends AppCompatActivity {
                 getResources().getString(R.string.album_quantity_9),
                 getResources().getString(R.string.album_subtotal_9));
 
-
+        //Create the tenth album called "The Wall" by Pink Floyd.
         AlbumItem albumItem10 = new AlbumItem(getResources().getString(R.string.album_title_10),
                 getResources().getString(R.string.album_description_10),
                 getResources().getDrawable(R.drawable.pink_floyd_the_wall),
@@ -223,6 +251,7 @@ public class MenuActivity extends AppCompatActivity {
                 getResources().getString(R.string.album_subtotal_10));
 
 
+        //Add all album items to the data set list.
         this.mAlbumList.addLast(albumItem1);
         this.mAlbumList.addLast(albumItem2);
         this.mAlbumList.addLast(albumItem3);
@@ -234,27 +263,33 @@ public class MenuActivity extends AppCompatActivity {
         this.mAlbumList.addLast(albumItem9);
         this.mAlbumList.addLast(albumItem10);
 
+        //Retrieve the instance of the RecyclerView.
         this.mRecyclerView = findViewById(R.id.recyclerView);
+
+        //Create an adapter and supply the data to be displayed.
         this.mAdapter = new ProductAdapter(this, this.mAlbumList);
+
+        //Set the adapter of the RecyclerView.
         this.mRecyclerView.setAdapter(this.mAdapter);
+
+        //Set the LayoutManager of the RecyclerView.
         this.mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
     /**
-     *
      * @param savedInstanceState
      */
-    public void onSaveInstanceState (Bundle savedInstanceState)
-    {
+    public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
 
         ArrayList<String> savedAlbumList = new ArrayList<>();
 
-        for(int retrievedElement = 0; retrievedElement < mAlbumList.size(); retrievedElement++)
-        {
+        for (int retrievedElement = 0; retrievedElement < mAlbumList.size(); retrievedElement++) {
             savedAlbumList.add(mAlbumList.get(retrievedElement).getAlbumQuantity());
             savedAlbumList.add(mAlbumList.get(retrievedElement).getAlbumSubtotal());
+
+
             Log.d("Saving the Quantity and Subtotal from the " + retrievedElement + " Element.", savedAlbumList.get(retrievedElement));
         }
 
@@ -263,25 +298,21 @@ public class MenuActivity extends AppCompatActivity {
 
 
     /**
-     *
      * @param savedInstanceState
      */
     @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState)
-    {
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
         ArrayList<String> restoredAlbumList = savedInstanceState.getStringArrayList("Album ArrayList");
 
-        for(int retrievedElement = 0, setterElement = 0; retrievedElement < mAlbumList.size(); retrievedElement++, setterElement += 2)
-        {
+        for (int retrievedElement = 0, setterElement = 0; retrievedElement < mAlbumList.size(); retrievedElement++, setterElement += 2) {
             assert restoredAlbumList != null;
             mAlbumList.get(retrievedElement).setAlbumQuantity(restoredAlbumList.get(setterElement));
             Log.d("Restoring the Quantity and Subtotal from the " + retrievedElement + "th Element.", restoredAlbumList.get(retrievedElement));
         }
 
-        for(int retrievedElement = 0, setterElement = 1; retrievedElement < mAlbumList.size(); retrievedElement++, setterElement += 2)
-        {
+        for (int retrievedElement = 0, setterElement = 1; retrievedElement < mAlbumList.size(); retrievedElement++, setterElement += 2) {
             mAlbumList.get(retrievedElement).setAlbumSubtotal(restoredAlbumList.get(setterElement));
             Log.d("Restoring the Quantity and Subtotal from the " + retrievedElement + "th Element.", restoredAlbumList.get(retrievedElement));
         }
@@ -291,29 +322,24 @@ public class MenuActivity extends AppCompatActivity {
 
 
     /**
-     *
      * @param menu
      * @return
      */
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     /**
-     *
      * @param item
      * @return
      */
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch (item.getItemId())
-        {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.new_condition_option:
-                Toast.makeText(getApplicationContext(), R.string.action_new_option_message , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.action_new_option_message, Toast.LENGTH_SHORT).show();
                 return true;
 
             case R.id.like_new_condition_option:
@@ -321,11 +347,11 @@ public class MenuActivity extends AppCompatActivity {
                 return true;
 
             case R.id.very_good_condition_option:
-                Toast.makeText(getApplicationContext(), R.string.action_very_good_message , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.action_very_good_message, Toast.LENGTH_SHORT).show();
                 return true;
 
             case R.id.good_condition_option:
-                Toast.makeText(getApplicationContext(), R.string.action_good_message , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.action_good_message, Toast.LENGTH_SHORT).show();
                 return true;
 
             case R.id.acceptable_condition_option:
@@ -348,8 +374,7 @@ public class MenuActivity extends AppCompatActivity {
         Intent checkoutIntent = new Intent(this, CheckoutActivity.class);
 
         //For every element in the album list, proceed with the following procedure,
-        for (int element = 0; element < this.mAlbumList.size(); element++)
-        {
+        for (int element = 0; element < this.mAlbumList.size(); element++) {
             //Calculate the album subtotal of the element by converting the item's String subtotal to a Double value.
             double albumSubtotal = Double.parseDouble(this.mAlbumList.get(element).getAlbumSubtotal().substring(1));
 
