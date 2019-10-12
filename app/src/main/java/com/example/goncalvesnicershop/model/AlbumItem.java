@@ -22,7 +22,7 @@ public class AlbumItem {
      *
      * @param albumTitle       The title of the album.
      * @param albumDescription The description of the album.
-     * @param albumImage       The main album cover.
+     * @param albumImage       The image of the album cover.
      * @param albumPrice       The price of the album.
      * @param albumQuantity    The quantity of the album.
      * @param albumSubtotal    The subtotal of the album.

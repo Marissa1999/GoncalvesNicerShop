@@ -374,30 +374,45 @@ public class MenuActivity extends AppCompatActivity {
             //If the new condition option has been selected, proceed with the following step.
             case R.id.new_condition_option: {
 
-                //Display
+                //Display a Toast message which responds to the selection of the new condition option.
                 Toast.makeText(getApplicationContext(), R.string.action_new_option_message, Toast.LENGTH_SHORT).show();
                 return true;
             }
+
+            //If the like-new condition option has been selected, proceed with the following step.
             case R.id.like_new_condition_option: {
+
+                //Display a Toast message which responds to the selection of the like-new condition option.
                 Toast.makeText(getApplicationContext(), R.string.action_like_new_message, Toast.LENGTH_SHORT).show();
                 return true;
             }
+
+            //If the very good condition option has been selected, proceed with the following step.
             case R.id.very_good_condition_option: {
+
+                //Display a Toast message which responds to the selection of the very good condition option.
                 Toast.makeText(getApplicationContext(), R.string.action_very_good_message, Toast.LENGTH_SHORT).show();
                 return true;
             }
+
+            //If the good condition option has been selected, proceed with the following step.
             case R.id.good_condition_option: {
+
+                //Display a Toast message which responds to the selection of the good condition option.
                 Toast.makeText(getApplicationContext(), R.string.action_good_message, Toast.LENGTH_SHORT).show();
                 return true;
             }
+
+            //If the acceptable condition option has been selected, proceed with the following step.
             case R.id.acceptable_condition_option: {
+
+                //Display a Toast message which responds to the selection of the acceptable condition option.
                 Toast.makeText(getApplicationContext(), R.string.action_acceptable_message, Toast.LENGTH_SHORT).show();
                 return true;
             }
         }
-            return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
     }
-
 
 
     /**
@@ -426,7 +441,7 @@ public class MenuActivity extends AppCompatActivity {
         //Start the CheckoutActivity class.
         startActivity(checkoutIntent);
 
-        //Create a Toast message which responds to the "Proceed to Checkout" positive button.
+        //Display a Toast message which responds to the "Proceed to Checkout" positive button.
         String launchingCheckoutMessage = "Here is Your Virtual Receipt!";
         Toast toastButtonMessage = Toast.makeText(this, launchingCheckoutMessage, Toast.LENGTH_SHORT);
         toastButtonMessage.show();
@@ -434,6 +449,5 @@ public class MenuActivity extends AppCompatActivity {
         //Print a log message to ensure launchCheckoutActivity method's functionality.
         Log.d(MENU_LOG_TAG, "Transferred Subtotal and Shipping Total to CheckoutActivity with Clicked Button");
     }
-
 
 }
