@@ -14,7 +14,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Start the MainActivity class with this auto-implemented method.
-     * @param savedInstanceState The return value for displaying all data on the device.
+     *
+     * @param savedInstanceState The Bundle value for displaying all data on the device.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +25,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Print a log message to ensure onCreate method's functionality.
-        Log.d(MAIN_LOG_TAG, "Started MainActivity");
+        Log.d(MAIN_LOG_TAG, "Started the MainActivity.");
     }
 
 
     /**
      * Launch the MenuActivity class, which is supposed to be the following activity.
+     *
      * @param view The view element that has been triggered.
      */
     public void launchMenuActivity(View view) {
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         toastMainMessage.show();
 
         //Print a log message to ensure launchMenuActivity method's functionality.
-        Log.d(MAIN_LOG_TAG, "Launched the MenuActivity with Clicked Button");
+        Log.d(MAIN_LOG_TAG, "Launched the MenuActivity with Clicked Button.");
     }
 
 

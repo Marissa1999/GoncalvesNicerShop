@@ -34,6 +34,8 @@ public class AlbumItem {
         this.albumPrice = albumPrice;
         this.albumQuantity = albumQuantity;
         this.albumSubtotal = albumSubtotal;
+
+        Log.d(ALBUM_ITEM_TAG, "Initialized All Attributes for Each Album Item.");
     }
 
 
@@ -43,7 +45,7 @@ public class AlbumItem {
      * @return The title of the album.
      */
     public String getAlbumTitle() {
-        Log.d(ALBUM_ITEM_TAG, "Retrieved the title of the album.");
+        Log.d(ALBUM_ITEM_TAG, "Retrieved the Title of the Album.");
         return albumTitle;
     }
 
@@ -53,7 +55,7 @@ public class AlbumItem {
      * @return The description of the album.
      */
     public String getAlbumDescription() {
-        Log.d(ALBUM_ITEM_TAG, "Retrieved the description of the album.");
+        Log.d(ALBUM_ITEM_TAG, "Retrieved the Description of the Album.");
         return albumDescription;
     }
 
@@ -63,7 +65,7 @@ public class AlbumItem {
      * @return The cover image of the album.
      */
     public Drawable getAlbumImage() {
-        Log.d(ALBUM_ITEM_TAG, "Retrieved the album cover image.");
+        Log.d(ALBUM_ITEM_TAG, "Retrieved the Album Cover Image.");
         return albumImage;
     }
 
@@ -73,7 +75,7 @@ public class AlbumItem {
      * @return The price of the album.
      */
     public String getAlbumPrice() {
-        Log.d(ALBUM_ITEM_TAG, "Retrieved the price of the album.");
+        Log.d(ALBUM_ITEM_TAG, "Retrieved the Price of the Album.");
         return albumPrice;
     }
 
@@ -83,7 +85,7 @@ public class AlbumItem {
      * @return The quantity of the album.
      */
     public String getAlbumQuantity() {
-        Log.d(ALBUM_ITEM_TAG, "Retrieved the quantity of the album.");
+        Log.d(ALBUM_ITEM_TAG, "Retrieved the Quantity of the Album.");
         return albumQuantity;
     }
 
@@ -93,7 +95,7 @@ public class AlbumItem {
      * @param albumQuantity The quantity of the album.
      */
     public void setAlbumQuantity(String albumQuantity) {
-        Log.d(ALBUM_ITEM_TAG, "Initialized the quantity of the album.");
+        Log.d(ALBUM_ITEM_TAG, "Initialized the Quantity of the Album.");
         this.albumQuantity = albumQuantity;
     }
 
@@ -103,7 +105,7 @@ public class AlbumItem {
      * @return The subtotal of the album.
      */
     public String getAlbumSubtotal() {
-        Log.d(ALBUM_ITEM_TAG, "Retrieved the subtotal of the album.");
+        Log.d(ALBUM_ITEM_TAG, "Retrieved the Subtotal of the Album.");
         return albumSubtotal;
     }
 
@@ -113,7 +115,7 @@ public class AlbumItem {
      * @param albumSubtotal The subtotal of the album.
      */
     public void setAlbumSubtotal(String albumSubtotal) {
-        Log.d(ALBUM_ITEM_TAG, "Initialized the subtotal of the album.");
+        Log.d(ALBUM_ITEM_TAG, "Initialized the Subtotal of the Album.");
         this.albumSubtotal = albumSubtotal;
     }
 }
