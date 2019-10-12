@@ -12,12 +12,13 @@ public class CheckoutActivity extends AppCompatActivity {
     //The tag to call the CheckoutActivity class name when debugging code
     private static final String CHECKOUT_LOG_TAG = CheckoutActivity.class.getSimpleName();
 
-    private double finalAlbumSubtotal = 0.00;
-    private double finalShippingTotal = 0.00;
-    private double finalSubtotal = 0.00;
-    private double totalTPSTax = 0.00;
-    private double totalTVQTax = 0.00;
-    private double finalTotal = 0.00;
+
+    protected double finalAlbumSubtotal = 0.00;
+    protected double finalShippingTotal = 0.00;
+    protected double finalSubtotal = 0.00;
+    protected double totalTPSTax = 0.00;
+    protected double totalTVQTax = 0.00;
+    protected double finalTotal = 0.00;
 
     /*
     Start the CheckoutActivity class with this auto-implemented method and extract monetary values from the MenuActivity class

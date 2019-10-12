@@ -14,26 +14,28 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.example.goncalvesnicershop.model.AlbumItem;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class MenuActivity extends AppCompatActivity {
 
-
+    //The tag to call the MenuActivity class name when debugging code.
     private static final String MENU_LOG_TAG = MenuActivity.class.getSimpleName();
+
+
     public static final String FINAL_SUBTOTAL = "com.example.android.goncalvesnicershop.final.SUBTOTAL";
     public static final String SHIPPING_TOTAL = "com.example.android.goncalvesnicershop.shipping.TOTAL";
+
 
     private double finalSubtotal = 0.00;
     private double shippingTotal = 0.00;
 
+
     private final LinkedList<AlbumItem> albumList = new LinkedList<>();
-    private RecyclerView RecyclerView;
-    private ProductAdapter Adapter;
+    protected RecyclerView RecyclerView;
+    protected ProductAdapter Adapter;
 
 
     @Override
@@ -208,6 +210,7 @@ public class MenuActivity extends AppCompatActivity {
 
         for(int retrievedElement = 0, setterElement = 0; retrievedElement < albumList.size(); retrievedElement++, setterElement += 2)
         {
+            assert restoredAlbumList != null;
             albumList.get(retrievedElement).setAlbumQuantity(restoredAlbumList.get(setterElement));
         }
 
@@ -260,8 +263,8 @@ public class MenuActivity extends AppCompatActivity {
     }
 
 
-    /*
-      Launch the CheckoutActivity class, which is supposed to be the following activity
+    /**
+     * Launch the CheckoutActivity class, which is supposed to be the following activity.
      */
     @SuppressLint("DefaultLocale")
     public void launchCheckoutActivity() {
