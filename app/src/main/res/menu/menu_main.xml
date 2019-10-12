@@ -2,23 +2,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.goncalvesnicershop.MenuActivity">
 
-    <item android:id="@+id/new_condition_option"
-        android:title="@string/new_option" />
 
+    <item
+        android:id="@+id/mp3_download_option"
+        android:title="@string/mp3_format_option" />
 
-    <item android:id="@+id/like_new_condition_option"
-        android:title="@string/like_new_option" />
+    <item
+        android:id="@+id/audio_cd_option"
+        android:title="@string/cd_format_option" />
 
+    <item
+        android:id="@+id/vinyl_record_option"
+        android:title="@string/vinyl_format_option" />
 
-    <item android:id="@+id/very_good_condition_option"
-        android:title="@string/very_good_option" />
-
-
-    <item android:id="@+id/good_condition_option"
-        android:title="@string/good_option" />
-
-    <item android:id="@+id/acceptable_condition_option"
-        android:title="@string/acceptable_option" />
+    <item
+        android:id="@+id/audio_cassette_option"
+        android:title="@string/cassette_format_option" />
 
 
 </menu>

@@ -74,14 +74,12 @@
     <string name="album_cover_10">pink_floyd_the_wall</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="album_cover">album_cover</string>
-    <string name="action_new_option_message">You selected to order all new albums.</string>
-    <string name="action_like_new_message">You selected to order all albums that are like new.</string>
-    <string name="action_very_good_message">You selected to order all albums in very good condition.</string>
-    <string name="action_good_message">You selected to order all albums in good condition.</string>
-    <string name="action_acceptable_message">You selected to order all albums in acceptable condition.</string>
-    <string name="new_option">New</string>
-    <string name="like_new_option">Like New</string>
-    <string name="very_good_option">Very Good</string>
-    <string name="good_option">Good</string>
-    <string name="acceptable_option">Acceptable</string>
+    <string name="action_mp3_option_message">You selected to order all albums as MP3 downloads.</string>
+    <string name="action_cd_option_message">You selected to order all albums as audio CDs.</string>
+    <string name="action_vinyl_option_message">You selected to order all albums as vinyl records.</string>
+    <string name="action_cassette_option_message">You selected to order all albums as audio cassettes.</string>
+    <string name="mp3_format_option">MP3 Download</string>
+    <string name="cd_format_option">Audio CD</string>
+    <string name="vinyl_format_option">Vinyl Record</string>
+    <string name="cassette_format_option">Audio Cassette</string>
 </resources>

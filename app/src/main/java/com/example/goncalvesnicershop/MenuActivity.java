@@ -348,9 +348,9 @@ public class MenuActivity extends AppCompatActivity {
 
 
     /**
-     * Initializes the album condition contents of the options menu.
+     * Initializes the album format contents of the options menu.
      *
-     * @param menu The options menu where album condition items are placed.
+     * @param menu The options menu where album format items are placed.
      * @return The boolean value indicating whether the menu has been created.
      */
     @Override
@@ -362,7 +362,7 @@ public class MenuActivity extends AppCompatActivity {
     /**
      * Determines whether a menu item has been selected.
      *
-     * @param item The menu condition item that was selected.
+     * @param item The menu audio format item that was selected.
      * @return The boolean value indicating whether the menu has been processed or not.
      */
     @Override
@@ -371,45 +371,38 @@ public class MenuActivity extends AppCompatActivity {
         //According to the menu item's ID,
         switch (item.getItemId()) {
 
-            //If the new condition option has been selected, proceed with the following step.
-            case R.id.new_condition_option: {
+            //If the MP3 download option has been selected, proceed with the following step.
+            case R.id.mp3_download_option: {
 
-                //Display a Toast message which responds to the selection of the new condition option.
-                Toast.makeText(getApplicationContext(), R.string.action_new_option_message, Toast.LENGTH_SHORT).show();
+                //Display a Toast message which responds to the selection of the MP3 download option.
+                Toast.makeText(getApplicationContext(), R.string.action_mp3_option_message, Toast.LENGTH_SHORT).show();
                 return true;
             }
 
-            //If the like-new condition option has been selected, proceed with the following step.
-            case R.id.like_new_condition_option: {
+            //If the audio CD option has been selected, proceed with the following step.
+            case R.id.audio_cd_option: {
 
-                //Display a Toast message which responds to the selection of the like-new condition option.
-                Toast.makeText(getApplicationContext(), R.string.action_like_new_message, Toast.LENGTH_SHORT).show();
+                //Display a Toast message which responds to the selection of the audio CD option.
+                Toast.makeText(getApplicationContext(), R.string.action_cd_option_message, Toast.LENGTH_SHORT).show();
                 return true;
             }
 
-            //If the very good condition option has been selected, proceed with the following step.
-            case R.id.very_good_condition_option: {
+            //If the vinyl record option has been selected, proceed with the following step.
+            case R.id.vinyl_record_option: {
 
                 //Display a Toast message which responds to the selection of the very good condition option.
-                Toast.makeText(getApplicationContext(), R.string.action_very_good_message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.action_vinyl_option_message, Toast.LENGTH_SHORT).show();
                 return true;
             }
 
-            //If the good condition option has been selected, proceed with the following step.
-            case R.id.good_condition_option: {
+            //If the audio cassette option has been selected, proceed with the following step.
+            case R.id.audio_cassette_option: {
 
-                //Display a Toast message which responds to the selection of the good condition option.
-                Toast.makeText(getApplicationContext(), R.string.action_good_message, Toast.LENGTH_SHORT).show();
+                //Display a Toast message which responds to the selection of the audio cassette option.
+                Toast.makeText(getApplicationContext(), R.string.action_cassette_option_message, Toast.LENGTH_SHORT).show();
                 return true;
             }
 
-            //If the acceptable condition option has been selected, proceed with the following step.
-            case R.id.acceptable_condition_option: {
-
-                //Display a Toast message which responds to the selection of the acceptable condition option.
-                Toast.makeText(getApplicationContext(), R.string.action_acceptable_message, Toast.LENGTH_SHORT).show();
-                return true;
-            }
         }
         return super.onOptionsItemSelected(item);
     }
