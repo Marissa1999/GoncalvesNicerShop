@@ -1,0 +1,30 @@
+# GoncalvesNicerShop
+
+Note: Please run this application using the Nexus 5X API 28 x86 (G Play Services) emulator. Thank you.
+
+This version of the shopping Android application is more efficient, since it using RecyclerView rather than ScrollView. Similar to the
+previous version of the application, users are free to purchase albums and determine the final totals at checkout. However, there are 
+some key differences which include using a basic activity for the menu, using a floating action button before proceeding to checkout,
+selecting a shipping option in an alert dialog and editing the calculation of subtotals at the checkout activity. Overall, this 
+shopping application required less code and more enhanced features for an optimal user experience.
+
+Even though this week consisted of frequent assignments and exams, I still had the determination to complete the Android assignment on
+the initial deadline, which is October 12, 2019. As usual, the documentation is very detailed and my coding solutions are better
+structured than the previous assignment. Also, I managed to adjust to edit the album content layout file, so that the CardView looks
+more structured and presentable for other users. Since my previous assignment included 10 items already, it was really simple to add 
+images which saved me some time to implement more logical code with RecyclerView and explore the code behind using different menus and
+pickers.
+
+Regarding the seventh part of the assignment, the two menus that I was thinking to use for my application include the options menu
+located on the app bar and a popup menu. The options for each of them would have been the type of album conditon that the user wishes 
+to purchase. These option selections include: new, like new, very good, good and acceptable. The actions triggered between both of them
+would be to display a Toast message to clarify their album condition selection. For both menus, I would choose these types of options
+since most users have a choice to purchase an album depending on their current state. Between both menu ideas, I chose to implement the
+options menu since it is requires less code and still produces a similar professional output. 
+
+If there was more time to complete this application, I would definitely add landscape layouts to the application to make it even more
+professional when the orientation changes. However for the most part, I am very proud that I was able to complete this assignment on
+my own with very little guidance. For this version, I also managed to include Up navigation and succeeded to use onSaveInstanceState() 
+and onRestoreInstanceState() methods to save and restore the quantity and subtotal values.
+
+In general, I am stil very pleased with my final output for this updated assignment and I wish all the best when it comes to evaluation.
